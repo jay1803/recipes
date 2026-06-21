@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>菜谱合集 · The Recipe Index</title>
+<style>
+  :root {
+    --paper: #f4ede0;
+    --paper-deep: #ebe0cd;
+    --ink: #2a2018;
+    --ink-soft: #5a4a38;
+    --rust: #a8341a;
+    --rust-deep: #7d2410;
+    --olive: #5c6234;
+    --gold: #c08a1e;
+    --line: #cbb89a;
+    --serif: "Hoefler Text", "Songti SC", "Source Han Serif SC", Georgia, "Times New Roman", serif;
+    --sans: "Avenir Next", "PingFang SC", "Helvetica Neue", system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 18% 12%, rgba(168,52,26,0.04), transparent 40%),
+      radial-gradient(circle at 85% 75%, rgba(92,98,52,0.05), transparent 45%);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.6;
+    padding-bottom: 70px;
+    min-height: 100vh;
+  }
+
+  .sheet { max-width: 940px; margin: 0 auto; padding: 0 32px; }
+
+  /* ---------- HERO ---------- */
+  header.hero {
+    padding: 72px 0 36px;
+    border-bottom: 3px double var(--line);
+    text-align: center;
+  }
+  .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--rust);
+    font-weight: 700;
+    margin-bottom: 22px;
+  }
+  h1.title {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(2.6rem, 7vw, 4.6rem);
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+  }
+  h1.title .accent { color: var(--rust); font-style: italic; }
+  .subtitle {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1rem, 2.4vw, 1.3rem);
+    color: var(--ink-soft);
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* ---------- COUNT / FILTER BAR ---------- */
+  .bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 34px 0 22px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .count {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+  }
+  .count b { color: var(--rust-deep); font-size: 1.4rem; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag-pill {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.4);
+  }
+
+  /* ---------- RECIPE LIST ---------- */
+  .recipe-list { list-style: none; }
+  .recipe-card {
+    display: grid;
+    grid-template-columns: 64px minmax(0, 1fr) auto;
+    gap: 22px;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    padding: 26px 24px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: rgba(255,255,255,0.42);
+    margin-bottom: 16px;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+  .recipe-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(125,36,16,0.13);
+    border-color: var(--rust);
+  }
+  .r-emoji {
+    font-size: 2.4rem;
+    text-align: center;
+    line-height: 1;
+  }
+  .r-body .r-kicker {
+    font-size: 0.64rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--olive);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .r-body h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+    line-height: 1.12;
+    margin-bottom: 6px;
+  }
+  .r-body .r-desc {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+  }
+  .r-meta {
+    text-align: right;
+    white-space: nowrap;
+  }
+  .r-meta .r-time {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--rust-deep);
+  }
+  .r-meta .r-time-k {
+    display: block;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 2px;
+  }
+  .r-meta .arrow {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 1.3rem;
+    color: var(--rust);
+    transition: transform 0.18s ease;
+  }
+  .recipe-card:hover .arrow { transform: translateX(5px); }
+
+  /* ---------- PLACEHOLDER ---------- */
+  .soon {
+    border: 1.5px dashed var(--line);
+    border-radius: 4px;
+    text-align: center;
+    padding: 34px 24px;
+    color: var(--ink-soft);
+    font-family: var(--serif);
+    font-style: italic;
+    margin-top: 6px;
+  }
+  .soon .plus { font-size: 1.6rem; color: var(--gold); display: block; margin-bottom: 6px; font-style: normal; }
+
+  footer.foot {
+    text-align: center;
+    padding: 46px 0 10px;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    border-top: 3px double var(--line);
+    margin-top: 40px;
+  }
+
+  @media (max-width: 600px) {
+    .recipe-card { grid-template-columns: 48px 1fr; }
+    .r-meta { grid-column: 2; text-align: left; }
+    .r-meta .arrow { display: none; }
+  }
+
+  @media print {
+    body { padding-bottom: 0; }
+    .recipe-card { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header class="hero">
+    <div class="eyebrow">家庭厨房 · 收藏夹</div>
+    <h1 class="title">菜谱<span class="accent">合集</span></h1>
+    <p class="subtitle">值得反复做的菜。慢慢攒，一道一道往里加。</p>
+  </header>
+
+  <div class="bar">
+    <div class="count"><b>1</b> 道菜谱</div>
+    <div class="tags">
+      <span class="tag-pill">牛肉</span>
+      <span class="tag-pill">慢烤</span>
+      <span class="tag-pill">主菜</span>
+    </div>
+  </div>
+
+  <ul class="recipe-list">
+    <li>
+      <a class="recipe-card" href="beef-recipe/low-and-slow-eye-of-round.html">
+        <span class="r-emoji">🥩</span>
+        <div class="r-body">
+          <div class="r-kicker">牛肉 · 主菜 · 6–8 人</div>
+          <h2>慢烤牛眼肉 配蘑菇肉汁与焗薯泥</h2>
+          <p class="r-desc">便宜瘦肉部位，75°C 长时慢烤变得粉嫩多汁，配浓郁蘑菇肉汁和奶酪焗薯泥。</p>
+        </div>
+        <div class="r-meta">
+          <span class="r-time">5–6h</span>
+          <span class="r-time-k">慢烤</span>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+    </li>
+  </ul>
+
+  <div class="soon">
+    <span class="plus">+</span>
+    更多菜谱马上加进来
+  </div>
+
+  <footer class="foot">
+    本地菜谱合集 · 自己的厨房，自己的味道
+  </footer>
+
+</div>
+</body>
+</html>

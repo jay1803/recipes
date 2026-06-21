@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>慢烤牛眼肉 配蘑菇肉汁与焗薯泥</title>
+<style>
+  :root {
+    --paper: #f4ede0;
+    --paper-deep: #ebe0cd;
+    --ink: #2a2018;
+    --ink-soft: #5a4a38;
+    --rust: #a8341a;
+    --rust-deep: #7d2410;
+    --olive: #5c6234;
+    --gold: #c08a1e;
+    --line: #cbb89a;
+    --serif: "Hoefler Text", "Songti SC", "Source Han Serif SC", Georgia, "Times New Roman", serif;
+    --sans: "Avenir Next", "PingFang SC", "Helvetica Neue", system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 18% 12%, rgba(168,52,26,0.04), transparent 40%),
+      radial-gradient(circle at 85% 75%, rgba(92,98,52,0.05), transparent 45%);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.6;
+    padding-bottom: 70px;
+  }
+
+  .sheet {
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ---------- HERO ---------- */
+  header.hero {
+    padding: 64px 0 40px;
+    border-bottom: 3px double var(--line);
+    text-align: center;
+    position: relative;
+  }
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--rust);
+    font-weight: 700;
+    margin-bottom: 22px;
+  }
+  h1.title {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(2.4rem, 6vw, 4.1rem);
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 18px;
+  }
+  h1.title .accent { color: var(--rust); font-style: italic; }
+  .subtitle {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1rem, 2.4vw, 1.3rem);
+    color: var(--ink-soft);
+    max-width: 560px;
+    margin: 0 auto 30px;
+  }
+  .meta-strip {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+    margin-top: 8px;
+  }
+  .meta-item {
+    padding: 4px 26px;
+    border-right: 1px solid var(--line);
+    text-align: center;
+  }
+  .meta-item:last-child { border-right: none; }
+  .meta-item .k {
+    display: block;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 4px;
+  }
+  .meta-item .v {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--rust-deep);
+  }
+  .credit {
+    margin-top: 30px;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+  }
+  .credit a { color: var(--rust); text-decoration: none; border-bottom: 1px solid var(--line); }
+
+  /* ---------- LAYOUT ---------- */
+  .body-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+    gap: 48px;
+    padding: 48px 0;
+    align-items: start;
+  }
+
+  /* ---------- INGREDIENTS (sidebar) ---------- */
+  aside.ingredients {
+    position: sticky;
+    top: 24px;
+  }
+  .ing-block { margin-bottom: 34px; }
+  .ing-head {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--ink);
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+    border-bottom: 2px solid var(--rust);
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .ing-head .ico { font-size: 1.1rem; }
+  ul.ing-list { list-style: none; }
+  ul.ing-list li {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 7px 0;
+    font-size: 0.9rem;
+    border-bottom: 1px dotted var(--line);
+    align-items: baseline;
+  }
+  ul.ing-list li:last-child { border-bottom: none; }
+  ul.ing-list .name { color: var(--ink); }
+  ul.ing-list .qty {
+    color: var(--rust-deep);
+    font-family: var(--serif);
+    font-weight: 700;
+    white-space: nowrap;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .opt { font-size: 0.7rem; color: var(--olive); font-style: italic; }
+
+  /* ---------- STEPS (main) ---------- */
+  main.steps {}
+  .phase {
+    margin-bottom: 46px;
+  }
+  .phase-tag {
+    display: inline-block;
+    font-size: 0.66rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--olive);
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+    font-weight: 700;
+  }
+  .phase:nth-child(1) .phase-tag { background: var(--rust); }
+  .phase:nth-child(2) .phase-tag { background: var(--gold); color: var(--ink); }
+  .phase:nth-child(3) .phase-tag { background: var(--olive); }
+  .phase:nth-child(4) .phase-tag { background: var(--ink); }
+  .phase h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: 700;
+    margin-bottom: 6px;
+    line-height: 1.1;
+  }
+  .phase .note {
+    font-style: italic;
+    font-family: var(--serif);
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+  ol.step-list { list-style: none; counter-reset: step; }
+  ol.step-list li {
+    position: relative;
+    padding-left: 52px;
+    margin-bottom: 18px;
+    font-size: 0.97rem;
+    color: var(--ink);
+  }
+  ol.step-list li::before {
+    counter-increment: step;
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: -2px;
+    width: 34px;
+    height: 34px;
+    background: var(--paper-deep);
+    border: 1.5px solid var(--rust);
+    color: var(--rust-deep);
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  ol.step-list li b { color: var(--rust-deep); }
+  .temp {
+    font-family: var(--serif);
+    font-weight: 700;
+    color: var(--olive);
+    white-space: nowrap;
+  }
+
+  /* ---------- TIPS ---------- */
+  section.tips {
+    border-top: 3px double var(--line);
+    padding: 44px 0 20px;
+  }
+  .tips h2 {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  .tips .lead {
+    text-align: center;
+    font-style: italic;
+    font-family: var(--serif);
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+  }
+  .tip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 22px;
+  }
+  .tip {
+    background: rgba(255,255,255,0.45);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--gold);
+    padding: 20px 22px;
+    border-radius: 3px;
+  }
+  .tip h3 {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--rust-deep);
+    margin-bottom: 8px;
+  }
+  .tip p { font-size: 0.88rem; color: var(--ink-soft); }
+
+  footer.foot {
+    text-align: center;
+    padding: 40px 0 10px;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+  }
+  footer.foot a { color: var(--rust); text-decoration: none; }
+
+  @media (max-width: 760px) {
+    .body-grid { grid-template-columns: 1fr; gap: 8px; }
+    aside.ingredients { position: static; }
+    .meta-item { padding: 4px 16px; }
+  }
+
+  @media print {
+    body { padding-bottom: 0; }
+    aside.ingredients { position: static; }
+    .phase, .tip, li { page-break-inside: avoid; }
+    header.hero { padding-top: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header class="hero">
+    <div class="eyebrow">慢工 · 出细活 · 6–8 人份</div>
+    <h1 class="title">慢烤牛眼肉<br><span class="accent">配蘑菇肉汁与焗薯泥</span></h1>
+    <p class="subtitle">便宜的瘦肉部位，靠 75°C 长时慢烤变得粉嫩多汁；浓郁蘑菇肉汁负责增鲜，奶酪焗薯泥负责满足。</p>
+    <div class="meta-strip">
+      <div class="meta-item"><span class="k">烤箱温度</span><span class="v">75°C</span></div>
+      <div class="meta-item"><span class="k">慢烤时长</span><span class="v">5–6 小时</span></div>
+      <div class="meta-item"><span class="k">中心温度</span><span class="v">50–55°C</span></div>
+      <div class="meta-item"><span class="k">熟度</span><span class="v">三到五分</span></div>
+    </div>
+    <p class="credit">改编自 Adam Ragusea · <a href="https://www.youtube.com/watch?v=X0XpFwKKxXQ">Slow-roast beef eye of round</a></p>
+  </header>
+
+  <div class="body-grid">
+
+    <aside class="ingredients">
+      <div class="ing-block">
+        <div class="ing-head"><span class="ico">🥩</span> 牛肉 & 肉汁</div>
+        <ul class="ing-list">
+          <li><span class="name">牛眼肉（eye of round）</span><span class="qty">1.5 kg</span></li>
+          <li><span class="name">大蒜</span><span class="qty">1 整头</span></li>
+          <li><span class="name">迷迭香 / 百里香</span><span class="qty">几枝</span></li>
+          <li><span class="name">黄油</span><span class="qty">适量</span></li>
+          <li><span class="name">盐 · 黑胡椒 · 油</span><span class="qty">适量</span></li>
+          <li><span class="name">牛肉高汤</span><span class="qty">830 ml</span></li>
+          <li><span class="name">红酒 <span class="opt">可选</span></span><span class="qty">100–200 ml</span></li>
+          <li><span class="name">干蘑菇粉</span><span class="qty">1–3 汤匙</span></li>
+          <li><span class="name">洋葱粉</span><span class="qty">1–3 汤匙</span></li>
+          <li><span class="name">芥末粉</span><span class="qty">1 茶匙</span></li>
+          <li><span class="name">玉米淀粉 <span class="opt">或黄原胶 ½ 茶匙</span></span><span class="qty">2 茶匙</span></li>
+        </ul>
+      </div>
+      <div class="ing-block">
+        <div class="ing-head"><span class="ico">🥔</span> 焗薯泥</div>
+        <ul class="ing-list">
+          <li><span class="name">土豆 <span class="opt">推荐黄金土豆</span></span><span class="qty">1.5 kg</span></li>
+          <li><span class="name">黄油</span><span class="qty">113 g</span></li>
+          <li><span class="name">切达奶酪（擦丝）</span><span class="qty">225 g</span></li>
+          <li><span class="name">蛋黄</span><span class="qty">4 个</span></li>
+          <li><span class="name">牛奶</span><span class="qty">适量</span></li>
+          <li><span class="name">盐 · 黑胡椒</span><span class="qty">适量</span></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="steps">
+
+      <div class="phase">
+        <span class="phase-tag">第一步</span>
+        <h2>煎封 & 慢烤牛肉</h2>
+        <p class="note">先煎出焦香外壳，再用低温把整块肉烤到均匀的粉色。</p>
+        <ol class="step-list">
+          <li>烤箱预热到约 <span class="temp">75°C（170°F）</span>，或你烤箱能稳定保持的接近温度。把一个可入烤箱的大煎锅烧到中大火。</li>
+          <li>大蒜整瓣拍碎（没发霉就不用去皮）。牛肉表面抹满油、盐、黑胡椒。</li>
+          <li>把牛肉<b>各面都煎上色</b>。快煎好时放入一大块黄油（约 50–100 g）、大蒜和香草，让牛肉裹满融化的黄油。</li>
+          <li>牛肉<b>肥面朝上</b>摆在锅里，连锅送入烤箱。慢烤到中心温度 <span class="temp">50–55°C（125–130°F）</span>，约 <b>5–6 小时</b>。</li>
+        </ol>
+      </div>
+
+      <div class="phase">
+        <span class="phase-tag">第二步</span>
+        <h2>奶酪焗薯泥</h2>
+        <p class="note">蛋黄和奶酪让薯泥扎实又浓香，二次焗烤逼出金黄脆壳。</p>
+        <ol class="step-list">
+          <li>土豆切成均匀块（淀粉质烤土豆才需去皮），煮到叉子能轻松扎透。</li>
+          <li>沥干倒回热锅，趁热拌入黄油，再加奶酪、蛋黄、<b>大量黑胡椒</b>和少许盐，捣成顺滑泥。</li>
+          <li>按口味补盐，逐渐加牛奶调到<b>偏硬挺</b>的薯泥质地。</li>
+          <li>宽烤盘抹油，舀入薯泥，表面刷融化黄油。</li>
+          <li>牛肉出炉后，烤箱升到 <span class="temp">200°C（400°F）</span>，焗约半小时；不够金黄就最后开上火（broiler）。</li>
+        </ol>
+      </div>
+
+      <div class="phase">
+        <span class="phase-tag">第三步</span>
+        <h2>蘑菇肉汁（Jus）</h2>
+        <p class="note">用锅底的精华做酱——别浪费那些焦香的牛肉油脂。</p>
+        <ol class="step-list">
+          <li>牛肉出炉后移到砧板<b>静置</b>。烤肉的锅（连油脂、大蒜、香草）开大火，滋滋响时不停搅拌。</li>
+          <li>快烧焦时用<b>红酒炝锅</b>（不用酒就用高汤代替）。</li>
+          <li>倒入牛肉高汤、蘑菇粉、洋葱粉、芥末粉，煮开后<b>收汁到剩 ½–⅔</b>。</li>
+          <li>勾芡：淀粉加少量水调成淀粉水（黄原胶则加少量油溶解），倒入煮约 1 分钟，尝味调整。</li>
+          <li>过滤，丢掉渣。<span class="opt">想要更浓稠的 gravy 就多加勾芡。</span></li>
+        </ol>
+      </div>
+
+      <div class="phase">
+        <span class="phase-tag">第四步</span>
+        <h2>逆纹切片 & 装盘</h2>
+        <p class="note">薄切是这块瘦肉变嫩的关键，滚烫肉汁负责回温。</p>
+        <ol class="step-list">
+          <li>牛肉<b>逆纹切到尽可能薄</b>。</li>
+          <li>盘中舀薯泥，浇上<b>滚烫的肉汁</b>（要够热，能把切好已凉的牛肉重新加热）。</li>
+          <li>牛肉铺在肉汁上，喜欢的话撒点卷叶欧芹装饰。</li>
+        </ol>
+      </div>
+
+    </main>
+  </div>
+
+  <section class="tips">
+    <h2>厨房备忘</h2>
+    <p class="lead">作者答疑里最实用的几条</p>
+    <div class="tip-grid">
+      <div class="tip">
+        <h3>想要全熟？</h3>
+        <p>中心温度约 70°C（160°F）。但牛眼肉超过五分熟会很柴，喜欢全熟建议换更嫩的部位。</p>
+      </div>
+      <div class="tip">
+        <h3>不想用蘑菇？</h3>
+        <p>可省略蘑菇粉，用酱油或伍斯特酱补鲜味。注意它们很咸，相应减盐。</p>
+      </div>
+      <div class="tip">
+        <h3>土豆发绿要削掉</h3>
+        <p>绿色是无害的叶绿素，但伴随着有毒的茄碱。削到看不见绿色为止较安全。</p>
+      </div>
+      <div class="tip">
+        <h3>为什么逆纹薄切</h3>
+        <p>瘦部位结缔组织多，逆纹切断肌肉纤维、切得越薄，入口越嫩。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    原始视频 · <a href="https://www.youtube.com/watch?v=X0XpFwKKxXQ">Adam Ragusea — Slow-roast beef eye of round</a>
+  </footer>
+
+</div>
+</body>
+</html>
