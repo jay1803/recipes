@@ -183,6 +183,78 @@ section.prep p b { color: var(--teal); }
 footer.foot { text-align: center; padding: 40px 0 10px; font-size: 0.78rem; color: var(--ink-soft); }
 footer.foot a { color: var(--rust); text-decoration: none; }
 
+/* ---------- VARIANT MARKERS (used by boeuf bourguignon) ---------- */
+.alt {
+  display: inline-flex; align-items: center; gap: 5px;
+  margin-left: 6px; vertical-align: baseline;
+  font-family: var(--sans); font-size: 0.66rem; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: #fff; background: var(--gold);
+  border: none; border-radius: 20px; padding: 2px 10px 2px 8px;
+  cursor: pointer; transition: background 0.15s ease, transform 0.15s ease;
+}
+.alt:hover { background: var(--rust); transform: translateY(-1px); }
+.alt .alt-ico { font-size: 0.72rem; line-height: 1; transition: transform 0.2s ease; }
+.alt[aria-expanded="true"] { background: var(--rust); }
+.alt[aria-expanded="true"] .alt-ico { transform: rotate(45deg); }
+.alt-panel {
+  display: none; margin: 12px 0 4px;
+  background: rgba(192,138,30,0.07);
+  border: 1px solid var(--line); border-left: 4px solid var(--gold);
+  border-radius: 3px; padding: 14px 18px;
+}
+.alt-panel.open { display: block; }
+.alt-panel ul { list-style: none; }
+.alt-panel li {
+  padding: 6px 0; padding-left: 0; margin: 0; font-size: 0.88rem;
+  color: var(--ink-soft); border-bottom: 1px dotted var(--line);
+}
+.alt-panel li::before { content: none; }
+.alt-panel li:last-child { border-bottom: none; }
+.alt-panel .who {
+  display: inline-block; font-family: var(--serif); font-weight: 700;
+  color: var(--rust-deep); margin-right: 6px;
+}
+.alt-panel b { color: var(--rust-deep); }
+.alt-legend {
+  font-size: 0.85rem; color: var(--ink-soft); font-style: italic;
+  font-family: var(--serif); margin-bottom: 30px;
+  padding: 12px 16px; background: rgba(192,138,30,0.08);
+  border-radius: 4px; border: 1px dashed var(--line);
+}
+.alt-legend-badge {
+  display: inline-block; font-style: normal; font-family: var(--sans);
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; color: #fff; background: var(--gold);
+  border-radius: 20px; padding: 2px 9px; white-space: nowrap;
+}
+
+/* ---------- BONUS TIPS (used by boeuf bourguignon) ---------- */
+section.bonus { padding: 10px 0 20px; }
+.bonus-head { text-align: center; margin-bottom: 8px; }
+.bonus-head h2 { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 6px; }
+.bonus-head .lead { font-style: italic; font-family: var(--serif); color: var(--ink-soft); margin-bottom: 6px; }
+.bonus-head .src {
+  font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--olive); font-weight: 700;
+}
+.bonus-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; margin-top: 28px; }
+.bonus-tip {
+  background: rgba(92,98,52,0.06); border: 1px solid var(--line);
+  border-left: 4px solid var(--olive); padding: 20px 22px; border-radius: 3px;
+}
+.bonus-tip h3 {
+  font-family: var(--serif); font-size: 1.1rem; color: var(--olive); margin-bottom: 8px;
+  display: flex; align-items: baseline; gap: 8px;
+}
+.bonus-tip h3 .num {
+  font-size: 0.7rem; background: var(--olive); color: #fff;
+  width: 20px; height: 20px; border-radius: 50%; display: inline-flex;
+  align-items: center; justify-content: center; flex-shrink: 0;
+}
+.bonus-tip p { font-size: 0.88rem; color: var(--ink-soft); }
+.bonus-tip p b { color: var(--rust-deep); }
+
 @media (max-width: 760px) {
   .body-grid { grid-template-columns: 1fr; gap: 8px; }
   aside.ingredients { position: static; }
@@ -192,7 +264,9 @@ footer.foot a { color: var(--rust); text-decoration: none; }
 @media print {
   body { padding-bottom: 0; }
   aside.ingredients { position: static; }
-  .phase, .tip, .macro, li { page-break-inside: avoid; }
+  .phase, .tip, .macro, .bonus-tip, li { page-break-inside: avoid; }
   section.fitness, section.prep { page-break-inside: avoid; }
   .back { display: none; }
+  .alt { display: none; }
+  .alt-panel { display: block; }
 }
