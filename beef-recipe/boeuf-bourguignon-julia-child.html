@@ -132,6 +132,55 @@
   ol.step-list li b { color: var(--rust-deep); }
   .temp { font-family: var(--serif); font-weight: 700; color: var(--olive); white-space: nowrap; }
 
+  /* ---------- VARIANT MARKERS ---------- */
+  .alt {
+    display: inline-flex; align-items: center; gap: 5px;
+    margin-left: 6px; vertical-align: baseline;
+    font-family: var(--sans); font-size: 0.66rem; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: #fff; background: var(--gold);
+    border: none; border-radius: 20px; padding: 2px 10px 2px 8px;
+    cursor: pointer; transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .alt:hover { background: var(--rust); transform: translateY(-1px); }
+  .alt .alt-ico {
+    font-size: 0.72rem; line-height: 1; transition: transform 0.2s ease;
+  }
+  .alt[aria-expanded="true"] { background: var(--rust); }
+  .alt[aria-expanded="true"] .alt-ico { transform: rotate(45deg); }
+  .alt-panel {
+    display: none; margin: 12px 0 4px;
+    background: rgba(192,138,30,0.07);
+    border: 1px solid var(--line); border-left: 4px solid var(--gold);
+    border-radius: 3px; padding: 14px 18px;
+  }
+  .alt-panel.open { display: block; }
+  .alt-panel ul { list-style: none; }
+  .alt-panel li {
+    padding: 6px 0; padding-left: 0; margin: 0; font-size: 0.88rem;
+    color: var(--ink-soft); border-bottom: 1px dotted var(--line);
+  }
+  .alt-panel li::before { content: none; }
+  .alt-panel li:last-child { border-bottom: none; }
+  .alt-panel .who {
+    display: inline-block; font-family: var(--serif); font-weight: 700;
+    color: var(--rust-deep); margin-right: 6px;
+  }
+  .alt-panel b { color: var(--rust-deep); }
+
+  .alt-legend {
+    font-size: 0.85rem; color: var(--ink-soft); font-style: italic;
+    font-family: var(--serif); margin-bottom: 30px;
+    padding: 12px 16px; background: rgba(192,138,30,0.08);
+    border-radius: 4px; border: 1px dashed var(--line);
+  }
+  .alt-legend-badge {
+    display: inline-block; font-style: normal; font-family: var(--sans);
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; color: #fff; background: var(--gold);
+    border-radius: 20px; padding: 2px 9px; white-space: nowrap;
+  }
+
   /* ---------- TIPS ---------- */
   section.tips { border-top: 3px double var(--line); padding: 44px 0 20px; }
   .tips h2 { font-family: var(--serif); font-size: 1.8rem; text-align: center; margin-bottom: 8px; }
@@ -147,6 +196,36 @@
   .tip h3 { font-family: var(--serif); font-size: 1.1rem; color: var(--rust-deep); margin-bottom: 8px; }
   .tip p { font-size: 0.88rem; color: var(--ink-soft); }
 
+  /* ---------- BONUS TIPS ---------- */
+  section.bonus { padding: 10px 0 20px; }
+  .bonus-head {
+    text-align: center; margin-bottom: 8px;
+  }
+  .bonus-head h2 { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 6px; }
+  .bonus-head .lead {
+    font-style: italic; font-family: var(--serif); color: var(--ink-soft); margin-bottom: 6px;
+  }
+  .bonus-head .src {
+    font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--olive); font-weight: 700;
+  }
+  .bonus-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; margin-top: 28px; }
+  .bonus-tip {
+    background: rgba(92,98,52,0.06); border: 1px solid var(--line);
+    border-left: 4px solid var(--olive); padding: 20px 22px; border-radius: 3px;
+  }
+  .bonus-tip h3 {
+    font-family: var(--serif); font-size: 1.1rem; color: var(--olive); margin-bottom: 8px;
+    display: flex; align-items: baseline; gap: 8px;
+  }
+  .bonus-tip h3 .num {
+    font-size: 0.7rem; background: var(--olive); color: #fff;
+    width: 20px; height: 20px; border-radius: 50%; display: inline-flex;
+    align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .bonus-tip p { font-size: 0.88rem; color: var(--ink-soft); }
+  .bonus-tip p b { color: var(--rust-deep); }
+
   footer.foot { text-align: center; padding: 40px 0 10px; font-size: 0.78rem; color: var(--ink-soft); }
   footer.foot a { color: var(--rust); text-decoration: none; }
 
@@ -158,8 +237,10 @@
   @media print {
     body { padding-bottom: 0; }
     aside.ingredients { position: static; }
-    .phase, .tip, li { page-break-inside: avoid; }
+    .phase, .tip, .bonus-tip, li { page-break-inside: avoid; }
     .back { display: none; }
+    .alt { display: none; }
+    .alt-panel { display: block; }
   }
 </style>
 </head>
@@ -178,7 +259,7 @@
       <div class="meta-item"><span class="k">用肉</span><span class="v">牛肩 chuck</span></div>
       <div class="meta-item"><span class="k">可提前</span><span class="v">一两天</span></div>
     </div>
-    <p class="credit">改编自 Julia Child《The French Chef》S1 · <a href="https://www.youtube.com/watch?v=NlGFkXd-QT0">PBS 视频</a></p>
+    <p class="credit">主做法 Julia Child《The French Chef》S1，步骤旁标注另外四位名厨的变体做法</p>
   </header>
 
   <div class="body-grid">
@@ -225,17 +306,44 @@
 
     <main class="steps">
 
+      <p class="alt-legend">主做法是 Julia 的经典版。带 <span class="alt-legend-badge">+ 还能这么做</span> 的步骤，点开可看其他名厨在这一步的不同做法。</p>
+
       <div class="phase">
         <span class="phase-tag">第一步</span>
         <h2>煎封牛肉 & 入炉慢炖</h2>
         <p class="note">煎前一定把肉擦干、油烧热、锅别挤——否则肉只会出水不上色。</p>
         <ol class="step-list">
-          <li>牛肉切大块，用厨房纸<b>彻底擦干</b>。锅里放刚好铺满锅底的油，<b>烧到够热</b>（但别冒烟发黑）。</li>
+          <li>牛肉切大块，用厨房纸<b>彻底擦干</b>。锅里放刚好铺满锅底的油，<b>烧到够热</b>（但别冒烟发黑）。
+            <button class="alt" aria-expanded="false"><span class="alt-ico">+</span>还能这么做</button>
+            <div class="alt-panel">
+              <ul>
+                <li><span class="who">RecipeTin Eats</span>把牛肉用<b>整瓶红酒加胡萝卜、洋葱、香草腌一夜（12–24h）</b>，捞出擦干再煎。腌过的肉咬下去带酒香，是这版超越经典的关键。腌过的酒别倒，收浓后当炖汁。</li>
+                <li><span class="who">Serious Eats</span>先把肉切成<b>几大片只煎两面</b>，煎好再切成 4–5 cm 块——减少煎面、锁住水分，炖出来更嫩。</li>
+              </ul>
+            </div>
+          </li>
           <li>牛肉<b>分批下锅、不要挤</b>，各面煎成深褐色（每批约 4–5 分钟），煎好转入厚底炖锅。</li>
           <li>煎锅里留着的焦褐物是精华：倒入<b>约 3 杯红酒炝锅</b>（deglaze），刮起锅底所有褐色汁液。</li>
-          <li>把酒汁倒进炖锅，再加牛肉高汤，<b>液体刚好没过牛肉</b>即可。</li>
+          <li>把酒汁倒进炖锅，再加牛肉高汤，<b>液体刚好没过牛肉</b>即可。
+            <button class="alt" aria-expanded="false"><span class="alt-ico">+</span>还能这么做</button>
+            <div class="alt-panel">
+              <ul>
+                <li><span class="who">Chef Jean-Pierre / FCA</span>下锅前把<b>红酒和高汤分别煮开收浓一点</b>，味道更集中；酒嫌酒精味重还可点火 flambé 烧掉一部分。</li>
+                <li><span class="who">Serious Eats</span>加几样<b>隐形增鲜剂</b>：高汤里泡明胶（增稠出胶质感），再各加 1 汤匙鱼露和酱油——吃不出来，但鲜味更深。</li>
+              </ul>
+            </div>
+          </li>
           <li>加番茄膏、百里香、月桂叶、蒜泥，烧到微滚，<b>尝味加少许盐</b>（别过咸，酱之后会收浓）。</li>
-          <li>加盖入 <span class="temp">325°F（约 160°C）</span>烤箱，<b>保持微微冒泡的慢炖</b>，约 <b>3–4 小时</b>至牛肉酥软。中途只需偶尔确认没有沸腾翻滚。</li>
+          <li>加盖入 <span class="temp">325°F（约 160°C）</span>烤箱，<b>保持微微冒泡的慢炖</b>，约 <b>3–4 小时</b>至牛肉酥软。中途只需偶尔确认没有沸腾翻滚。
+            <button class="alt" aria-expanded="false"><span class="alt-ico">+</span>还能这么做</button>
+            <div class="alt-panel">
+              <ul>
+                <li><span class="who">Serious Eats</span>用<b>两套蔬菜</b>：炖之前先放大块胡萝卜、洋葱、蒜和香草束一起炖出味，炖了约 1.5h 后<b>把它们捞掉丢弃</b>，再换上新鲜煎好的配菜继续炖——避免配菜炖烂没味。炖时<b>盖子半开</b>让酱自然收浓。</li>
+                <li><span class="who">RecipeTin Eats</span>先炖 1 小时，再放入煎好的洋葱和蘑菇，加盖<b>续炖 1.5 小时</b>至软烂——配菜不会过烂。</li>
+                <li><span class="who">通用</span>入炉前<b>务必先在炉上烧到微滚</b>再加盖进烤箱，否则烤箱要花很久才能把整锅加热到炖煮温度。</li>
+              </ul>
+            </div>
+          </li>
         </ol>
       </div>
 
@@ -247,7 +355,15 @@
           <li>小洋葱下<b>沸水煮约 20 秒</b>松皮，捞出剥皮。</li>
           <li>剥皮时<b>保留根部</b>让洋葱不散，两端只轻削，根部扎个小孔。</li>
           <li>洋葱<b>单层平铺</b>入锅（别叠），加水至半没，放约 1 汤匙黄油和少许盐。</li>
-          <li>烧到微滚后加盖，<b>极小火焖约 25 分钟</b>至软而不烂、仍保持形状，备用。</li>
+          <li>烧到微滚后加盖，<b>极小火焖约 25 分钟</b>至软而不烂、仍保持形状，备用。
+            <button class="alt" aria-expanded="false"><span class="alt-ico">+</span>还能这么做</button>
+            <div class="alt-panel">
+              <ul>
+                <li><span class="who">FCA / Jean-Pierre</span>焖洋葱时<b>加两撮糖</b>，水收干后继续煎到<b>表面焦糖上色</b>，比单纯焖煮更香更亮。</li>
+                <li><span class="who">RecipeTin Eats / Serious Eats</span>用<b>培根油</b>把小洋葱（珍珠洋葱）直接煎到金黄，借培根的烟熏咸香。</li>
+              </ul>
+            </div>
+          </li>
         </ol>
       </div>
 
@@ -259,7 +375,15 @@
           <li>蘑菇<b>放水里提起涮洗</b>（别倒进滤网，否则沙又落回），再用干布<b>彻底擦干</b>。</li>
           <li>切成<b>四瓣</b>（太薄会在炖菜里消失），菌柄斜切成相近大小。</li>
           <li>锅里放<b>黄油 + 油</b>（纯黄油会糊），等黄油<b>泡沫消退</b>说明够热。</li>
-          <li>蘑菇下锅<b>不要挤</b>，晃锅煎 2–3 分钟至<b>微微上色</b>，盛出备用。</li>
+          <li>蘑菇下锅<b>不要挤</b>，晃锅煎 2–3 分钟至<b>微微上色</b>，盛出备用。
+            <button class="alt" aria-expanded="false"><span class="alt-ico">+</span>还能这么做</button>
+            <div class="alt-panel">
+              <ul>
+                <li><span class="who">四个版本都加培根</span>开头先把<b>培根丁（lardons）煸到金黄盛出</b>，再用培根油煎蘑菇/洋葱，最后培根作配料撒回。<b>切粗条</b>口感更足；嫌烟熏味重可先把培根焯水 2 分钟。</li>
+                <li><span class="who">RecipeTin Eats / Serious Eats</span>蘑菇要<b>煎足 5–10 分钟</b>到出水收干、真正上色，否则炖后会"发胖"出水。</li>
+              </ul>
+            </div>
+          </li>
         </ol>
       </div>
 
@@ -270,7 +394,16 @@
         <ol class="step-list">
           <li>把整锅倒进滤网，<b>分离酱汁和肉料</b>，肉料倒回炖锅。约得 <b>2½–3 杯酱汁</b>。</li>
           <li>酱汁<b>撇去表面浮油</b>（留一点点增香），尝味补盐，<b>最后才加黑胡椒</b>。</li>
-          <li>做 <b>beurre manié</b>：每杯酱用 1 汤匙面粉配等量软化黄油，捏成面糊。</li>
+          <li>做 <b>beurre manié</b>：每杯酱用 1 汤匙面粉配等量软化黄油，捏成面糊。
+            <button class="alt" aria-expanded="false"><span class="alt-ico">+</span>还能这么做</button>
+            <div class="alt-panel">
+              <ul>
+                <li><span class="who">FCA</span>煎肉后<b>撒约 25–30 g 面粉</b>裹匀，连锅入高温烤箱<b>烤 4–5 分钟</b>烘香再下汤汁——面粉提前融进酱底。</li>
+                <li><span class="who">RecipeTin Eats</span>在炒蔬菜底时加<b>番茄膏 + 面粉炒成 roux</b>，再慢慢倒入高汤化开，下锅前就完成勾芡。</li>
+                <li><span class="who">Serious Eats</span>把<b>面粉直接裹在牛肉块上</b>再回锅，配合明胶和半开盖收汁，得到更轻盈的稠度（不追求浓 gravy）。</li>
+              </ul>
+            </div>
+          </li>
           <li>酱汁<b>离火</b>，搅入面糊打匀，再回火<b>煮开约 1 分钟</b>到能裹住勺背的稠度。</li>
           <li>把<b>焖洋葱和煎蘑菇</b>放入炖锅，浇上热酱，小火<b>慢炖 2–3 分钟</b>让味道融合，即可上桌。</li>
         </ol>
@@ -310,10 +443,46 @@
     </div>
   </section>
 
+  <section class="bonus">
+    <div class="bonus-head">
+      <h2>四个版本速览</h2>
+      <p class="lead">骨架都是 Julia 这套，区别只在几处细节——每个版本的"灵魂改动"</p>
+      <p class="src">点开上方步骤里的标记看具体做法</p>
+    </div>
+    <div class="bonus-grid">
+      <div class="bonus-tip">
+        <h3><span class="num">1</span>French Cooking Academy</h3>
+        <p>最贴近 Julia 的"懒人周日版"。新增<b>培根</b>、<b>面粉入炉烤香</b>勾芡、<b>酒和高汤先收汁</b>，小洋葱<b>加糖焦糖化</b>，土豆配蒜香欧芹黄油。</p>
+      </div>
+      <div class="bonus-tip">
+        <h3><span class="num">2</span>Chef Jean-Pierre</h3>
+        <p>流程几乎相同。招牌是把<b>红酒单独浓缩还原</b>再入锅，先煸培根再用培根油煎肉、煎洋葱，小洋葱焦糖化。</p>
+      </div>
+      <div class="bonus-tip">
+        <h3><span class="num">3</span>RecipeTin Eats（Nagi）</h3>
+        <p>两个分水岭：牛肉<b>用整瓶红酒腌一夜</b>（咬下去带酒香），以及<b>每样食材分别煸香</b>再炖。番茄膏+面粉炒 roux 勾芡。作者称比经典版更好。</p>
+      </div>
+      <div class="bonus-tip">
+        <h3><span class="num">4</span>Serious Eats（Gritzer）</h3>
+        <p>最"实验室"的一版：牛肉<b>切大块只煎两面</b>再切小、<b>不腌</b>、<b>两套蔬菜</b>（炖香后丢弃换新鲜）、加<b>明胶+鱼露+酱油</b>隐形增鲜、半开盖收汁。</p>
+      </div>
+    </div>
+  </section>
+
   <footer class="foot">
-    原始视频 · <a href="https://www.youtube.com/watch?v=NlGFkXd-QT0">Julia Child — Boeuf Bourguignon (The French Chef S1, PBS)</a>
+    主做法 · <a href="https://www.youtube.com/watch?v=NlGFkXd-QT0">Julia Child — Boeuf Bourguignon (The French Chef S1, PBS)</a><br>
+    变体诀窍 · <a href="https://www.youtube.com/watch?v=72pXASYZXoQ">French Cooking Academy</a> · <a href="https://www.youtube.com/watch?v=b6Yqw6J8WHo">Chef Jean-Pierre</a> · <a href="https://www.recipetineats.com/beef-bourguignon-beef-burgundy/">RecipeTin Eats</a> · <a href="https://www.seriouseats.com/beef-bourguignon-red-wine-stew-recipe">Serious Eats</a>
   </footer>
 
 </div>
+<script>
+  document.querySelectorAll('.alt').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var panel = btn.nextElementSibling;
+      var open = panel.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+</script>
 </body>
 </html>
