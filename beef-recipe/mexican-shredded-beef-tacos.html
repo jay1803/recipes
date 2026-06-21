@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>墨西哥手撕牛肉 配玉米饼</title>
+<style>
+  :root {
+    --paper: #f4ede0;
+    --paper-deep: #ebe0cd;
+    --ink: #2a2018;
+    --ink-soft: #5a4a38;
+    --rust: #a8341a;
+    --rust-deep: #7d2410;
+    --olive: #5c6234;
+    --gold: #c08a1e;
+    --line: #cbb89a;
+    --serif: "Hoefler Text", "Songti SC", "Source Han Serif SC", Georgia, "Times New Roman", serif;
+    --sans: "Avenir Next", "PingFang SC", "Helvetica Neue", system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 18% 12%, rgba(168,52,26,0.04), transparent 40%),
+      radial-gradient(circle at 85% 75%, rgba(92,98,52,0.05), transparent 45%);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.6;
+    padding-bottom: 70px;
+  }
+
+  .sheet { max-width: 940px; margin: 0 auto; padding: 0 32px; }
+
+  /* ---------- BACK LINK ---------- */
+  .back {
+    display: inline-block;
+    margin-top: 28px;
+    font-size: 0.76rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--rust);
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .back:hover { color: var(--rust-deep); }
+
+  /* ---------- HERO ---------- */
+  header.hero {
+    padding: 30px 0 40px;
+    border-bottom: 3px double var(--line);
+    text-align: center;
+  }
+  .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--rust);
+    font-weight: 700;
+    margin-bottom: 22px;
+  }
+  h1.title {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(2.4rem, 6vw, 4.1rem);
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+    margin-bottom: 18px;
+  }
+  h1.title .accent { color: var(--rust); font-style: italic; }
+  .subtitle {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1rem, 2.4vw, 1.3rem);
+    color: var(--ink-soft);
+    max-width: 580px;
+    margin: 0 auto 30px;
+  }
+  .meta-strip { display: flex; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
+  .meta-item { padding: 4px 24px; border-right: 1px solid var(--line); text-align: center; }
+  .meta-item:last-child { border-right: none; }
+  .meta-item .k {
+    display: block; font-size: 0.62rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--ink-soft); margin-bottom: 4px;
+  }
+  .meta-item .v { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: var(--rust-deep); }
+  .credit { margin-top: 30px; font-size: 0.78rem; color: var(--ink-soft); }
+  .credit a { color: var(--rust); text-decoration: none; border-bottom: 1px solid var(--line); }
+
+  /* ---------- LAYOUT ---------- */
+  .body-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+    gap: 48px;
+    padding: 48px 0;
+    align-items: start;
+  }
+
+  /* ---------- INGREDIENTS ---------- */
+  aside.ingredients { position: sticky; top: 24px; }
+  .ing-block { margin-bottom: 34px; }
+  .ing-head {
+    font-family: var(--serif); font-size: 1.35rem; font-weight: 700;
+    padding-bottom: 8px; margin-bottom: 14px; border-bottom: 2px solid var(--rust);
+    display: flex; align-items: baseline; gap: 10px;
+  }
+  .ing-head .ico { font-size: 1.1rem; }
+  ul.ing-list { list-style: none; }
+  ul.ing-list li {
+    display: flex; justify-content: space-between; gap: 12px;
+    padding: 7px 0; font-size: 0.9rem; border-bottom: 1px dotted var(--line); align-items: baseline;
+  }
+  ul.ing-list li:last-child { border-bottom: none; }
+  ul.ing-list .name { color: var(--ink); }
+  ul.ing-list .qty {
+    color: var(--rust-deep); font-family: var(--serif); font-weight: 700;
+    white-space: nowrap; text-align: right; flex-shrink: 0;
+  }
+  .opt { font-size: 0.7rem; color: var(--olive); font-style: italic; }
+
+  /* ---------- STEPS ---------- */
+  .phase { margin-bottom: 46px; }
+  .phase-tag {
+    display: inline-block; font-size: 0.66rem; letter-spacing: 0.28em;
+    text-transform: uppercase; color: #fff; padding: 5px 14px; border-radius: 2px;
+    margin-bottom: 16px; font-weight: 700;
+  }
+  .phase:nth-child(1) .phase-tag { background: var(--rust); }
+  .phase:nth-child(2) .phase-tag { background: var(--gold); color: var(--ink); }
+  .phase:nth-child(3) .phase-tag { background: var(--olive); }
+  .phase h2 {
+    font-family: var(--serif); font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: 700; margin-bottom: 6px; line-height: 1.1;
+  }
+  .phase .note {
+    font-style: italic; font-family: var(--serif); color: var(--ink-soft);
+    font-size: 0.95rem; margin-bottom: 20px;
+  }
+  ol.step-list { list-style: none; counter-reset: step; }
+  ol.step-list li { position: relative; padding-left: 52px; margin-bottom: 18px; font-size: 0.97rem; }
+  ol.step-list li::before {
+    counter-increment: step; content: counter(step);
+    position: absolute; left: 0; top: -2px; width: 34px; height: 34px;
+    background: var(--paper-deep); border: 1.5px solid var(--rust); color: var(--rust-deep);
+    font-family: var(--serif); font-weight: 700; font-size: 1.05rem;
+    display: flex; align-items: center; justify-content: center; border-radius: 50%;
+  }
+  ol.step-list li b { color: var(--rust-deep); }
+  .temp { font-family: var(--serif); font-weight: 700; color: var(--olive); white-space: nowrap; }
+
+  /* ---------- TIPS ---------- */
+  section.tips { border-top: 3px double var(--line); padding: 44px 0 20px; }
+  .tips h2 { font-family: var(--serif); font-size: 1.8rem; text-align: center; margin-bottom: 8px; }
+  .tips .lead {
+    text-align: center; font-style: italic; font-family: var(--serif);
+    color: var(--ink-soft); margin-bottom: 32px;
+  }
+  .tip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; }
+  .tip {
+    background: rgba(255,255,255,0.45); border: 1px solid var(--line);
+    border-left: 4px solid var(--gold); padding: 20px 22px; border-radius: 3px;
+  }
+  .tip h3 { font-family: var(--serif); font-size: 1.1rem; color: var(--rust-deep); margin-bottom: 8px; }
+  .tip p { font-size: 0.88rem; color: var(--ink-soft); }
+
+  footer.foot { text-align: center; padding: 40px 0 10px; font-size: 0.78rem; color: var(--ink-soft); }
+  footer.foot a { color: var(--rust); text-decoration: none; }
+
+  @media (max-width: 760px) {
+    .body-grid { grid-template-columns: 1fr; gap: 8px; }
+    aside.ingredients { position: static; }
+    .meta-item { padding: 4px 16px; }
+  }
+  @media print {
+    body { padding-bottom: 0; }
+    aside.ingredients { position: static; }
+    .phase, .tip, li { page-break-inside: avoid; }
+    .back { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <a class="back" href="../index.html">← 返回菜谱合集</a>
+
+  <header class="hero">
+    <div class="eyebrow">炖煮 · 一锅出 · 8–10 人份</div>
+    <h1 class="title">墨西哥手撕牛肉<br><span class="accent">配玉米饼</span></h1>
+    <p class="subtitle">浓郁、厚重、辣香的酱汁裹着软烂多汁的牛肉。一锅炖三小时，可做塔可、卷饼、芝士薄饼，怎么吃都行。</p>
+    <div class="meta-strip">
+      <div class="meta-item"><span class="k">准备</span><span class="v">20 分</span></div>
+      <div class="meta-item"><span class="k">炖煮</span><span class="v">3 小时</span></div>
+      <div class="meta-item"><span class="k">总计</span><span class="v">3h 20m</span></div>
+      <div class="meta-item"><span class="k">产量</span><span class="v">约 20 个塔可</span></div>
+    </div>
+    <p class="credit">改编自 RecipeTin Eats（Nagi）· <a href="https://www.recipetineats.com/mexican-shredded-beef-and-tacos/">Mexican Shredded Beef</a></p>
+  </header>
+
+  <div class="body-grid">
+
+    <aside class="ingredients">
+      <div class="ing-block">
+        <div class="ing-head"><span class="ico">🌶️</span> 香料粉</div>
+        <ul class="ing-list">
+          <li><span class="name">奇波雷辣椒粉（chipotle）</span><span class="qty">1½ 汤匙</span></li>
+          <li><span class="name">红椒粉（paprika）</span><span class="qty">1 汤匙</span></li>
+          <li><span class="name">干牛至（oregano）</span><span class="qty">1 汤匙</span></li>
+          <li><span class="name">多香果粉（allspice）</span><span class="qty">1 茶匙</span></li>
+          <li><span class="name">香菜籽粉（coriander）</span><span class="qty">1 茶匙</span></li>
+          <li><span class="name">洋葱粉 / 蒜粉</span><span class="qty">2 茶匙</span></li>
+          <li><span class="name">盐 · 黑胡椒</span><span class="qty">各 1 茶匙</span></li>
+        </ul>
+      </div>
+      <div class="ing-block">
+        <div class="ing-head"><span class="ico">🥩</span> 牛肉 & 酱汁</div>
+        <ul class="ing-list">
+          <li><span class="name">橄榄油</span><span class="qty">1–2 汤匙</span></li>
+          <li><span class="name">牛肩肉 / 牛腩 <span class="opt">切 4 块</span></span><span class="qty">1.5 kg</span></li>
+          <li><span class="name">大蒜（切末）</span><span class="qty">5 瓣</span></li>
+          <li><span class="name">洋葱（切丁）</span><span class="qty">1 个</span></li>
+          <li><span class="name">橙汁</span><span class="qty">185 ml</span></li>
+          <li><span class="name">青柠汁</span><span class="qty">2 汤匙</span></li>
+          <li><span class="name">番茄碎罐头</span><span class="qty">400 g</span></li>
+          <li><span class="name">牛 / 鸡高汤</span><span class="qty">500 ml</span></li>
+          <li><span class="name">水</span><span class="qty">125 ml</span></li>
+          <li><span class="name">盐 · 黑胡椒</span><span class="qty">适量</span></li>
+        </ul>
+      </div>
+      <div class="ing-block">
+        <div class="ing-head"><span class="ico">🌮</span> 塔可配料</div>
+        <ul class="ing-list">
+          <li><span class="name">小玉米饼（加热）</span><span class="qty">适量</span></li>
+          <li><span class="name">牛油果片</span><span class="qty">适量</span></li>
+          <li><span class="name">墨西哥莎莎（Pico de Gallo）</span><span class="qty">适量</span></li>
+          <li><span class="name">擦丝奶酪 · 酸奶油</span><span class="qty">适量</span></li>
+          <li><span class="name">青柠角 · 香菜叶</span><span class="qty">适量</span></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="steps">
+
+      <div class="phase">
+        <span class="phase-tag">第一步</span>
+        <h2>调香料 & 煎封牛肉</h2>
+        <p class="note">先煎出焦化外壳，锅底的褐色精华就是酱汁的灵魂。</p>
+        <ol class="step-list">
+          <li>把所有香料粉在碗里<b>混匀</b>。取 <b>4 茶匙</b>撒在牛肉上，按压使其附着（其余留着备用）。</li>
+          <li>大号厚底锅放橄榄油，<b>大火</b>烧热。牛肉分批下锅，<b>各面煎到深褐色</b>，盛出备用。</li>
+          <li>火转中火。如果锅显干，再补点橄榄油。</li>
+        </ol>
+      </div>
+
+      <div class="phase">
+        <span class="phase-tag">第二步</span>
+        <h2>炝锅 & 慢炖</h2>
+        <p class="note">酸味果汁炝锅刮起焦香，再小火咕嘟到能撕开。</p>
+        <ol class="step-list">
+          <li>下蒜末和洋葱丁，炒约 <b>3 分钟</b>至软。</li>
+          <li>倒入橙汁和青柠汁，<b>刮起锅底的褐色焦香</b>，让它融入汤汁。</li>
+          <li>加番茄碎、高汤、水和<b>剩下的香料粉</b>，拌匀，把牛肉放回锅里。</li>
+          <li>盖盖煮开，转小火让它<b>轻柔地咕嘟</b>（不要剧烈翻滚）。</li>
+          <li>炖 <b>2 小时</b>，然后揭盖再炖约 <b>30 分钟</b>，直到牛肉软到能撕开。</li>
+        </ol>
+      </div>
+
+      <div class="phase">
+        <span class="phase-tag">第三步</span>
+        <h2>撕肉 & 收汁</h2>
+        <p class="note">把肉撕成丝，酱汁收浓再拌回去，吸饱味道。</p>
+        <ol class="step-list">
+          <li>把牛肉从酱汁中捞出，用<b>两把叉子撕成丝</b>。</li>
+          <li>锅里酱汁<b>开盖小火再煮 10–15 分钟</b>收浓到喜欢的稠度，按口味加盐。<span class="opt">想更顺滑可用料理棒打成泥。</span></li>
+          <li>把牛肉丝拌回酱汁里（可留一些酱汁淋在塔可上）。盛入大盘即可。</li>
+        </ol>
+      </div>
+
+    </main>
+  </div>
+
+  <section class="tips">
+    <h2>厨房备忘</h2>
+    <p class="lead">来自原作者的实用提示</p>
+    <div class="tip-grid">
+      <div class="tip">
+        <h3>怎么组装塔可</h3>
+        <p>温热的小玉米饼里放牛肉，配牛油果片、莎莎、擦丝奶酪、酸奶油、青柠角和香菜叶。</p>
+      </div>
+      <div class="tip">
+        <h3>辣度自己调</h3>
+        <p>微辣：奇波雷粉减到 2 茶匙~1 汤匙，加 1 茶匙香菜籽粉和 1 茶匙孜然。中辣：1.5 汤匙。够劲：2 汤匙。</p>
+      </div>
+      <div class="tip">
+        <h3>其他做法</h3>
+        <p>慢炖锅低温 8 小时；高压锅 / Instant Pot 高压 50 分钟；或烤箱 160°C 加盖烤 3–3.5 小时。</p>
+      </div>
+      <div class="tip">
+        <h3>保存与回热</h3>
+        <p>冷冻或冷藏时<b>肉和酱汁分开存</b>，否则肉容易变糊。回热时分别加热，最后再拌一起。</p>
+      </div>
+      <div class="tip">
+        <h3>买不到奇波雷粉？</h3>
+        <p>用烟熏红椒粉 + 孜然 + 卡宴辣椒粉，各 ½ 汤匙左右替代。</p>
+      </div>
+      <div class="tip">
+        <h3>这道菜很宽容</h3>
+        <p>多炖 1 小时也没问题，依然好吃。2 小时后每隔 30 分钟检查一次是否能撕开即可。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    原始食谱 · <a href="https://www.recipetineats.com/mexican-shredded-beef-and-tacos/">RecipeTin Eats — Mexican Shredded Beef</a>
+  </footer>
+
+</div>
+</body>
+</html>

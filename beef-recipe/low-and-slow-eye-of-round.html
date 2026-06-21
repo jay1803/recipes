@@ -40,9 +40,22 @@
     padding: 0 32px;
   }
 
+  /* ---------- BACK LINK ---------- */
+  .back {
+    display: inline-block;
+    margin-top: 28px;
+    font-size: 0.76rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--rust);
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .back:hover { color: var(--rust-deep); }
+
   /* ---------- HERO ---------- */
   header.hero {
-    padding: 64px 0 40px;
+    padding: 30px 0 40px;
     border-bottom: 3px double var(--line);
     text-align: center;
     position: relative;
@@ -285,11 +298,14 @@
     aside.ingredients { position: static; }
     .phase, .tip, li { page-break-inside: avoid; }
     header.hero { padding-top: 20px; }
+    .back { display: none; }
   }
 </style>
 </head>
 <body>
 <div class="sheet">
+
+  <a class="back" href="../index.html">← 返回菜谱合集</a>
 
   <header class="hero">
     <div class="eyebrow">慢工 · 出细活 · 6–8 人份</div>
