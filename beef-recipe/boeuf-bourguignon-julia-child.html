@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>勃艮第红酒炖牛肉 Julia Child 经典做法</title>
+<style>
+  :root {
+    --paper: #f4ede0;
+    --paper-deep: #ebe0cd;
+    --ink: #2a2018;
+    --ink-soft: #5a4a38;
+    --rust: #a8341a;
+    --rust-deep: #7d2410;
+    --olive: #5c6234;
+    --gold: #c08a1e;
+    --line: #cbb89a;
+    --serif: "Hoefler Text", "Songti SC", "Source Han Serif SC", Georgia, "Times New Roman", serif;
+    --sans: "Avenir Next", "PingFang SC", "Helvetica Neue", system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 18% 12%, rgba(168,52,26,0.04), transparent 40%),
+      radial-gradient(circle at 85% 75%, rgba(92,98,52,0.05), transparent 45%);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.6;
+    padding-bottom: 70px;
+  }
+
+  .sheet { max-width: 940px; margin: 0 auto; padding: 0 32px; }
+
+  /* ---------- BACK LINK ---------- */
+  .back {
+    display: inline-block; margin-top: 28px; font-size: 0.76rem;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--rust);
+    text-decoration: none; font-weight: 700;
+  }
+  .back:hover { color: var(--rust-deep); }
+
+  /* ---------- HERO ---------- */
+  header.hero {
+    padding: 30px 0 40px; border-bottom: 3px double var(--line); text-align: center;
+  }
+  .eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.42em; text-transform: uppercase;
+    color: var(--rust); font-weight: 700; margin-bottom: 22px;
+  }
+  h1.title {
+    font-family: var(--serif); font-weight: 700;
+    font-size: clamp(2.3rem, 5.6vw, 3.9rem); line-height: 1.04;
+    letter-spacing: -0.01em; margin-bottom: 18px;
+  }
+  h1.title .accent { color: var(--rust); font-style: italic; }
+  .subtitle {
+    font-family: var(--serif); font-style: italic;
+    font-size: clamp(1rem, 2.4vw, 1.3rem); color: var(--ink-soft);
+    max-width: 600px; margin: 0 auto 30px;
+  }
+  .meta-strip { display: flex; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
+  .meta-item { padding: 4px 24px; border-right: 1px solid var(--line); text-align: center; }
+  .meta-item:last-child { border-right: none; }
+  .meta-item .k {
+    display: block; font-size: 0.62rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--ink-soft); margin-bottom: 4px;
+  }
+  .meta-item .v { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: var(--rust-deep); }
+  .credit { margin-top: 30px; font-size: 0.78rem; color: var(--ink-soft); }
+  .credit a { color: var(--rust); text-decoration: none; border-bottom: 1px solid var(--line); }
+
+  /* ---------- LAYOUT ---------- */
+  .body-grid {
+    display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+    gap: 48px; padding: 48px 0; align-items: start;
+  }
+
+  /* ---------- INGREDIENTS ---------- */
+  aside.ingredients { position: sticky; top: 24px; }
+  .ing-block { margin-bottom: 34px; }
+  .ing-head {
+    font-family: var(--serif); font-size: 1.35rem; font-weight: 700;
+    padding-bottom: 8px; margin-bottom: 14px; border-bottom: 2px solid var(--rust);
+    display: flex; align-items: baseline; gap: 10px;
+  }
+  .ing-head .ico { font-size: 1.1rem; }
+  ul.ing-list { list-style: none; }
+  ul.ing-list li {
+    display: flex; justify-content: space-between; gap: 12px;
+    padding: 7px 0; font-size: 0.9rem; border-bottom: 1px dotted var(--line); align-items: baseline;
+  }
+  ul.ing-list li:last-child { border-bottom: none; }
+  ul.ing-list .name { color: var(--ink); }
+  ul.ing-list .qty {
+    color: var(--rust-deep); font-family: var(--serif); font-weight: 700;
+    white-space: nowrap; text-align: right; flex-shrink: 0;
+  }
+  .opt { font-size: 0.7rem; color: var(--olive); font-style: italic; }
+
+  /* ---------- STEPS ---------- */
+  .phase { margin-bottom: 46px; }
+  .phase-tag {
+    display: inline-block; font-size: 0.66rem; letter-spacing: 0.28em;
+    text-transform: uppercase; color: #fff; padding: 5px 14px; border-radius: 2px;
+    margin-bottom: 16px; font-weight: 700;
+  }
+  .phase:nth-child(1) .phase-tag { background: var(--rust); }
+  .phase:nth-child(2) .phase-tag { background: var(--gold); color: var(--ink); }
+  .phase:nth-child(3) .phase-tag { background: var(--olive); }
+  .phase:nth-child(4) .phase-tag { background: var(--ink); }
+  .phase h2 {
+    font-family: var(--serif); font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: 700; margin-bottom: 6px; line-height: 1.1;
+  }
+  .phase .note {
+    font-style: italic; font-family: var(--serif); color: var(--ink-soft);
+    font-size: 0.95rem; margin-bottom: 20px;
+  }
+  ol.step-list { list-style: none; counter-reset: step; }
+  ol.step-list li { position: relative; padding-left: 52px; margin-bottom: 18px; font-size: 0.97rem; }
+  ol.step-list li::before {
+    counter-increment: step; content: counter(step);
+    position: absolute; left: 0; top: -2px; width: 34px; height: 34px;
+    background: var(--paper-deep); border: 1.5px solid var(--rust); color: var(--rust-deep);
+    font-family: var(--serif); font-weight: 700; font-size: 1.05rem;
+    display: flex; align-items: center; justify-content: center; border-radius: 50%;
+  }
+  ol.step-list li b { color: var(--rust-deep); }
+  .temp { font-family: var(--serif); font-weight: 700; color: var(--olive); white-space: nowrap; }
+
+  /* ---------- TIPS ---------- */
+  section.tips { border-top: 3px double var(--line); padding: 44px 0 20px; }
+  .tips h2 { font-family: var(--serif); font-size: 1.8rem; text-align: center; margin-bottom: 8px; }
+  .tips .lead {
+    text-align: center; font-style: italic; font-family: var(--serif);
+    color: var(--ink-soft); margin-bottom: 32px;
+  }
+  .tip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; }
+  .tip {
+    background: rgba(255,255,255,0.45); border: 1px solid var(--line);
+    border-left: 4px solid var(--gold); padding: 20px 22px; border-radius: 3px;
+  }
+  .tip h3 { font-family: var(--serif); font-size: 1.1rem; color: var(--rust-deep); margin-bottom: 8px; }
+  .tip p { font-size: 0.88rem; color: var(--ink-soft); }
+
+  footer.foot { text-align: center; padding: 40px 0 10px; font-size: 0.78rem; color: var(--ink-soft); }
+  footer.foot a { color: var(--rust); text-decoration: none; }
+
+  @media (max-width: 760px) {
+    .body-grid { grid-template-columns: 1fr; gap: 8px; }
+    aside.ingredients { position: static; }
+    .meta-item { padding: 4px 16px; }
+  }
+  @media print {
+    body { padding-bottom: 0; }
+    aside.ingredients { position: static; }
+    .phase, .tip, li { page-break-inside: avoid; }
+    .back { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <a class="back" href="../index.html">← 返回菜谱合集</a>
+
+  <header class="hero">
+    <div class="eyebrow">法式经典 · 慢炖 · 6 人份</div>
+    <h1 class="title">勃艮第红酒炖牛肉<br><span class="accent">Boeuf Bourguignon</span></h1>
+    <p class="subtitle">Julia Child 的开山名菜：牛肉在红酒里慢炖到酥软，配焖小洋葱和煎蘑菇，浇上酒色深沉的浓酱。一道朴实却讲究的乡村炖菜。</p>
+    <div class="meta-strip">
+      <div class="meta-item"><span class="k">烤箱温度</span><span class="v">325°F</span></div>
+      <div class="meta-item"><span class="k">炖煮时长</span><span class="v">3–4 小时</span></div>
+      <div class="meta-item"><span class="k">用肉</span><span class="v">牛肩 chuck</span></div>
+      <div class="meta-item"><span class="k">可提前</span><span class="v">一两天</span></div>
+    </div>
+    <p class="credit">改编自 Julia Child《The French Chef》S1 · <a href="https://www.youtube.com/watch?v=NlGFkXd-QT0">PBS 视频</a></p>
+  </header>
+
+  <div class="body-grid">
+
+    <aside class="ingredients">
+      <div class="ing-block">
+        <div class="ing-head"><span class="ico">🥩</span> 炖肉 & 酱汁</div>
+        <ul class="ing-list">
+          <li><span class="name">牛肩肉（chuck）<span class="opt">切大块</span></span><span class="qty">3 磅</span></li>
+          <li><span class="name">轻味橄榄油 / 花生油</span><span class="qty">适量</span></li>
+          <li><span class="name">红酒 <span class="opt">年轻醇厚的</span></span><span class="qty">约 3 杯</span></li>
+          <li><span class="name">牛肉高汤 / 罐装牛肉清汤</span><span class="qty">约 2 杯</span></li>
+          <li><span class="name">番茄膏</span><span class="qty">1 汤匙</span></li>
+          <li><span class="name">百里香</span><span class="qty">½ 茶匙</span></li>
+          <li><span class="name">月桂叶 <span class="opt">进口风味更法式</span></span><span class="qty">1 片</span></li>
+          <li><span class="name">大蒜（压泥）</span><span class="qty">1–2 瓣</span></li>
+          <li><span class="name">盐 · 黑胡椒</span><span class="qty">适量</span></li>
+        </ul>
+      </div>
+      <div class="ing-block">
+        <div class="ing-head"><span class="ico">🧅</span> 焖小洋葱</div>
+        <ul class="ing-list">
+          <li><span class="name">小洋葱 <span class="opt">整颗</span></span><span class="qty">一批</span></li>
+          <li><span class="name">黄油</span><span class="qty">约 1 汤匙</span></li>
+          <li><span class="name">水 <span class="opt">没过一半</span></span><span class="qty">适量</span></li>
+          <li><span class="name">盐</span><span class="qty">少许</span></li>
+        </ul>
+      </div>
+      <div class="ing-block">
+        <div class="ing-head"><span class="ico">🍄</span> 煎蘑菇</div>
+        <ul class="ing-list">
+          <li><span class="name">新鲜蘑菇 <span class="opt">切四瓣</span></span><span class="qty">一批</span></li>
+          <li><span class="name">黄油 + 油</span><span class="qty">适量</span></li>
+        </ul>
+      </div>
+      <div class="ing-block">
+        <div class="ing-head"><span class="ico">🧈</span> 勾芡（beurre manié）</div>
+        <ul class="ing-list">
+          <li><span class="name">面粉</span><span class="qty">每杯酱 1 汤匙</span></li>
+          <li><span class="name">软化黄油</span><span class="qty">等量</span></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="steps">
+
+      <div class="phase">
+        <span class="phase-tag">第一步</span>
+        <h2>煎封牛肉 & 入炉慢炖</h2>
+        <p class="note">煎前一定把肉擦干、油烧热、锅别挤——否则肉只会出水不上色。</p>
+        <ol class="step-list">
+          <li>牛肉切大块，用厨房纸<b>彻底擦干</b>。锅里放刚好铺满锅底的油，<b>烧到够热</b>（但别冒烟发黑）。</li>
+          <li>牛肉<b>分批下锅、不要挤</b>，各面煎成深褐色（每批约 4–5 分钟），煎好转入厚底炖锅。</li>
+          <li>煎锅里留着的焦褐物是精华：倒入<b>约 3 杯红酒炝锅</b>（deglaze），刮起锅底所有褐色汁液。</li>
+          <li>把酒汁倒进炖锅，再加牛肉高汤，<b>液体刚好没过牛肉</b>即可。</li>
+          <li>加番茄膏、百里香、月桂叶、蒜泥，烧到微滚，<b>尝味加少许盐</b>（别过咸，酱之后会收浓）。</li>
+          <li>加盖入 <span class="temp">325°F（约 160°C）</span>烤箱，<b>保持微微冒泡的慢炖</b>，约 <b>3–4 小时</b>至牛肉酥软。中途只需偶尔确认没有沸腾翻滚。</li>
+        </ol>
+      </div>
+
+      <div class="phase">
+        <span class="phase-tag">第二步</span>
+        <h2>焖小洋葱（配菜）</h2>
+        <p class="note">整颗焖，保持形状。可提前一晚做好。</p>
+        <ol class="step-list">
+          <li>小洋葱下<b>沸水煮约 20 秒</b>松皮，捞出剥皮。</li>
+          <li>剥皮时<b>保留根部</b>让洋葱不散，两端只轻削，根部扎个小孔。</li>
+          <li>洋葱<b>单层平铺</b>入锅（别叠），加水至半没，放约 1 汤匙黄油和少许盐。</li>
+          <li>烧到微滚后加盖，<b>极小火焖约 25 分钟</b>至软而不烂、仍保持形状，备用。</li>
+        </ol>
+      </div>
+
+      <div class="phase">
+        <span class="phase-tag">第三步</span>
+        <h2>煎蘑菇（配菜）</h2>
+        <p class="note">关键是干、黄油够热、别挤锅——好的煎蘑菇不出水。</p>
+        <ol class="step-list">
+          <li>蘑菇<b>放水里提起涮洗</b>（别倒进滤网，否则沙又落回），再用干布<b>彻底擦干</b>。</li>
+          <li>切成<b>四瓣</b>（太薄会在炖菜里消失），菌柄斜切成相近大小。</li>
+          <li>锅里放<b>黄油 + 油</b>（纯黄油会糊），等黄油<b>泡沫消退</b>说明够热。</li>
+          <li>蘑菇下锅<b>不要挤</b>，晃锅煎 2–3 分钟至<b>微微上色</b>，盛出备用。</li>
+        </ol>
+      </div>
+
+      <div class="phase">
+        <span class="phase-tag">第四步</span>
+        <h2>滤酱、勾芡 & 合烩</h2>
+        <p class="note">这一步把炖出的汤变成裹得住肉的浓酱。</p>
+        <ol class="step-list">
+          <li>把整锅倒进滤网，<b>分离酱汁和肉料</b>，肉料倒回炖锅。约得 <b>2½–3 杯酱汁</b>。</li>
+          <li>酱汁<b>撇去表面浮油</b>（留一点点增香），尝味补盐，<b>最后才加黑胡椒</b>。</li>
+          <li>做 <b>beurre manié</b>：每杯酱用 1 汤匙面粉配等量软化黄油，捏成面糊。</li>
+          <li>酱汁<b>离火</b>，搅入面糊打匀，再回火<b>煮开约 1 分钟</b>到能裹住勺背的稠度。</li>
+          <li>把<b>焖洋葱和煎蘑菇</b>放入炖锅，浇上热酱，小火<b>慢炖 2–3 分钟</b>让味道融合，即可上桌。</li>
+        </ol>
+      </div>
+
+    </main>
+  </div>
+
+  <section class="tips">
+    <h2>厨房备忘</h2>
+    <p class="lead">来自 Julia 的智慧</p>
+    <div class="tip-grid">
+      <div class="tip">
+        <h3>同一套做法通吃</h3>
+        <p>牛、羊、小牛、鸡都能这么炖，只是时间不同：牛 3–4 小时、羊约 2 小时、鸡只要 30 分钟。鸡这么做就是 coq au vin。</p>
+      </div>
+      <div class="tip">
+        <h3>选什么酒</h3>
+        <p>用<b>年轻、醇厚</b>的红酒，别用昂贵陈年的好酒——robust 的炖菜会盖过细腻的酒。同一瓶既下锅也佐餐。</p>
+      </div>
+      <div class="tip">
+        <h3>提前做更省事</h3>
+        <p>整道菜可提前一两天做到合烩前一步，放凉冷藏。回热时小火慢慢加热、用酱汁浇淋。<b>切忌趁热加盖</b>，否则容易发酸。</p>
+      </div>
+      <div class="tip">
+        <h3>怎么配着吃</h3>
+        <p>法式经典搭配：撒欧芹的水煮土豆、罗马生菜沙拉、法棍，再来一杯同款红酒。</p>
+      </div>
+      <div class="tip">
+        <h3>高汤别用错</h3>
+        <p>没有自制高汤可用罐装牛肉清汤（bouillon），但<b>别用 consommé</b>，它偏甜会影响味道。</p>
+      </div>
+      <div class="tip">
+        <h3>分量参考</h3>
+        <p>无骨牛肉按<b>1 磅供 2–3 人</b>估算；6 人份用 3 磅。剩下的隔天更好吃。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    原始视频 · <a href="https://www.youtube.com/watch?v=NlGFkXd-QT0">Julia Child — Boeuf Bourguignon (The French Chef S1, PBS)</a>
+  </footer>
+
+</div>
+</body>
+</html>
