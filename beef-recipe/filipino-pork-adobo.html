@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>墨西哥手撕牛肉 配玉米饼</title>
+<title>菲律宾猪肉 Adobo</title>
 <style>
   :root {
     --paper: #f4ede0;
@@ -36,52 +36,31 @@
 
   .sheet { max-width: 940px; margin: 0 auto; padding: 0 32px; }
 
-  /* ---------- BACK LINK ---------- */
   .back {
-    display: inline-block;
-    margin-top: 28px;
-    font-size: 0.76rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--rust);
-    text-decoration: none;
-    font-weight: 700;
+    display: inline-block; margin-top: 28px; font-size: 0.76rem;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--rust);
+    text-decoration: none; font-weight: 700;
   }
   .back:hover { color: var(--rust-deep); }
 
-  /* ---------- HERO ---------- */
-  header.hero {
-    padding: 30px 0 40px;
-    border-bottom: 3px double var(--line);
-    text-align: center;
-  }
+  header.hero { padding: 30px 0 40px; border-bottom: 3px double var(--line); text-align: center; }
   .eyebrow {
-    font-size: 0.72rem;
-    letter-spacing: 0.42em;
-    text-transform: uppercase;
-    color: var(--rust);
-    font-weight: 700;
-    margin-bottom: 22px;
+    font-size: 0.72rem; letter-spacing: 0.42em; text-transform: uppercase;
+    color: var(--rust); font-weight: 700; margin-bottom: 22px;
   }
   h1.title {
-    font-family: var(--serif);
-    font-weight: 700;
-    font-size: clamp(2.4rem, 6vw, 4.1rem);
-    line-height: 1.04;
-    letter-spacing: -0.01em;
-    margin-bottom: 18px;
+    font-family: var(--serif); font-weight: 700;
+    font-size: clamp(2.4rem, 6vw, 4.1rem); line-height: 1.04;
+    letter-spacing: -0.01em; margin-bottom: 18px;
   }
   h1.title .accent { color: var(--rust); font-style: italic; }
   .subtitle {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: clamp(1rem, 2.4vw, 1.3rem);
-    color: var(--ink-soft);
-    max-width: 580px;
-    margin: 0 auto 30px;
+    font-family: var(--serif); font-style: italic;
+    font-size: clamp(1rem, 2.4vw, 1.3rem); color: var(--ink-soft);
+    max-width: 600px; margin: 0 auto 30px;
   }
   .meta-strip { display: flex; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
-  .meta-item { padding: 4px 24px; border-right: 1px solid var(--line); text-align: center; }
+  .meta-item { padding: 4px 22px; border-right: 1px solid var(--line); text-align: center; }
   .meta-item:last-child { border-right: none; }
   .meta-item .k {
     display: block; font-size: 0.62rem; letter-spacing: 0.2em;
@@ -91,16 +70,11 @@
   .credit { margin-top: 30px; font-size: 0.78rem; color: var(--ink-soft); }
   .credit a { color: var(--rust); text-decoration: none; border-bottom: 1px solid var(--line); }
 
-  /* ---------- LAYOUT ---------- */
   .body-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
-    gap: 48px;
-    padding: 48px 0;
-    align-items: start;
+    display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+    gap: 48px; padding: 48px 0; align-items: start;
   }
 
-  /* ---------- INGREDIENTS ---------- */
   aside.ingredients { position: sticky; top: 24px; }
   .ing-block { margin-bottom: 34px; }
   .ing-head {
@@ -122,7 +96,6 @@
   }
   .opt { font-size: 0.7rem; color: var(--olive); font-style: italic; }
 
-  /* ---------- STEPS ---------- */
   .phase { margin-bottom: 46px; }
   .phase-tag {
     display: inline-block; font-size: 0.66rem; letter-spacing: 0.28em;
@@ -152,7 +125,6 @@
   ol.step-list li b { color: var(--rust-deep); }
   .temp { font-family: var(--serif); font-weight: 700; color: var(--olive); white-space: nowrap; }
 
-  /* ---------- TIPS ---------- */
   section.tips { border-top: 3px double var(--line); padding: 44px 0 20px; }
   .tips h2 { font-family: var(--serif); font-size: 1.8rem; text-align: center; margin-bottom: 8px; }
   .tips .lead {
@@ -222,7 +194,7 @@
   @media print {
     body { padding-bottom: 0; }
     aside.ingredients { position: static; }
-    .phase, .tip, li { page-break-inside: avoid; }
+    .phase, .tip, .macro, li { page-break-inside: avoid; }
     section.fitness, section.prep { page-break-inside: avoid; }
     .back { display: none; }
   }
@@ -234,56 +206,49 @@
   <a class="back" href="../index.html">← 返回菜谱合集</a>
 
   <header class="hero">
-    <div class="eyebrow">炖煮 · 一锅出 · 8–10 人份</div>
-    <h1 class="title">墨西哥手撕牛肉<br><span class="accent">配玉米饼</span></h1>
-    <p class="subtitle">浓郁、厚重、辣香的酱汁裹着软烂多汁的牛肉。一锅炖三小时，可做塔可、卷饼、芝士薄饼，怎么吃都行。</p>
+    <div class="eyebrow">菲律宾国菜 · 一锅炖 · 4–5 人份</div>
+    <h1 class="title">菲律宾猪肉<br><span class="accent">Adobo</span></h1>
+    <p class="subtitle">菲律宾的国民骄傲：猪肉慢炖到入口即化，浓郁的蒜香酱油醋汁收成釉色酱汁，浇在热米饭上。食材简单到不可思议，味道却惊艳。</p>
     <div class="meta-strip">
-      <div class="meta-item"><span class="k">准备</span><span class="v">20 分</span></div>
-      <div class="meta-item"><span class="k">炖煮</span><span class="v">3 小时</span></div>
-      <div class="meta-item"><span class="k">总计</span><span class="v">3h 20m</span></div>
-      <div class="meta-item"><span class="k">产量</span><span class="v">约 20 个塔可</span></div>
+      <div class="meta-item"><span class="k">准备</span><span class="v">10 分</span></div>
+      <div class="meta-item"><span class="k">烹饪</span><span class="v">2 小时</span></div>
+      <div class="meta-item"><span class="k">用肉</span><span class="v">猪肩</span></div>
+      <div class="meta-item"><span class="k">难度</span><span class="v">省心</span></div>
     </div>
-    <p class="credit">改编自 RecipeTin Eats（Nagi）· <a href="https://www.recipetineats.com/mexican-shredded-beef-and-tacos/">Mexican Shredded Beef</a></p>
+    <p class="credit">改编自 RecipeTin Eats（Nagi / Goh）· <a href="https://www.recipetineats.com/filipino-pork-adobo/">Filipino Pork Adobo</a></p>
   </header>
 
   <div class="body-grid">
 
     <aside class="ingredients">
       <div class="ing-block">
-        <div class="ing-head"><span class="ico">🌶️</span> 香料粉</div>
+        <div class="ing-head"><span class="ico">🐖</span> 主料</div>
         <ul class="ing-list">
-          <li><span class="name">奇波雷辣椒粉（chipotle）</span><span class="qty">1½ 汤匙</span></li>
-          <li><span class="name">红椒粉（paprika）</span><span class="qty">1 汤匙</span></li>
-          <li><span class="name">干牛至（oregano）</span><span class="qty">1 汤匙</span></li>
-          <li><span class="name">多香果粉（allspice）</span><span class="qty">1 茶匙</span></li>
-          <li><span class="name">香菜籽粉（coriander）</span><span class="qty">1 茶匙</span></li>
-          <li><span class="name">洋葱粉 / 蒜粉</span><span class="qty">2 茶匙</span></li>
-          <li><span class="name">盐 · 黑胡椒</span><span class="qty">各 1 茶匙</span></li>
+          <li><span class="name">猪肩肉 <span class="opt">带肥花，切 6 cm 块</span></span><span class="qty">1 kg</span></li>
+          <li><span class="name">植物油</span><span class="qty">2 汤匙</span></li>
+          <li><span class="name">洋葱（切角）</span><span class="qty">1 大个</span></li>
+          <li><span class="name">大蒜（切片）</span><span class="qty">8 瓣</span></li>
         </ul>
       </div>
       <div class="ing-block">
-        <div class="ing-head"><span class="ico">🥩</span> 牛肉 & 酱汁</div>
+        <div class="ing-head"><span class="ico">🍶</span> 炖汁</div>
         <ul class="ing-list">
-          <li><span class="name">橄榄油</span><span class="qty">1–2 汤匙</span></li>
-          <li><span class="name">牛肩肉 / 牛腩 <span class="opt">切 4 块</span></span><span class="qty">1.5 kg</span></li>
-          <li><span class="name">大蒜（切末）</span><span class="qty">5 瓣</span></li>
-          <li><span class="name">洋葱（切丁）</span><span class="qty">1 个</span></li>
-          <li><span class="name">橙汁</span><span class="qty">185 ml</span></li>
-          <li><span class="name">青柠汁</span><span class="qty">2 汤匙</span></li>
-          <li><span class="name">番茄碎罐头</span><span class="qty">400 g</span></li>
-          <li><span class="name">牛 / 鸡高汤</span><span class="qty">500 ml</span></li>
-          <li><span class="name">水</span><span class="qty">125 ml</span></li>
-          <li><span class="name">盐 · 黑胡椒</span><span class="qty">适量</span></li>
+          <li><span class="name">水</span><span class="qty">3 杯</span></li>
+          <li><span class="name">生抽（淡酱油）</span><span class="qty">½ 杯</span></li>
+          <li><span class="name">老抽 <span class="opt">上色，别多放</span></span><span class="qty">1½ 茶匙</span></li>
+          <li><span class="name">米醋 <span class="opt">可用白醋</span></span><span class="qty">¼ 杯</span></li>
+          <li><span class="name">红糖</span><span class="qty">3 汤匙</span></li>
+          <li><span class="name">黑胡椒粒 <span class="opt">可省</span></span><span class="qty">1½ 茶匙</span></li>
+          <li><span class="name">月桂叶</span><span class="qty">5 片</span></li>
         </ul>
       </div>
       <div class="ing-block">
-        <div class="ing-head"><span class="ico">🌮</span> 塔可配料</div>
+        <div class="ing-head"><span class="ico">🍍</span> 菠萝（可选）& 配</div>
         <ul class="ing-list">
-          <li><span class="name">小玉米饼（加热）</span><span class="qty">适量</span></li>
-          <li><span class="name">牛油果片</span><span class="qty">适量</span></li>
-          <li><span class="name">墨西哥莎莎（Pico de Gallo）</span><span class="qty">适量</span></li>
-          <li><span class="name">擦丝奶酪 · 酸奶油</span><span class="qty">适量</span></li>
-          <li><span class="name">青柠角 · 香菜叶</span><span class="qty">适量</span></li>
+          <li><span class="name">菠萝块 <span class="opt">罐装即可</span></span><span class="qty">6 圈</span></li>
+          <li><span class="name">油（煎菠萝）</span><span class="qty">2 茶匙</span></li>
+          <li><span class="name">葱花</span><span class="qty">1 根</span></li>
+          <li><span class="name">茉莉香米饭</span><span class="qty">配菜</span></li>
         </ul>
       </div>
     </aside>
@@ -292,36 +257,33 @@
 
       <div class="phase">
         <span class="phase-tag">第一步</span>
-        <h2>调香料 & 煎封牛肉</h2>
-        <p class="note">先煎出焦化外壳，锅底的褐色精华就是酱汁的灵魂。</p>
+        <h2>煎肉 & 炒香</h2>
+        <p class="note">几乎不费力的一锅菜——先煎上色，是风味的地基。</p>
         <ol class="step-list">
-          <li>把所有香料粉在碗里<b>混匀</b>。取 <b>4 茶匙</b>撒在牛肉上，按压使其附着（其余留着备用）。</li>
-          <li>大号厚底锅放橄榄油，<b>大火</b>烧热。牛肉分批下锅，<b>各面煎到深褐色</b>，盛出备用。</li>
-          <li>火转中火。如果锅显干，再补点橄榄油。</li>
+          <li>厚底锅大火热油，猪肉<b>分两批煎</b>到各面金黄（每批约 4 分钟），盛出，锅里留油。</li>
+          <li>转中火，下洋葱炒 2 分钟，加蒜末再炒约 1 分钟至洋葱变软。</li>
         </ol>
       </div>
 
       <div class="phase">
         <span class="phase-tag">第二步</span>
-        <h2>炝锅 & 慢炖</h2>
-        <p class="note">酸味果汁炝锅刮起焦香，再小火咕嘟到能撕开。</p>
+        <h2>慢炖 1.5 小时</h2>
+        <p class="note">越温柔的小火，炖出越软嫩多汁的肉。</p>
         <ol class="step-list">
-          <li>下蒜末和洋葱丁，炒约 <b>3 分钟</b>至软。</li>
-          <li>倒入橙汁和青柠汁，<b>刮起锅底的褐色焦香</b>，让它融入汤汁。</li>
-          <li>加番茄碎、高汤、水和<b>剩下的香料粉</b>，拌匀，把牛肉放回锅里。</li>
-          <li>盖盖煮开，转小火让它<b>轻柔地咕嘟</b>（不要剧烈翻滚）。</li>
-          <li>炖 <b>2 小时</b>，然后揭盖再炖约 <b>30 分钟</b>，直到牛肉软到能撕开。</li>
+          <li>加入<b>水、生抽、老抽、米醋、红糖、胡椒粒和月桂叶</b>，把猪肉连同碗里的肉汁倒回锅中。</li>
+          <li>烧开后<b>盖盖留 2 cm 缝</b>，转小火让汤汁<b>非常轻柔地微滚</b>，炖 <b>1.5 小时</b>至猪肉一拨就散（不够烂就继续炖）。</li>
+          <li><span class="opt">同时可选：</span>另起锅中火，把菠萝块平铺<b>每面煎约 4 分钟</b>至金黄，盛出备用。</li>
         </ol>
       </div>
 
       <div class="phase">
         <span class="phase-tag">第三步</span>
-        <h2>撕肉 & 收汁</h2>
-        <p class="note">把肉撕成丝，酱汁收浓再拌回去，吸饱味道。</p>
+        <h2>收汁 & 上桌</h2>
+        <p class="note">酱汁是稀薄的糖浆状、味道浓郁——配大量米饭、少量酱汁才是正宗吃法。</p>
         <ol class="step-list">
-          <li>把牛肉从酱汁中捞出，用<b>两把叉子撕成丝</b>。</li>
-          <li>锅里酱汁<b>开盖小火再煮 10–15 分钟</b>收浓到喜欢的稠度，按口味加盐。<span class="opt">想更顺滑可用料理棒打成泥。</span></li>
-          <li>把牛肉丝拌回酱汁里（可留一些酱汁淋在塔可上）。盛入大盘即可。</li>
+          <li>用漏勺把猪肉捞出。<b>大火把汤汁收到约 1½ 杯</b>（约 8–10 分钟），呈稀薄糖浆状（它本就不该浓稠）。</li>
+          <li>转小火，把猪肉和煎菠萝放回，连同碗里的肉汁<b>拌匀加热</b>。</li>
+          <li>浇在<b>茉莉香米饭</b>上，撒葱花即可。</li>
         </ol>
       </div>
 
@@ -330,31 +292,31 @@
 
   <section class="tips">
     <h2>厨房备忘</h2>
-    <p class="lead">来自原作者的实用提示</p>
+    <p class="lead">几条让 adobo 更好吃的关键</p>
     <div class="tip-grid">
       <div class="tip">
-        <h3>怎么组装塔可</h3>
-        <p>温热的小玉米饼里放牛肉，配牛油果片、莎莎、擦丝奶酪、酸奶油、青柠角和香菜叶。</p>
+        <h3>用猪肩，不一定猪五花</h3>
+        <p>五花最常见但偏肥，<b>猪肩</b>同样软嫩多汁却没那么腻。记得用带肥花的部分，不要纯瘦肉。猪颈肉也很好，但炖 1 小时即可。</p>
       </div>
       <div class="tip">
-        <h3>辣度自己调</h3>
-        <p>微辣：奇波雷粉减到 2 茶匙~1 汤匙，加 1 茶匙香菜籽粉和 1 茶匙孜然。中辣：1.5 汤匙。够劲：2 汤匙。</p>
+        <h3>两种酱油别搞混</h3>
+        <p><b>生抽为主</b>给咸鲜，<b>老抽只用 1.5 茶匙</b>调深颜色。可以用生抽替代老抽，但<b>千万别反过来</b>——全用老抽会又黑又冲，毁掉这道菜。</p>
       </div>
       <div class="tip">
-        <h3>其他做法</h3>
-        <p>慢炖锅低温 8 小时；高压锅 / Instant Pot 高压 50 分钟；或烤箱 160°C 加盖烤 3–3.5 小时。</p>
+        <h3>醋是灵魂，但别太酸</h3>
+        <p>醋是 adobo 的标志，长时间炖会变柔和。先按量放，<b>炖到后段再尝</b>，想更亮就一次加 1 茶匙调整。</p>
       </div>
       <div class="tip">
-        <h3>保存与回热</h3>
-        <p>冷冻或冷藏时<b>肉和酱汁分开存</b>，否则肉容易变糊。回热时分别加热，最后再拌一起。</p>
+        <h3>酱汁本就稀</h3>
+        <p>收好的酱汁是<b>稀薄糖浆状、味道很浓</b>，不会变稠也不该变稠。配大量米饭、少浇酱才是正确吃法。</p>
       </div>
       <div class="tip">
-        <h3>买不到奇波雷粉？</h3>
-        <p>用烟熏红椒粉 + 孜然 + 卡宴辣椒粉，各 ½ 汤匙左右替代。</p>
+        <h3>别用慢炖锅</h3>
+        <p>这道<b>不推荐慢炖锅</b>——少了表面焦糖化的步骤会缺风味。炉子上小火慢炖最好。</p>
       </div>
       <div class="tip">
-        <h3>这道菜很宽容</h3>
-        <p>多炖 1 小时也没问题，依然好吃。2 小时后每隔 30 分钟检查一次是否能撕开即可。</p>
+        <h3>菠萝是惊喜</h3>
+        <p>菠萝非传统但很妙，<b>清甜解腻</b>还添颜色。罐装的就行（用果汁浸的、别用糖浆）。不喜欢可省。</p>
       </div>
     </div>
   </section>
@@ -364,39 +326,39 @@
       <div class="lens-top">
         <span class="ico">💪</span>
         <h2>健身视角</h2>
-        <span class="lens-verdict">肉很友好 · 看你怎么配</span>
+        <span class="lens-verdict">可日常 · 留意糖和钠</span>
       </div>
-      <p><b>手撕牛肉本身</b>对健身很友好：用牛肩/牛腩慢炖，每份（约 1/8，仅肉）约 <b>54 g 蛋白质、13 g 脂肪、7 g 碳水</b>，热量约 372 大卡。高蛋白、低碳，是很好的<b>日常蛋白来源</b>。</p>
+      <p>宏量比例其实挺均衡：每份（约 1/5，不含米饭）约 <b>28 g 蛋白、16 g 脂肪、25 g 碳水</b>，热量约 357 大卡，用<b>猪肩</b>比五花更精瘦。当主菜配米饭和蔬菜，是不错的<b>日常餐</b>。</p>
       <div class="macro-row">
-        <div class="macro"><div class="mv">372</div><div class="mk">大卡</div></div>
-        <div class="macro"><div class="mv">54 g</div><div class="mk">蛋白质</div></div>
-        <div class="macro"><div class="mv">13 g</div><div class="mk">脂肪</div></div>
-        <div class="macro"><div class="mv">7 g</div><div class="mk">碳水</div></div>
+        <div class="macro"><div class="mv">357</div><div class="mk">大卡</div></div>
+        <div class="macro"><div class="mv">28 g</div><div class="mk">蛋白</div></div>
+        <div class="macro"><div class="mv">16 g</div><div class="mk">脂肪</div></div>
+        <div class="macro"><div class="mv">25 g</div><div class="mk">碳水</div></div>
       </div>
-      <p>能不能当日常餐，<b>关键在怎么吃</b>：单吃牛肉或配米饭、生菜、莎莎都很清爽；做成<b>塔可/卷饼/芝士薄饼</b>时，玉米饼、奶酪、酸奶油会把碳水脂肪叠上去，更偏"解馋"。日常多用<b>牛肉+蔬菜+少量主食</b>，注意钠（每份约 600 mg）。</p>
-      <p class="micro">数据来自原菜谱营养表（每份按 8 份计，仅牛肉、不含玉米饼和配料）。仅供参考。</p>
+      <p>两点要留意：酱汁有<b>红糖（每份约 20 g 糖）</b>，钠也偏高（约 1500 mg）。日常想更清爽：<b>糖减半、用低钠酱油、酱汁少浇一点</b>（正宗吃法本就少酱多饭），多配蔬菜。瘦肉为主、控制米饭量就是一份均衡训练餐。</p>
+      <p class="micro">数据来自原菜谱营养表（每份按 5 份计，不含米饭，假设吃光酱汁）。仅供参考。</p>
     </section>
 
     <section class="prep">
       <div class="lens-top">
         <span class="ico">🥡</span>
         <h2>备餐友好度</h2>
-        <span class="lens-verdict">非常适合 · 备餐神器</span>
+        <span class="lens-verdict">非常适合 · 越放越香</span>
       </div>
-      <p>这道几乎是<b>为批量备餐而生</b>——原方一锅就够 20–25 个塔可、8–10 人份。手撕牛肉百搭，能做塔可、卷饼、芝士薄饼、配饭配沙拉，一周不重样。</p>
+      <p>这是<b>典型的"做一次吃一周"的菜</b>。和大多数炖菜一样，adobo <b>隔夜更入味</b>——酱油醋汁会更深更圆润。一锅炖、零看顾，很适合周末批量做。</p>
       <ul class="prep-facts">
-        <li><span class="pk">冷藏保存</span><span class="pv">肉酱分开 4 天内</span></li>
-        <li><span class="pk">冷冻保存</span><span class="pv">数月</span></li>
-        <li><span class="pk">风味随时间</span><span class="pv">隔天更入味</span></li>
-        <li><span class="pk">回热</span><span class="pv">微波 / 烤箱</span></li>
+        <li><span class="pk">冷藏保存</span><span class="pv">4 天</span></li>
+        <li><span class="pk">冷冻保存</span><span class="pv">3 个月</span></li>
+        <li><span class="pk">风味随时间</span><span class="pv">越放越好</span></li>
+        <li><span class="pk">回热</span><span class="pv">炉上 / 微波皆可</span></li>
       </ul>
-      <p>原作者的关键提示：<b>肉和酱汁分开存</b>，否则肉容易泡糊（尤其解冻后）。回热时<b>分别加热再拌一起</b>。想吃一两周就<b>加倍下料炖一大锅</b>，分装单份冷藏/冷冻。吃法随心切换，是合集里最灵活的备餐选择之一。</p>
-      <p class="micro">保存与回热建议来自原菜谱。</p>
+      <p>建议<b>肉和酱一起存</b>（不像牛肉那样容易泡糊，这道反而更入味），米饭<b>分开煮、当天蒸</b>口感最佳。想吃一两周的话：<b>加倍下料炖一大锅</b>，分装成单份盒子，冷藏 4 天内的直接吃，其余冷冻；要吃前一晚移到冷藏解冻，小火回热加一点水或高汤稀释即可。配菜（黄瓜、凉拌菜）现做更清爽。</p>
+      <p class="micro">保存时间来自原菜谱。分装冷冻后请于安全期限内食用。</p>
     </section>
   </div>
 
   <footer class="foot">
-    原始食谱 · <a href="https://www.recipetineats.com/mexican-shredded-beef-and-tacos/">RecipeTin Eats — Mexican Shredded Beef</a>
+    原始食谱 · <a href="https://www.recipetineats.com/filipino-pork-adobo/">RecipeTin Eats — Filipino Pork Adobo</a>
   </footer>
 
 </div>

@@ -14,6 +14,7 @@
     --rust-deep: #7d2410;
     --olive: #5c6234;
     --gold: #c08a1e;
+    --teal: #2f6b66;
     --line: #cbb89a;
     --serif: "Hoefler Text", "Songti SC", "Source Han Serif SC", Georgia, "Times New Roman", serif;
     --sans: "Avenir Next", "PingFang SC", "Helvetica Neue", system-ui, sans-serif;
@@ -279,6 +280,41 @@
   }
   .tip p { font-size: 0.88rem; color: var(--ink-soft); }
 
+  /* ---------- LENS CARDS (fitness + meal prep) ---------- */
+  .lens-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; margin-top: 36px; }
+  section.fitness, section.prep {
+    border: 1px solid var(--line); border-radius: 6px; padding: 26px 28px;
+  }
+  section.fitness { background: linear-gradient(180deg, rgba(92,98,52,0.09), rgba(92,98,52,0.04)); }
+  section.prep { background: linear-gradient(180deg, rgba(47,107,102,0.10), rgba(47,107,102,0.04)); }
+  .lens-top { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; flex-wrap: wrap; }
+  .lens-top .ico {
+    font-size: 1.2rem; width: 38px; height: 38px; flex-shrink: 0;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: #fff; border-radius: 50%;
+  }
+  section.fitness .lens-top .ico { background: var(--olive); }
+  section.prep .lens-top .ico { background: var(--teal); }
+  .lens-top h2 { font-family: var(--serif); font-size: 1.3rem; }
+  .lens-verdict {
+    margin-left: auto; font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase;
+    font-weight: 700; color: #fff; padding: 4px 12px; border-radius: 20px; white-space: nowrap;
+  }
+  section.fitness .lens-verdict { background: var(--gold); }
+  section.prep .lens-verdict { background: var(--teal); }
+  .lens-row p { font-size: 0.9rem; color: var(--ink-soft); margin-top: 10px; }
+  .lens-row p b { color: var(--rust-deep); }
+  section.prep p b { color: var(--teal); }
+  .prep-facts { list-style: none; margin: 14px 0 4px; }
+  .prep-facts li {
+    display: flex; justify-content: space-between; gap: 10px; align-items: baseline;
+    padding: 7px 0; font-size: 0.86rem; border-bottom: 1px dotted var(--line);
+  }
+  .prep-facts li:last-child { border-bottom: none; }
+  .prep-facts .pk { color: var(--ink-soft); }
+  .prep-facts .pv { font-family: var(--serif); font-weight: 700; color: var(--teal); white-space: nowrap; text-align: right; }
+  .lens-row .micro { font-size: 0.72rem; color: var(--ink-soft); font-style: italic; margin-top: 12px; }
+
   footer.foot {
     text-align: center;
     padding: 40px 0 10px;
@@ -299,6 +335,7 @@
     .phase, .tip, li { page-break-inside: avoid; }
     header.hero { padding-top: 20px; }
     .back { display: none; }
+    section.fitness, section.prep { page-break-inside: avoid; }
   }
 </style>
 </head>
@@ -428,6 +465,36 @@
       </div>
     </div>
   </section>
+
+  <div class="lens-row">
+    <section class="fitness">
+      <div class="lens-top">
+        <span class="ico">💪</span>
+        <h2>健身视角</h2>
+        <span class="lens-verdict">瘦肉主菜很友好 · 配菜偶尔吃</span>
+      </div>
+      <p><b>牛眼肉本身</b>是非常瘦的高蛋白部位，几乎没什么脂肪，慢烤又不加多少油，单看这块肉很适合健身日常——是优质的瘦蛋白来源。瘦也意味着<b>逆纹薄切、配酱</b>才好吃，单吃容易柴。</p>
+      <p>真正"偶尔吃一吃"的是<b>配菜</b>：那份薯泥放了一整条黄油、225 g 切达奶酪和蛋黄，热量和饱和脂肪都不低；蘑菇肉汁也用到黄油。日常想吃，建议<b>把肉当主角、薯泥减半或换成水煮土豆/红薯</b>，肉汁少浇一点。</p>
+      <p class="micro">原菜谱未提供营养数据，以上为基于配料的定性判断，仅供参考。</p>
+    </section>
+
+    <section class="prep">
+      <div class="lens-top">
+        <span class="ico">🥡</span>
+        <h2>备餐友好度</h2>
+        <span class="lens-verdict">部分适合 · 分开存</span>
+      </div>
+      <p>三个部分备餐属性<b>各不相同</b>：肉汁可提前做、复热毫无问题；薯泥冷藏几天没问题、复热口感略逊；<b>烤好的瘦牛肉则不宜反复加热</b>（会变干变柴），最好现切现吃或低温浅热。</p>
+      <ul class="prep-facts">
+        <li><span class="pk">蘑菇肉汁</span><span class="pv">可提前 · 易复热</span></li>
+        <li><span class="pk">焗薯泥</span><span class="pv">冷藏几天</span></li>
+        <li><span class="pk">烤牛肉</span><span class="pv">现切最佳</span></li>
+        <li><span class="pk">建议</span><span class="pv">三部分分开存</span></li>
+      </ul>
+      <p>想分批吃的话：<b>肉汁和薯泥可以提前做好分装</b>，牛肉整块冷藏、吃前再薄切、用热肉汁浇上回温（作者本来就是这样上桌的）。这比把整盘混在一起复热效果好得多。它更适合"一顿宴客 + 隔天再吃一次"，不太适合一次做吃一周。</p>
+      <p class="micro">基于配料和烹饪方式的定性判断，仅供参考。</p>
+    </section>
+  </div>
 
   <footer class="foot">
     原始视频 · <a href="https://www.youtube.com/watch?v=X0XpFwKKxXQ">Adam Ragusea — Slow-roast beef eye of round</a>

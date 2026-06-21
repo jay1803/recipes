@@ -14,6 +14,7 @@
     --rust-deep: #7d2410;
     --olive: #5c6234;
     --gold: #c08a1e;
+    --teal: #2f6b66;
     --line: #cbb89a;
     --serif: "Hoefler Text", "Songti SC", "Source Han Serif SC", Georgia, "Times New Roman", serif;
     --sans: "Avenir Next", "PingFang SC", "Helvetica Neue", system-ui, sans-serif;
@@ -226,6 +227,49 @@
   .bonus-tip p { font-size: 0.88rem; color: var(--ink-soft); }
   .bonus-tip p b { color: var(--rust-deep); }
 
+  /* ---------- LENS CARDS (fitness + meal prep) ---------- */
+  .lens-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; margin-top: 36px; }
+  section.fitness, section.prep {
+    border: 1px solid var(--line); border-radius: 6px; padding: 26px 28px;
+  }
+  section.fitness { background: linear-gradient(180deg, rgba(92,98,52,0.09), rgba(92,98,52,0.04)); }
+  section.prep { background: linear-gradient(180deg, rgba(47,107,102,0.10), rgba(47,107,102,0.04)); }
+  .lens-top { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; flex-wrap: wrap; }
+  .lens-top .ico {
+    font-size: 1.2rem; width: 38px; height: 38px; flex-shrink: 0;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: #fff; border-radius: 50%;
+  }
+  section.fitness .lens-top .ico { background: var(--olive); }
+  section.prep .lens-top .ico { background: var(--teal); }
+  .lens-top h2 { font-family: var(--serif); font-size: 1.3rem; }
+  .lens-verdict {
+    margin-left: auto; font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase;
+    font-weight: 700; color: #fff; padding: 4px 12px; border-radius: 20px; white-space: nowrap;
+  }
+  section.fitness .lens-verdict { background: var(--rust); }
+  section.prep .lens-verdict { background: var(--teal); }
+  .lens-row p { font-size: 0.9rem; color: var(--ink-soft); margin-top: 10px; }
+  .lens-row p b { color: var(--rust-deep); }
+  section.prep p b { color: var(--teal); }
+  .macro-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 4px; }
+  .macro {
+    flex: 1 1 64px; min-width: 0; text-align: center;
+    background: rgba(255,255,255,0.5); border: 1px solid var(--line);
+    border-radius: 4px; padding: 9px 4px;
+  }
+  .macro .mv { font-family: var(--serif); font-weight: 700; font-size: 1.1rem; color: var(--rust-deep); }
+  .macro .mk { font-size: 0.56rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); margin-top: 2px; }
+  .prep-facts { list-style: none; margin: 14px 0 4px; }
+  .prep-facts li {
+    display: flex; justify-content: space-between; gap: 10px; align-items: baseline;
+    padding: 7px 0; font-size: 0.86rem; border-bottom: 1px dotted var(--line);
+  }
+  .prep-facts li:last-child { border-bottom: none; }
+  .prep-facts .pk { color: var(--ink-soft); }
+  .prep-facts .pv { font-family: var(--serif); font-weight: 700; color: var(--teal); white-space: nowrap; text-align: right; }
+  .lens-row .micro { font-size: 0.72rem; color: var(--ink-soft); font-style: italic; margin-top: 12px; }
+
   footer.foot { text-align: center; padding: 40px 0 10px; font-size: 0.78rem; color: var(--ink-soft); }
   footer.foot a { color: var(--rust); text-decoration: none; }
 
@@ -233,11 +277,13 @@
     .body-grid { grid-template-columns: 1fr; gap: 8px; }
     aside.ingredients { position: static; }
     .meta-item { padding: 4px 16px; }
+    .lens-verdict { margin-left: 0; }
   }
   @media print {
     body { padding-bottom: 0; }
     aside.ingredients { position: static; }
     .phase, .tip, .bonus-tip, li { page-break-inside: avoid; }
+    section.fitness, section.prep { page-break-inside: avoid; }
     .back { display: none; }
     .alt { display: none; }
     .alt-panel { display: block; }
@@ -468,6 +514,42 @@
       </div>
     </div>
   </section>
+
+  <div class="lens-row">
+    <section class="fitness">
+      <div class="lens-top">
+        <span class="ico">💪</span>
+        <h2>健身视角</h2>
+        <span class="lens-verdict">蛋白足 · 更适合偶尔慰劳</span>
+      </div>
+      <p>蛋白质是够的——每份约 <b>47 g 蛋白</b>，但这道菜更偏"丰盛慰劳餐"。<b>培根、黄油、整瓶红酒</b>都拉高了脂肪和热量：每份约 <b>745 大卡、40 g 脂肪（含 17 g 饱和脂肪）、25 g 碳水</b>，钠也偏高。它是<b>周末慢炖、和家人朋友一起吃</b>的菜。</p>
+      <div class="macro-row">
+        <div class="macro"><div class="mv">745</div><div class="mk">大卡</div></div>
+        <div class="macro"><div class="mv">47 g</div><div class="mk">蛋白质</div></div>
+        <div class="macro"><div class="mv">40 g</div><div class="mk">脂肪</div></div>
+        <div class="macro"><div class="mv">25 g</div><div class="mk">碳水</div></div>
+      </div>
+      <p>想让它"日常一点"：<b>培根减量或先焯水、黄油少放、瘦肉为主</b>，配蔬菜不加薯泥。但这道菜的灵魂就在那份油润浓郁——<b>当作偶尔的犒赏</b>去享受更值。</p>
+      <p class="micro">数据来自 RecipeTin Eats 营养表（每份按 5 份计，含培根黄油，不含薯泥）。仅供参考。</p>
+    </section>
+
+    <section class="prep">
+      <div class="lens-top">
+        <span class="ico">🥡</span>
+        <h2>备餐友好度</h2>
+        <span class="lens-verdict">非常适合 · 隔天更香</span>
+      </div>
+      <p>炖菜里的<b>备餐典范</b>。Julia 本人就强调这道可提前一两天做，<b>放过夜味道更融合更好</b>。一大锅炖出来，分批吃几天毫无问题。</p>
+      <ul class="prep-facts">
+        <li><span class="pk">冷藏保存</span><span class="pv">数天</span></li>
+        <li><span class="pk">冷冻保存</span><span class="pv">可冷冻</span></li>
+        <li><span class="pk">风味随时间</span><span class="pv">隔夜更佳</span></li>
+        <li><span class="pk">回热</span><span class="pv">小火慢热、浇酱</span></li>
+      </ul>
+      <p>Julia 的关键提醒：<b>切忌趁热加盖</b>放冰箱，否则容易发酸——一定<b>放凉再盖</b>。回热时小火慢慢加热、用酱汁浇淋肉。想吃一周就加倍下料、分装冷藏冷冻。配的薯泥/土豆<b>当天现做</b>。唯一"工程量"在前期备料，炖好之后就是省心的分批口粮。</p>
+      <p class="micro">保存与回热建议来自 Julia 的做法说明。</p>
+    </section>
+  </div>
 
   <footer class="foot">
     主做法 · <a href="https://www.youtube.com/watch?v=NlGFkXd-QT0">Julia Child — Boeuf Bourguignon (The French Chef S1, PBS)</a><br>

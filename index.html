@@ -14,6 +14,7 @@
     --rust-deep: #7d2410;
     --olive: #5c6234;
     --gold: #c08a1e;
+    --teal: #2f6b66;
     --line: #cbb89a;
     --serif: "Hoefler Text", "Songti SC", "Source Han Serif SC", Georgia, "Times New Roman", serif;
     --sans: "Avenir Next", "PingFang SC", "Helvetica Neue", system-ui, sans-serif;
@@ -97,11 +98,21 @@
 
   /* ---------- RECIPE LIST ---------- */
   .recipe-list { list-style: none; }
+  .legend {
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    margin: 0 0 18px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .legend .r-tag { cursor: default; }
   .recipe-card {
     display: grid;
     grid-template-columns: 64px minmax(0, 1fr) auto;
     gap: 22px;
-    align-items: center;
+    align-items: start;
     text-decoration: none;
     color: inherit;
     padding: 26px 24px;
@@ -139,6 +150,35 @@
     font-size: 0.88rem;
     color: var(--ink-soft);
   }
+  .r-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .r-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    padding: 3px 10px 3px 8px;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    white-space: nowrap;
+  }
+  .r-tag .dot {
+    width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
+  }
+  .r-tag.fit { background: rgba(92,98,52,0.10); color: var(--olive); }
+  .r-tag.fit .dot { background: var(--olive); }
+  .r-tag.fit.mid { background: rgba(192,138,30,0.12); color: #8a5e10; }
+  .r-tag.fit.mid .dot { background: var(--gold); }
+  .r-tag.prep { background: rgba(47,107,102,0.10); color: var(--teal); }
+  .r-tag.prep .dot { background: var(--teal); }
+  .r-tag.prep.low { background: rgba(168,52,26,0.08); color: var(--rust); }
+  .r-tag.prep.low .dot { background: var(--rust); }
   .r-meta {
     text-align: right;
     white-space: nowrap;
@@ -210,16 +250,32 @@
   </header>
 
   <div class="bar">
-    <div class="count"><b>3</b> 道菜谱</div>
+    <div class="count"><b>17</b> 道菜谱</div>
     <div class="tags">
       <span class="tag-pill">牛肉</span>
+      <span class="tag-pill">猪肉</span>
+      <span class="tag-pill">鸡肉</span>
+      <span class="tag-pill">羊肉</span>
+      <span class="tag-pill">鱼/海鲜</span>
       <span class="tag-pill">慢烤</span>
       <span class="tag-pill">炖煮</span>
+      <span class="tag-pill">咖喱</span>
+      <span class="tag-pill">一锅出</span>
+      <span class="tag-pill">快手</span>
       <span class="tag-pill">法式</span>
+      <span class="tag-pill">意式</span>
       <span class="tag-pill">墨西哥</span>
+      <span class="tag-pill">巴西</span>
+      <span class="tag-pill">菲律宾</span>
+      <span class="tag-pill">泰式</span>
+      <span class="tag-pill">日式</span>
+      <span class="tag-pill">非洲</span>
+      <span class="tag-pill">加勒比</span>
       <span class="tag-pill">主菜</span>
     </div>
   </div>
+
+  <p class="legend">每道菜标注 <span class="r-tag fit"><span class="dot"></span>健身友好度</span> 和 <span class="r-tag prep"><span class="dot"></span>备餐友好度</span>，详情见各菜谱底部。</p>
 
   <ul class="recipe-list">
     <li>
@@ -229,6 +285,10 @@
           <div class="r-kicker">牛肉 · 主菜 · 6–8 人</div>
           <h2>慢烤牛眼肉 配蘑菇肉汁与焗薯泥</h2>
           <p class="r-desc">便宜瘦肉部位，75°C 长时慢烤变得粉嫩多汁，配浓郁蘑菇肉汁和奶酪焗薯泥。</p>
+          <div class="r-tags">
+            <span class="r-tag fit mid"><span class="dot"></span>健身 · 瘦肉友好，配菜偏重</span>
+            <span class="r-tag prep"><span class="dot"></span>备餐 · 部分适合，分开存</span>
+          </div>
         </div>
         <div class="r-meta">
           <span class="r-time">5–6h</span>
@@ -244,6 +304,10 @@
           <div class="r-kicker">牛肉 · 墨西哥 · 8–10 人</div>
           <h2>墨西哥手撕牛肉 配玉米饼</h2>
           <p class="r-desc">一锅炖三小时，软烂多汁的牛肉裹着辣香酱汁，可做塔可、卷饼、芝士薄饼。</p>
+          <div class="r-tags">
+            <span class="r-tag fit"><span class="dot"></span>健身 · 肉很友好，看配料</span>
+            <span class="r-tag prep"><span class="dot"></span>备餐 · 非常适合</span>
+          </div>
         </div>
         <div class="r-meta">
           <span class="r-time">3h</span>
@@ -259,12 +323,238 @@
           <div class="r-kicker">牛肉 · 法式 · 6 人</div>
           <h2>勃艮第红酒炖牛肉 Boeuf Bourguignon</h2>
           <p class="r-desc">Julia Child 经典：牛肉红酒慢炖到酥软，配焖小洋葱、煎蘑菇和酒色浓酱。</p>
+          <div class="r-tags">
+            <span class="r-tag fit mid"><span class="dot"></span>健身 · 蛋白足，偏丰盛</span>
+            <span class="r-tag prep"><span class="dot"></span>备餐 · 非常适合，隔天更香</span>
+          </div>
         </div>
         <div class="r-meta">
           <span class="r-time">3–4h</span>
           <span class="r-time-k">慢炖</span>
           <span class="arrow">→</span>
         </div>
+      </a>
+    </li>
+    <li>
+      <a class="recipe-card" href="beef-recipe/rump-cap-roast-picanha.html">
+        <span class="r-emoji">🔥</span>
+        <div class="r-body">
+          <div class="r-kicker">牛肉 · 巴西 · 8 人</div>
+          <h2>慢烤牛臀盖 Picanha 配酱</h2>
+          <p class="r-desc">肋眼级风味没有肋眼价钱，反向煎烤做出均匀粉红、金黄脆油盖。高蛋白瘦肉。</p>
+          <div class="r-tags">
+            <span class="r-tag fit"><span class="dot"></span>健身 · 很适合日常</span>
+            <span class="r-tag prep low"><span class="dot"></span>备餐 · 现烤现吃最佳</span>
+          </div>
+        </div>
+        <div class="r-meta">
+          <span class="r-time">1.5h</span>
+          <span class="r-time-k">慢烤</span>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a class="recipe-card" href="beef-recipe/chicken-chasseur.html">
+        <span class="r-emoji">🍗</span>
+        <div class="r-body">
+          <div class="r-kicker">鸡肉 · 法式 · 4 人</div>
+          <h2>法式猎人鸡 Chicken Chasseur</h2>
+          <p class="r-desc">带骨鸡块煎香，用蘑菇番茄白兰地酱炖到酥软，撒龙蒿收尾。一小时搞定的法式家常。</p>
+          <div class="r-tags">
+            <span class="r-tag fit mid"><span class="dot"></span>健身 · 蛋白高，看部位</span>
+            <span class="r-tag prep"><span class="dot"></span>备餐 · 适合，隔天更好</span>
+          </div>
+        </div>
+        <div class="r-meta">
+          <span class="r-time">1h</span>
+          <span class="r-time-k">一锅炖</span>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a class="recipe-card" href="beef-recipe/filipino-pork-adobo.html">
+        <span class="r-emoji">🍚</span>
+        <div class="r-body">
+          <div class="r-kicker">猪肉 · 菲律宾 · 4–5 人</div>
+          <h2>菲律宾猪肉 Adobo</h2>
+          <p class="r-desc">猪肉慢炖到入口即化，浓郁蒜香酱油醋汁收成釉色，浇在米饭上。超适合一次做、分批吃。</p>
+          <div class="r-tags">
+            <span class="r-tag fit"><span class="dot"></span>健身 · 可日常，留意糖钠</span>
+            <span class="r-tag prep"><span class="dot"></span>备餐 · 非常适合，越放越香</span>
+          </div>
+        </div>
+        <div class="r-meta">
+          <span class="r-time">2h</span>
+          <span class="r-time-k">炖煮</span>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a class="recipe-card" href="beef-recipe/massaman-lamb-shoulder.html">
+        <span class="r-emoji">🐑</span>
+        <div class="r-body">
+          <div class="r-kicker">羊肉 · 泰式 · 6–8 人</div>
+          <h2>玛莎曼咖喱羊肩</h2>
+          <p class="r-desc">5 分钟备料丢进烤箱慢烤 4 小时，羊肉入口即化、浸在浓郁咖喱里。不辣、复热完美。</p>
+          <div class="r-tags">
+            <span class="r-tag fit lean"><span class="dot"></span>健身 · 蛋白高，还算均衡</span>
+            <span class="r-tag prep"><span class="dot"></span>备餐 · 非常适合，复热完美</span>
+          </div>
+        </div>
+        <div class="r-meta"><span class="r-time">4h</span><span class="r-time-k">慢烤</span><span class="arrow">→</span></div>
+      </a>
+    </li>
+    <li>
+      <a class="recipe-card" href="beef-recipe/12-hour-roast-lamb.html">
+        <span class="r-emoji">🍖</span>
+        <div class="r-body">
+          <div class="r-kicker">羊肉 · 终极烤羊 · 5 人</div>
+          <h2>12 小时慢烤羊肩</h2>
+          <p class="r-desc">隔夜超低温慢烤出此生最多汁的烤羊，自带肉汁、复热 100% 完美，一次可烤 4 个。</p>
+          <div class="r-tags">
+            <span class="r-tag fit lean"><span class="dot"></span>健身 · 蛋白高，还算精瘦</span>
+            <span class="r-tag prep"><span class="dot"></span>备餐 · 非常适合，复热完美</span>
+          </div>
+        </div>
+        <div class="r-meta"><span class="r-time">12h+</span><span class="r-time-k">慢烤</span><span class="arrow">→</span></div>
+      </a>
+    </li>
+    <li>
+      <a class="recipe-card" href="beef-recipe/beef-tenderloin-roast.html">
+        <span class="r-emoji">🥩</span>
+        <div class="r-body">
+          <div class="r-kicker">牛肉 · 节庆大菜 · 4–5 人</div>
+          <h2>烤牛里脊 配奶油蘑菇酱</h2>
+          <p class="r-desc">低温慢烤出由边到心均匀粉红的嫩里脊，裹蒜香黄油、配梦幻奶油蘑菇酱。逢年过节的隆重主菜。</p>
+          <div class="r-tags">
+            <span class="r-tag fit rich"><span class="dot"></span>健身 · 瘦肉好，酱很重</span>
+            <span class="r-tag prep low"><span class="dot"></span>备餐 · 现烤现吃</span>
+          </div>
+        </div>
+        <div class="r-meta"><span class="r-time">1h</span><span class="r-time-k">慢烤</span><span class="arrow">→</span></div>
+      </a>
+    </li>
+    <li>
+      <a class="recipe-card" href="beef-recipe/beef-tataki.html">
+        <span class="r-emoji">🥢</span>
+        <div class="r-body">
+          <div class="r-kicker">牛肉 · 日式融合 · 2–4 人</div>
+          <h2>牛肉 Tataki 配柚子汁</h2>
+          <p class="r-desc">薄切微熟牛肉淋柚子柑橘汁，餐厅招牌前菜，在家做只要零头价。清爽高蛋白。</p>
+          <div class="r-tags">
+            <span class="r-tag fit lean"><span class="dot"></span>健身 · 清爽高蛋白</span>
+            <span class="r-tag prep low"><span class="dot"></span>备餐 · 现切现吃</span>
+          </div>
+        </div>
+        <div class="r-meta"><span class="r-time">50m</span><span class="r-time-k">含冷藏</span><span class="arrow">→</span></div>
+      </a>
+    </li>
+    <li>
+      <a class="recipe-card" href="beef-recipe/chicken-cacciatore.html">
+        <span class="r-emoji">🍲</span>
+        <div class="r-body">
+          <div class="r-kicker">鸡肉 · 意式 · 4–6 人</div>
+          <h2>意式猎人炖鸡 Chicken Cacciatore</h2>
+          <p class="r-desc">带骨鸡块在番茄红酒香草酱里炖煮，加蘑菇彩椒和橄榄。一小时的暖心家常炖菜。</p>
+          <div class="r-tags">
+            <span class="r-tag fit"><span class="dot"></span>健身 · 蛋白足，看部位</span>
+            <span class="r-tag prep"><span class="dot"></span>备餐 · 非常适合，隔天更香</span>
+          </div>
+        </div>
+        <div class="r-meta"><span class="r-time">55m</span><span class="r-time-k">炖煮</span><span class="arrow">→</span></div>
+      </a>
+    </li>
+    <li>
+      <a class="recipe-card" href="beef-recipe/african-chicken-curry-kuku-paka.html">
+        <span class="r-emoji">🥥</span>
+        <div class="r-body">
+          <div class="r-kicker">鸡肉 · 非洲 · 4–6 人</div>
+          <h2>非洲椰香咖喱鸡 Kuku Paka</h2>
+          <p class="r-desc">号称最容易的正宗咖喱，鸡肉在番茄椰浆香料汁里炖煮，超市材料就能做。</p>
+          <div class="r-tags">
+            <span class="r-tag fit rich"><span class="dot"></span>健身 · 蛋白高，脂肪偏高</span>
+            <span class="r-tag prep"><span class="dot"></span>备餐 · 很适合，越放越香</span>
+          </div>
+        </div>
+        <div class="r-meta"><span class="r-time">1h</span><span class="r-time-k">咖喱</span><span class="arrow">→</span></div>
+      </a>
+    </li>
+    <li>
+      <a class="recipe-card" href="beef-recipe/one-pot-mexican-chicken-rice.html">
+        <span class="r-emoji">🍛</span>
+        <div class="r-body">
+          <div class="r-kicker">鸡肉 · 墨西哥 · 5 人</div>
+          <h2>一锅墨西哥鸡肉饭</h2>
+          <p class="r-desc">墨西哥红米饭加玉米黑豆配 fajita 鸡腿，一锅完整一餐，烤箱收尾不糊底。</p>
+          <div class="r-tags">
+            <span class="r-tag fit"><span class="dot"></span>健身 · 完整一餐</span>
+            <span class="r-tag prep"><span class="dot"></span>备餐 · 很适合，一锅成餐盒</span>
+          </div>
+        </div>
+        <div class="r-meta"><span class="r-time">55m</span><span class="r-time-k">一锅出</span><span class="arrow">→</span></div>
+      </a>
+    </li>
+    <li>
+      <a class="recipe-card" href="beef-recipe/pulled-pork.html">
+        <span class="r-emoji">🍔</span>
+        <div class="r-body">
+          <div class="r-kicker">猪肉 · 美式 BBQ · 约 20 人</div>
+          <h2>极致手撕猪肉 Pulled Pork</h2>
+          <p class="r-desc">24 小时干腌 + 12 小时低温慢烤，做出难以想象的多汁和深色脆树皮。配自制 BBQ 酱。</p>
+          <div class="r-tags">
+            <span class="r-tag fit"><span class="dot"></span>健身 · 蛋白超高，当心糖钠</span>
+            <span class="r-tag prep"><span class="dot"></span>备餐 · 备餐之王</span>
+          </div>
+        </div>
+        <div class="r-meta"><span class="r-time">36h</span><span class="r-time-k">工程</span><span class="arrow">→</span></div>
+      </a>
+    </li>
+    <li>
+      <a class="recipe-card" href="beef-recipe/lemon-garlic-salmon-tray-bake.html">
+        <span class="r-emoji">🐟</span>
+        <div class="r-body">
+          <div class="r-kicker">鱼 · 一盘烤 · 4 人</div>
+          <h2>柠檬蒜香三文鱼烤盘</h2>
+          <p class="r-desc">三文鱼抹柠檬蒜泥酱，配帕玛森芦笋和爆汁番茄，11 分钟一盘搞定。简单又健康。</p>
+          <div class="r-tags">
+            <span class="r-tag fit lean"><span class="dot"></span>健身 · 极友好，减脂首选</span>
+            <span class="r-tag prep"><span class="dot"></span>备餐 · 尚可，鱼快做更好</span>
+          </div>
+        </div>
+        <div class="r-meta"><span class="r-time">11m</span><span class="r-time-k">快手</span><span class="arrow">→</span></div>
+      </a>
+    </li>
+    <li>
+      <a class="recipe-card" href="beef-recipe/jerk-fish.html">
+        <span class="r-emoji">🌶️</span>
+        <div class="r-body">
+          <div class="r-kicker">鱼 · 加勒比 · 4 人</div>
+          <h2>牙买加 Jerk 香料煎鱼</h2>
+          <p class="r-desc">薄白鱼柳裹满 jerk 香料煎香，表面焦脆、风味爆炸。3 分钟下锅的快手晚餐。</p>
+          <div class="r-tags">
+            <span class="r-tag fit lean"><span class="dot"></span>健身 · 极友好，注意钠</span>
+            <span class="r-tag prep low"><span class="dot"></span>备餐 · 较低，现煎现吃</span>
+          </div>
+        </div>
+        <div class="r-meta"><span class="r-time">6m</span><span class="r-time-k">快手</span><span class="arrow">→</span></div>
+      </a>
+    </li>
+    <li>
+      <a class="recipe-card" href="beef-recipe/crispy-skin-fish.html">
+        <span class="r-emoji">🍳</span>
+        <div class="r-body">
+          <div class="r-kicker">鱼 · 快手主菜 · 2 人</div>
+          <h2>脆皮煎鱼 Crispy Skin Fish</h2>
+          <p class="r-desc">皮干、油热、下锅轻压，每次都做出玻璃般酥脆的鱼皮。最快最香的煮鱼法。</p>
+          <div class="r-tags">
+            <span class="r-tag fit lean"><span class="dot"></span>健身 · 极友好，干净瘦蛋白</span>
+            <span class="r-tag prep low"><span class="dot"></span>备餐 · 低，现煎现吃</span>
+          </div>
+        </div>
+        <div class="r-meta"><span class="r-time">15m</span><span class="r-time-k">快手</span><span class="arrow">→</span></div>
       </a>
     </li>
   </ul>

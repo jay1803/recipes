@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>墨西哥手撕牛肉 配玉米饼</title>
+<title>慢烤牛臀盖 Picanha 配酱</title>
 <style>
   :root {
     --paper: #f4ede0;
@@ -36,52 +36,31 @@
 
   .sheet { max-width: 940px; margin: 0 auto; padding: 0 32px; }
 
-  /* ---------- BACK LINK ---------- */
   .back {
-    display: inline-block;
-    margin-top: 28px;
-    font-size: 0.76rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--rust);
-    text-decoration: none;
-    font-weight: 700;
+    display: inline-block; margin-top: 28px; font-size: 0.76rem;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--rust);
+    text-decoration: none; font-weight: 700;
   }
   .back:hover { color: var(--rust-deep); }
 
-  /* ---------- HERO ---------- */
-  header.hero {
-    padding: 30px 0 40px;
-    border-bottom: 3px double var(--line);
-    text-align: center;
-  }
+  header.hero { padding: 30px 0 40px; border-bottom: 3px double var(--line); text-align: center; }
   .eyebrow {
-    font-size: 0.72rem;
-    letter-spacing: 0.42em;
-    text-transform: uppercase;
-    color: var(--rust);
-    font-weight: 700;
-    margin-bottom: 22px;
+    font-size: 0.72rem; letter-spacing: 0.42em; text-transform: uppercase;
+    color: var(--rust); font-weight: 700; margin-bottom: 22px;
   }
   h1.title {
-    font-family: var(--serif);
-    font-weight: 700;
-    font-size: clamp(2.4rem, 6vw, 4.1rem);
-    line-height: 1.04;
-    letter-spacing: -0.01em;
-    margin-bottom: 18px;
+    font-family: var(--serif); font-weight: 700;
+    font-size: clamp(2.4rem, 6vw, 4.1rem); line-height: 1.04;
+    letter-spacing: -0.01em; margin-bottom: 18px;
   }
   h1.title .accent { color: var(--rust); font-style: italic; }
   .subtitle {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: clamp(1rem, 2.4vw, 1.3rem);
-    color: var(--ink-soft);
-    max-width: 580px;
-    margin: 0 auto 30px;
+    font-family: var(--serif); font-style: italic;
+    font-size: clamp(1rem, 2.4vw, 1.3rem); color: var(--ink-soft);
+    max-width: 600px; margin: 0 auto 30px;
   }
   .meta-strip { display: flex; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
-  .meta-item { padding: 4px 24px; border-right: 1px solid var(--line); text-align: center; }
+  .meta-item { padding: 4px 22px; border-right: 1px solid var(--line); text-align: center; }
   .meta-item:last-child { border-right: none; }
   .meta-item .k {
     display: block; font-size: 0.62rem; letter-spacing: 0.2em;
@@ -91,16 +70,11 @@
   .credit { margin-top: 30px; font-size: 0.78rem; color: var(--ink-soft); }
   .credit a { color: var(--rust); text-decoration: none; border-bottom: 1px solid var(--line); }
 
-  /* ---------- LAYOUT ---------- */
   .body-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
-    gap: 48px;
-    padding: 48px 0;
-    align-items: start;
+    display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+    gap: 48px; padding: 48px 0; align-items: start;
   }
 
-  /* ---------- INGREDIENTS ---------- */
   aside.ingredients { position: sticky; top: 24px; }
   .ing-block { margin-bottom: 34px; }
   .ing-head {
@@ -122,7 +96,6 @@
   }
   .opt { font-size: 0.7rem; color: var(--olive); font-style: italic; }
 
-  /* ---------- STEPS ---------- */
   .phase { margin-bottom: 46px; }
   .phase-tag {
     display: inline-block; font-size: 0.66rem; letter-spacing: 0.28em;
@@ -132,6 +105,7 @@
   .phase:nth-child(1) .phase-tag { background: var(--rust); }
   .phase:nth-child(2) .phase-tag { background: var(--gold); color: var(--ink); }
   .phase:nth-child(3) .phase-tag { background: var(--olive); }
+  .phase:nth-child(4) .phase-tag { background: var(--ink); }
   .phase h2 {
     font-family: var(--serif); font-size: clamp(1.5rem, 3.5vw, 2rem);
     font-weight: 700; margin-bottom: 6px; line-height: 1.1;
@@ -152,7 +126,6 @@
   ol.step-list li b { color: var(--rust-deep); }
   .temp { font-family: var(--serif); font-weight: 700; color: var(--olive); white-space: nowrap; }
 
-  /* ---------- TIPS ---------- */
   section.tips { border-top: 3px double var(--line); padding: 44px 0 20px; }
   .tips h2 { font-family: var(--serif); font-size: 1.8rem; text-align: center; margin-bottom: 8px; }
   .tips .lead {
@@ -222,7 +195,7 @@
   @media print {
     body { padding-bottom: 0; }
     aside.ingredients { position: static; }
-    .phase, .tip, li { page-break-inside: avoid; }
+    .phase, .tip, .macro, li { page-break-inside: avoid; }
     section.fitness, section.prep { page-break-inside: avoid; }
     .back { display: none; }
   }
@@ -234,56 +207,46 @@
   <a class="back" href="../index.html">← 返回菜谱合集</a>
 
   <header class="hero">
-    <div class="eyebrow">炖煮 · 一锅出 · 8–10 人份</div>
-    <h1 class="title">墨西哥手撕牛肉<br><span class="accent">配玉米饼</span></h1>
-    <p class="subtitle">浓郁、厚重、辣香的酱汁裹着软烂多汁的牛肉。一锅炖三小时，可做塔可、卷饼、芝士薄饼，怎么吃都行。</p>
+    <div class="eyebrow">反向煎烤 · 低温慢烤 · 8 人份</div>
+    <h1 class="title">慢烤牛臀盖<br><span class="accent">Picanha 配酱</span></h1>
+    <p class="subtitle">巴西烤肉名部位，肋眼级的多汁牛味却没有肋眼的价钱。低温慢烤 + 静置 + 最后猛火上色，做出由内到外均匀粉红、金黄脆皮油盖的完美烤牛肉。</p>
     <div class="meta-strip">
-      <div class="meta-item"><span class="k">准备</span><span class="v">20 分</span></div>
-      <div class="meta-item"><span class="k">炖煮</span><span class="v">3 小时</span></div>
-      <div class="meta-item"><span class="k">总计</span><span class="v">3h 20m</span></div>
-      <div class="meta-item"><span class="k">产量</span><span class="v">约 20 个塔可</span></div>
+      <div class="meta-item"><span class="k">烤箱温度</span><span class="v">140°C</span></div>
+      <div class="meta-item"><span class="k">慢烤</span><span class="v">70–90 分</span></div>
+      <div class="meta-item"><span class="k">起锅温度</span><span class="v">48°C</span></div>
+      <div class="meta-item"><span class="k">静置后</span><span class="v">56°C 五分熟</span></div>
     </div>
-    <p class="credit">改编自 RecipeTin Eats（Nagi）· <a href="https://www.recipetineats.com/mexican-shredded-beef-and-tacos/">Mexican Shredded Beef</a></p>
+    <p class="credit">改编自 RecipeTin Eats（Nagi）· <a href="https://www.recipetineats.com/rump-cap-roast-picanha-recipe/">Rump Cap Roast (Picanha)</a></p>
   </header>
 
   <div class="body-grid">
 
     <aside class="ingredients">
       <div class="ing-block">
-        <div class="ing-head"><span class="ico">🌶️</span> 香料粉</div>
+        <div class="ing-head"><span class="ico">🥩</span> 主料</div>
         <ul class="ing-list">
-          <li><span class="name">奇波雷辣椒粉（chipotle）</span><span class="qty">1½ 汤匙</span></li>
-          <li><span class="name">红椒粉（paprika）</span><span class="qty">1 汤匙</span></li>
-          <li><span class="name">干牛至（oregano）</span><span class="qty">1 汤匙</span></li>
-          <li><span class="name">多香果粉（allspice）</span><span class="qty">1 茶匙</span></li>
-          <li><span class="name">香菜籽粉（coriander）</span><span class="qty">1 茶匙</span></li>
-          <li><span class="name">洋葱粉 / 蒜粉</span><span class="qty">2 茶匙</span></li>
-          <li><span class="name">盐 · 黑胡椒</span><span class="qty">各 1 茶匙</span></li>
+          <li><span class="name">牛臀盖 / Picanha <span class="opt">去掉银皮</span></span><span class="qty">2 kg</span></li>
+          <li><span class="name">海盐片 <span class="opt">或粗盐 3½ 茶匙</span></span><span class="qty">5 茶匙</span></li>
+          <li><span class="name">黑胡椒</span><span class="qty">½ 茶匙</span></li>
+          <li><span class="name">油</span><span class="qty">不需要</span></li>
         </ul>
       </div>
       <div class="ing-block">
-        <div class="ing-head"><span class="ico">🥩</span> 牛肉 & 酱汁</div>
+        <div class="ing-head"><span class="ico">🥣</span> 蘸酱（任选）</div>
         <ul class="ing-list">
-          <li><span class="name">橄榄油</span><span class="qty">1–2 汤匙</span></li>
-          <li><span class="name">牛肩肉 / 牛腩 <span class="opt">切 4 块</span></span><span class="qty">1.5 kg</span></li>
-          <li><span class="name">大蒜（切末）</span><span class="qty">5 瓣</span></li>
-          <li><span class="name">洋葱（切丁）</span><span class="qty">1 个</span></li>
-          <li><span class="name">橙汁</span><span class="qty">185 ml</span></li>
-          <li><span class="name">青柠汁</span><span class="qty">2 汤匙</span></li>
-          <li><span class="name">番茄碎罐头</span><span class="qty">400 g</span></li>
-          <li><span class="name">牛 / 鸡高汤</span><span class="qty">500 ml</span></li>
-          <li><span class="name">水</span><span class="qty">125 ml</span></li>
-          <li><span class="name">盐 · 黑胡椒</span><span class="qty">适量</span></li>
+          <li><span class="name">黄油版 Chimichurri</span><span class="qty">推荐</span></li>
+          <li><span class="name">烤蒜帕玛森黄油</span><span class="qty">推荐</span></li>
+          <li><span class="name">经典 Chimichurri</span><span class="qty">—</span></li>
+          <li><span class="name">Béarnaise / 牛仔黄油</span><span class="qty">—</span></li>
+          <li><span class="name">奶油蘑菇酱 / 红酒酱</span><span class="qty">—</span></li>
+          <li><span class="name">第戎芥末 · 辣根酱</span><span class="qty">简便</span></li>
         </ul>
       </div>
       <div class="ing-block">
-        <div class="ing-head"><span class="ico">🌮</span> 塔可配料</div>
+        <div class="ing-head"><span class="ico">🌡️</span> 必备</div>
         <ul class="ing-list">
-          <li><span class="name">小玉米饼（加热）</span><span class="qty">适量</span></li>
-          <li><span class="name">牛油果片</span><span class="qty">适量</span></li>
-          <li><span class="name">墨西哥莎莎（Pico de Gallo）</span><span class="qty">适量</span></li>
-          <li><span class="name">擦丝奶酪 · 酸奶油</span><span class="qty">适量</span></li>
-          <li><span class="name">青柠角 · 香菜叶</span><span class="qty">适量</span></li>
+          <li><span class="name">肉用温度计 <span class="opt">这道菜的关键</span></span><span class="qty">必须</span></li>
+          <li><span class="name">烤架 + 烤盘</span><span class="qty">需要</span></li>
         </ul>
       </div>
     </aside>
@@ -292,36 +255,44 @@
 
       <div class="phase">
         <span class="phase-tag">第一步</span>
-        <h2>调香料 & 煎封牛肉</h2>
-        <p class="note">先煎出焦化外壳，锅底的褐色精华就是酱汁的灵魂。</p>
+        <h2>划油盖 & 抹盐</h2>
+        <p class="note">这块肉只需盐和胡椒——油盖自己会出油给肉增润，不用额外加油。</p>
         <ol class="step-list">
-          <li>把所有香料粉在碗里<b>混匀</b>。取 <b>4 茶匙</b>撒在牛肉上，按压使其附着（其余留着备用）。</li>
-          <li>大号厚底锅放橄榄油，<b>大火</b>烧热。牛肉分批下锅，<b>各面煎到深褐色</b>，盛出备用。</li>
-          <li>火转中火。如果锅显干，再补点橄榄油。</li>
+          <li>烤箱预热到 <span class="temp">140°C（285°F，风扇 120°C）</span>。牛肉表面用厨房纸<b>彻底擦干</b>（真空包装的尤其要擦）。</li>
+          <li>把油盖<b>划成约 2.5 cm 的菱形格</b>——刀要切进油层、但别切到肉。划格能让油更好地融化基底、肉更嫩、还快熟约一半时间。</li>
+          <li>肉的那面（底面和侧边）抹 <b>2 茶匙盐</b>和一半胡椒；翻过来把<b>剩下 3 茶匙盐</b>和胡椒揉进油盖。盐片融化后会形成脆壳。</li>
         </ol>
       </div>
 
       <div class="phase">
         <span class="phase-tag">第二步</span>
-        <h2>炝锅 & 慢炖</h2>
-        <p class="note">酸味果汁炝锅刮起焦香，再小火咕嘟到能撕开。</p>
+        <h2>低温慢烤到 48°C</h2>
+        <p class="note">低温慢烤换来由内到外均匀的粉红，而不是一圈灰色干肉。温度计是成败关键。</p>
         <ol class="step-list">
-          <li>下蒜末和洋葱丁，炒约 <b>3 分钟</b>至软。</li>
-          <li>倒入橙汁和青柠汁，<b>刮起锅底的褐色焦香</b>，让它融入汤汁。</li>
-          <li>加番茄碎、高汤、水和<b>剩下的香料粉</b>，拌匀，把牛肉放回锅里。</li>
-          <li>盖盖煮开，转小火让它<b>轻柔地咕嘟</b>（不要剧烈翻滚）。</li>
-          <li>炖 <b>2 小时</b>，然后揭盖再炖约 <b>30 分钟</b>，直到牛肉软到能撕开。</li>
+          <li>牛肉放在<b>烤架上</b>（架在烤盘里）。有探针温度计就插进<b>最厚处中心</b>，报警设到 48°C。</li>
+          <li>烤到中心 <span class="temp">48°C（118°F）</span>，约 <b>70–90 分钟</b>。这是"起锅温度"，比五分熟略低——静置时还会上升。</li>
+          <li>没有探针就<b>从 1 小时开始检查</b>。每块肉烤的时间都不同，别只看时间。</li>
         </ol>
       </div>
 
       <div class="phase">
         <span class="phase-tag">第三步</span>
-        <h2>撕肉 & 收汁</h2>
-        <p class="note">把肉撕成丝，酱汁收浓再拌回去，吸饱味道。</p>
+        <h2>静置 30 分钟</h2>
+        <p class="note">静置让肉汁回吸，切的时候才不会流一砧板。</p>
         <ol class="step-list">
-          <li>把牛肉从酱汁中捞出，用<b>两把叉子撕成丝</b>。</li>
-          <li>锅里酱汁<b>开盖小火再煮 10–15 分钟</b>收浓到喜欢的稠度，按口味加盐。<span class="opt">想更顺滑可用料理棒打成泥。</span></li>
-          <li>把牛肉丝拌回酱汁里（可留一些酱汁淋在塔可上）。盛入大盘即可。</li>
+          <li>从烤箱取出，<b>不要盖</b>，在台面静置 <b>30–40 分钟</b>。</li>
+          <li>中心温度会回升到 <span class="temp">56°C（133°F）</span>，正好五分熟。<b>53–61°C 之间都很好</b>，粉嫩多汁，不必纠结精确温度。</li>
+        </ol>
+      </div>
+
+      <div class="phase">
+        <span class="phase-tag">第四步</span>
+        <h2>猛火上色 & 薄切</h2>
+        <p class="note">上桌前 3 分钟把油盖烤到金黄油亮，逆转放凉后那层发白发硬的样子。</p>
+        <ol class="step-list">
+          <li>静置过半时，把<b>上火（broiler）开到最大</b>预热，调整层架让油盖距热源约 12 cm。</li>
+          <li>把牛肉送进去<b>烤 2–3 分钟</b>至油盖金黄微脆。盯紧别烤过——最多 3 分钟就拿出，否则会烤出一圈过熟的肉。</li>
+          <li>无需再次静置，<b>逆纹薄切成约 0.8 cm 厚</b>（瓦古牛可到 1.25 cm）。这块肉不适合切厚片，薄切才嫩。配上喜欢的酱即可。</li>
         </ol>
       </div>
 
@@ -330,31 +301,31 @@
 
   <section class="tips">
     <h2>厨房备忘</h2>
-    <p class="lead">来自原作者的实用提示</p>
+    <p class="lead">把这块"性价比之王"做对的关键</p>
     <div class="tip-grid">
       <div class="tip">
-        <h3>怎么组装塔可</h3>
-        <p>温热的小玉米饼里放牛肉，配牛油果片、莎莎、擦丝奶酪、酸奶油、青柠角和香菜叶。</p>
+        <h3>温度计不是可选项</h3>
+        <p>臀盖脂肪不像肋眼那样多，<b>一旦过了五分熟就会变柴</b>。它不像贵价部位那么宽容，所以温度计是必备。</p>
       </div>
       <div class="tip">
-        <h3>辣度自己调</h3>
-        <p>微辣：奇波雷粉减到 2 茶匙~1 汤匙，加 1 茶匙香菜籽粉和 1 茶匙孜然。中辣：1.5 汤匙。够劲：2 汤匙。</p>
+        <h3>记得去银皮</h3>
+        <p>肉那面如果有半透明的"银皮"要<b>切掉</b>，否则煮后发韧。注意有时它藏在油盖下面。</p>
       </div>
       <div class="tip">
-        <h3>其他做法</h3>
-        <p>慢炖锅低温 8 小时；高压锅 / Instant Pot 高压 50 分钟；或烤箱 160°C 加盖烤 3–3.5 小时。</p>
+        <h3>用盐片，不是油</h3>
+        <p>油盖会出油自润，<b>不用加油</b>。盐用<b>片状海盐</b>更好——铺在表面融化成脆壳，覆盖更均匀又不会太咸。</p>
       </div>
       <div class="tip">
-        <h3>保存与回热</h3>
-        <p>冷冻或冷藏时<b>肉和酱汁分开存</b>，否则肉容易变糊。回热时分别加热，最后再拌一起。</p>
+        <h3>能保温一小时</h3>
+        <p>烤好后台面能<b>保温一个多小时</b>，正好腾出烤箱做配菜。上桌前再用上火烤 3 分钟把油盖回温到油亮。</p>
       </div>
       <div class="tip">
-        <h3>买不到奇波雷粉？</h3>
-        <p>用烟熏红椒粉 + 孜然 + 卡宴辣椒粉，各 ½ 汤匙左右替代。</p>
+        <h3>不要重新加热</h3>
+        <p>剩肉冷藏可放 4 天，但<b>别重新加热</b>（怎么热都回不来、粉色会变灰）。直接逆纹切超薄片做冷切三明治最佳。</p>
       </div>
       <div class="tip">
-        <h3>这道菜很宽容</h3>
-        <p>多炖 1 小时也没问题，依然好吃。2 小时后每隔 30 分钟检查一次是否能撕开即可。</p>
+        <h3>为什么不做肉汁 gravy</h3>
+        <p>这道菜没有煎锅焦底也没有烤盘油汁，做不出好 gravy。与其凑合，不如配一款好酱（如黄油 chimichurri）。</p>
       </div>
     </div>
   </section>
@@ -364,39 +335,39 @@
       <div class="lens-top">
         <span class="ico">💪</span>
         <h2>健身视角</h2>
-        <span class="lens-verdict">肉很友好 · 看你怎么配</span>
+        <span class="lens-verdict">很适合日常</span>
       </div>
-      <p><b>手撕牛肉本身</b>对健身很友好：用牛肩/牛腩慢炖，每份（约 1/8，仅肉）约 <b>54 g 蛋白质、13 g 脂肪、7 g 碳水</b>，热量约 372 大卡。高蛋白、低碳，是很好的<b>日常蛋白来源</b>。</p>
+      <p>这道菜对健身饮食相当友好。<b>只用盐和胡椒、零油烹饪</b>，又是相对瘦的牛肉部位——每份（约 1/8，仅肉不含酱）约 <b>55 g 蛋白质、8 g 脂肪、几乎零碳水</b>，热量约 310 大卡。高蛋白、低碳、脂肪适中，很适合作为<b>增肌或减脂期的主力蛋白来源</b>。</p>
       <div class="macro-row">
-        <div class="macro"><div class="mv">372</div><div class="mk">大卡</div></div>
-        <div class="macro"><div class="mv">54 g</div><div class="mk">蛋白质</div></div>
-        <div class="macro"><div class="mv">13 g</div><div class="mk">脂肪</div></div>
-        <div class="macro"><div class="mv">7 g</div><div class="mk">碳水</div></div>
+        <div class="macro"><div class="mv">310</div><div class="mk">大卡</div></div>
+        <div class="macro"><div class="mv">55 g</div><div class="mk">蛋白质</div></div>
+        <div class="macro"><div class="mv">8 g</div><div class="mk">脂肪</div></div>
+        <div class="macro"><div class="mv">~0 g</div><div class="mk">碳水</div></div>
       </div>
-      <p>能不能当日常餐，<b>关键在怎么吃</b>：单吃牛肉或配米饭、生菜、莎莎都很清爽；做成<b>塔可/卷饼/芝士薄饼</b>时，玉米饼、奶酪、酸奶油会把碳水脂肪叠上去，更偏"解馋"。日常多用<b>牛肉+蔬菜+少量主食</b>，注意钠（每份约 600 mg）。</p>
-      <p class="micro">数据来自原菜谱营养表（每份按 8 份计，仅牛肉、不含玉米饼和配料）。仅供参考。</p>
+      <p>需要留意的是<b>钠</b>：油盖抹了不少盐，每份约 1600 mg。日常吃可以<b>少抹一点盐、少蘸高钠酱</b>。脂肪集中在油盖上，<b>想更精瘦就少吃油盖、多吃瘦肉部分</b>。配蔬菜和复合碳水（红薯、糙米）就是均衡训练餐。</p>
+      <p class="micro">数据来自原菜谱营养表（每份按 8 份计，仅肉含油盖、不含酱）。仅供参考。</p>
     </section>
 
     <section class="prep">
       <div class="lens-top">
         <span class="ico">🥡</span>
         <h2>备餐友好度</h2>
-        <span class="lens-verdict">非常适合 · 备餐神器</span>
+        <span class="lens-verdict">一般 · 现烤现吃最佳</span>
       </div>
-      <p>这道几乎是<b>为批量备餐而生</b>——原方一锅就够 20–25 个塔可、8–10 人份。手撕牛肉百搭，能做塔可、卷饼、芝士薄饼、配饭配沙拉，一周不重样。</p>
+      <p>这道<b>不太适合批量备餐</b>。臀盖是讲究火候的烤肉，原作者明确说<b>剩肉别重新加热</b>——怎么热都回不来，粉色会变灰。它的魅力就在刚烤好那一刻的均匀粉嫩和油亮脆盖。</p>
       <ul class="prep-facts">
-        <li><span class="pk">冷藏保存</span><span class="pv">肉酱分开 4 天内</span></li>
-        <li><span class="pk">冷冻保存</span><span class="pv">数月</span></li>
-        <li><span class="pk">风味随时间</span><span class="pv">隔天更入味</span></li>
-        <li><span class="pk">回热</span><span class="pv">微波 / 烤箱</span></li>
+        <li><span class="pk">冷藏保存</span><span class="pv">整块 4 天</span></li>
+        <li><span class="pk">重新加热</span><span class="pv">不建议</span></li>
+        <li><span class="pk">最佳吃法</span><span class="pv">现烤现吃</span></li>
+        <li><span class="pk">剩肉妙用</span><span class="pv">切薄片做三明治</span></li>
       </ul>
-      <p>原作者的关键提示：<b>肉和酱汁分开存</b>，否则肉容易泡糊（尤其解冻后）。回热时<b>分别加热再拌一起</b>。想吃一两周就<b>加倍下料炖一大锅</b>，分装单份冷藏/冷冻。吃法随心切换，是合集里最灵活的备餐选择之一。</p>
+      <p>如果有剩，<b>整块冷藏、别切</b>，吃的时候<b>逆纹切超薄片</b>（像熟食冷切）做冷三明治最佳——这是它唯一推荐的"隔天吃法"。想周末备餐吃一周，本合集里的<b>炖菜类（adobo、手撕牛肉）更合适</b>。</p>
       <p class="micro">保存与回热建议来自原菜谱。</p>
     </section>
   </div>
 
   <footer class="foot">
-    原始食谱 · <a href="https://www.recipetineats.com/mexican-shredded-beef-and-tacos/">RecipeTin Eats — Mexican Shredded Beef</a>
+    原始食谱 · <a href="https://www.recipetineats.com/rump-cap-roast-picanha-recipe/">RecipeTin Eats — Rump Cap Roast (Picanha)</a>
   </footer>
 
 </div>

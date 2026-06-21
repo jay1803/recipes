@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>墨西哥手撕牛肉 配玉米饼</title>
+<title>法式猎人鸡 Chicken Chasseur</title>
 <style>
   :root {
     --paper: #f4ede0;
@@ -36,52 +36,31 @@
 
   .sheet { max-width: 940px; margin: 0 auto; padding: 0 32px; }
 
-  /* ---------- BACK LINK ---------- */
   .back {
-    display: inline-block;
-    margin-top: 28px;
-    font-size: 0.76rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--rust);
-    text-decoration: none;
-    font-weight: 700;
+    display: inline-block; margin-top: 28px; font-size: 0.76rem;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--rust);
+    text-decoration: none; font-weight: 700;
   }
   .back:hover { color: var(--rust-deep); }
 
-  /* ---------- HERO ---------- */
-  header.hero {
-    padding: 30px 0 40px;
-    border-bottom: 3px double var(--line);
-    text-align: center;
-  }
+  header.hero { padding: 30px 0 40px; border-bottom: 3px double var(--line); text-align: center; }
   .eyebrow {
-    font-size: 0.72rem;
-    letter-spacing: 0.42em;
-    text-transform: uppercase;
-    color: var(--rust);
-    font-weight: 700;
-    margin-bottom: 22px;
+    font-size: 0.72rem; letter-spacing: 0.42em; text-transform: uppercase;
+    color: var(--rust); font-weight: 700; margin-bottom: 22px;
   }
   h1.title {
-    font-family: var(--serif);
-    font-weight: 700;
-    font-size: clamp(2.4rem, 6vw, 4.1rem);
-    line-height: 1.04;
-    letter-spacing: -0.01em;
-    margin-bottom: 18px;
+    font-family: var(--serif); font-weight: 700;
+    font-size: clamp(2.4rem, 6vw, 4.1rem); line-height: 1.04;
+    letter-spacing: -0.01em; margin-bottom: 18px;
   }
   h1.title .accent { color: var(--rust); font-style: italic; }
   .subtitle {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: clamp(1rem, 2.4vw, 1.3rem);
-    color: var(--ink-soft);
-    max-width: 580px;
-    margin: 0 auto 30px;
+    font-family: var(--serif); font-style: italic;
+    font-size: clamp(1rem, 2.4vw, 1.3rem); color: var(--ink-soft);
+    max-width: 600px; margin: 0 auto 30px;
   }
   .meta-strip { display: flex; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
-  .meta-item { padding: 4px 24px; border-right: 1px solid var(--line); text-align: center; }
+  .meta-item { padding: 4px 22px; border-right: 1px solid var(--line); text-align: center; }
   .meta-item:last-child { border-right: none; }
   .meta-item .k {
     display: block; font-size: 0.62rem; letter-spacing: 0.2em;
@@ -91,16 +70,11 @@
   .credit { margin-top: 30px; font-size: 0.78rem; color: var(--ink-soft); }
   .credit a { color: var(--rust); text-decoration: none; border-bottom: 1px solid var(--line); }
 
-  /* ---------- LAYOUT ---------- */
   .body-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
-    gap: 48px;
-    padding: 48px 0;
-    align-items: start;
+    display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+    gap: 48px; padding: 48px 0; align-items: start;
   }
 
-  /* ---------- INGREDIENTS ---------- */
   aside.ingredients { position: sticky; top: 24px; }
   .ing-block { margin-bottom: 34px; }
   .ing-head {
@@ -122,7 +96,6 @@
   }
   .opt { font-size: 0.7rem; color: var(--olive); font-style: italic; }
 
-  /* ---------- STEPS ---------- */
   .phase { margin-bottom: 46px; }
   .phase-tag {
     display: inline-block; font-size: 0.66rem; letter-spacing: 0.28em;
@@ -132,6 +105,7 @@
   .phase:nth-child(1) .phase-tag { background: var(--rust); }
   .phase:nth-child(2) .phase-tag { background: var(--gold); color: var(--ink); }
   .phase:nth-child(3) .phase-tag { background: var(--olive); }
+  .phase:nth-child(4) .phase-tag { background: var(--ink); }
   .phase h2 {
     font-family: var(--serif); font-size: clamp(1.5rem, 3.5vw, 2rem);
     font-weight: 700; margin-bottom: 6px; line-height: 1.1;
@@ -152,7 +126,6 @@
   ol.step-list li b { color: var(--rust-deep); }
   .temp { font-family: var(--serif); font-weight: 700; color: var(--olive); white-space: nowrap; }
 
-  /* ---------- TIPS ---------- */
   section.tips { border-top: 3px double var(--line); padding: 44px 0 20px; }
   .tips h2 { font-family: var(--serif); font-size: 1.8rem; text-align: center; margin-bottom: 8px; }
   .tips .lead {
@@ -222,7 +195,7 @@
   @media print {
     body { padding-bottom: 0; }
     aside.ingredients { position: static; }
-    .phase, .tip, li { page-break-inside: avoid; }
+    .phase, .tip, .macro, li { page-break-inside: avoid; }
     section.fitness, section.prep { page-break-inside: avoid; }
     .back { display: none; }
   }
@@ -234,56 +207,52 @@
   <a class="back" href="../index.html">← 返回菜谱合集</a>
 
   <header class="hero">
-    <div class="eyebrow">炖煮 · 一锅出 · 8–10 人份</div>
-    <h1 class="title">墨西哥手撕牛肉<br><span class="accent">配玉米饼</span></h1>
-    <p class="subtitle">浓郁、厚重、辣香的酱汁裹着软烂多汁的牛肉。一锅炖三小时，可做塔可、卷饼、芝士薄饼，怎么吃都行。</p>
+    <div class="eyebrow">法式经典 · 一锅炖 · 4 人份</div>
+    <h1 class="title">法式猎人鸡<br><span class="accent">Chicken Chasseur</span></h1>
+    <p class="subtitle">"Chasseur"是法语"猎人"。带骨带皮鸡块煎到金黄，再用蘑菇番茄白兰地酱炖到酥软，最后撒龙蒿——朴实暖心的法式家常菜，一小时就能上桌。</p>
     <div class="meta-strip">
-      <div class="meta-item"><span class="k">准备</span><span class="v">20 分</span></div>
-      <div class="meta-item"><span class="k">炖煮</span><span class="v">3 小时</span></div>
-      <div class="meta-item"><span class="k">总计</span><span class="v">3h 20m</span></div>
-      <div class="meta-item"><span class="k">产量</span><span class="v">约 20 个塔可</span></div>
+      <div class="meta-item"><span class="k">准备</span><span class="v">15 分</span></div>
+      <div class="meta-item"><span class="k">烹饪</span><span class="v">45 分</span></div>
+      <div class="meta-item"><span class="k">总计</span><span class="v">1 小时</span></div>
+      <div class="meta-item"><span class="k">用鸡</span><span class="v">带骨带皮</span></div>
     </div>
-    <p class="credit">改编自 RecipeTin Eats（Nagi）· <a href="https://www.recipetineats.com/mexican-shredded-beef-and-tacos/">Mexican Shredded Beef</a></p>
+    <p class="credit">改编自 RecipeTin Eats（Chef JB）· <a href="https://www.recipetineats.com/chicken-chasseur/">Chicken Chasseur</a></p>
   </header>
 
   <div class="body-grid">
 
     <aside class="ingredients">
       <div class="ing-block">
-        <div class="ing-head"><span class="ico">🌶️</span> 香料粉</div>
+        <div class="ing-head"><span class="ico">🍗</span> 鸡肉</div>
         <ul class="ing-list">
-          <li><span class="name">奇波雷辣椒粉（chipotle）</span><span class="qty">1½ 汤匙</span></li>
-          <li><span class="name">红椒粉（paprika）</span><span class="qty">1 汤匙</span></li>
-          <li><span class="name">干牛至（oregano）</span><span class="qty">1 汤匙</span></li>
-          <li><span class="name">多香果粉（allspice）</span><span class="qty">1 茶匙</span></li>
-          <li><span class="name">香菜籽粉（coriander）</span><span class="qty">1 茶匙</span></li>
-          <li><span class="name">洋葱粉 / 蒜粉</span><span class="qty">2 茶匙</span></li>
-          <li><span class="name">盐 · 黑胡椒</span><span class="qty">各 1 茶匙</span></li>
+          <li><span class="name">鸡腿（带骨带皮）<span class="opt">每块约 250 g</span></span><span class="qty">4 块</span></li>
+          <li><span class="name">琵琶腿（drumstick）</span><span class="qty">4 只</span></li>
+          <li><span class="name">盐</span><span class="qty">¾ 茶匙</span></li>
+          <li><span class="name">黑胡椒</span><span class="qty">½ 茶匙</span></li>
+          <li><span class="name">面粉</span><span class="qty">3 汤匙</span></li>
+          <li><span class="name">植物油</span><span class="qty">2 汤匙</span></li>
+          <li><span class="name">黄油</span><span class="qty">30 g</span></li>
         </ul>
       </div>
       <div class="ing-block">
-        <div class="ing-head"><span class="ico">🥩</span> 牛肉 & 酱汁</div>
+        <div class="ing-head"><span class="ico">🍄</span> 猎人酱</div>
         <ul class="ing-list">
-          <li><span class="name">橄榄油</span><span class="qty">1–2 汤匙</span></li>
-          <li><span class="name">牛肩肉 / 牛腩 <span class="opt">切 4 块</span></span><span class="qty">1.5 kg</span></li>
-          <li><span class="name">大蒜（切末）</span><span class="qty">5 瓣</span></li>
-          <li><span class="name">洋葱（切丁）</span><span class="qty">1 个</span></li>
-          <li><span class="name">橙汁</span><span class="qty">185 ml</span></li>
-          <li><span class="name">青柠汁</span><span class="qty">2 汤匙</span></li>
-          <li><span class="name">番茄碎罐头</span><span class="qty">400 g</span></li>
-          <li><span class="name">牛 / 鸡高汤</span><span class="qty">500 ml</span></li>
-          <li><span class="name">水</span><span class="qty">125 ml</span></li>
+          <li><span class="name">白蘑菇（切片）</span><span class="qty">400 g</span></li>
+          <li><span class="name">洋葱（切片）</span><span class="qty">2 个</span></li>
+          <li><span class="name">大蒜（切末）</span><span class="qty">3 瓣</span></li>
+          <li><span class="name">白兰地 <span class="opt">招牌风味</span></span><span class="qty">¼ 杯</span></li>
+          <li><span class="name">白葡萄酒 <span class="opt">霞多丽</span></span><span class="qty">½ 杯</span></li>
+          <li><span class="name">番茄膏</span><span class="qty">3 汤匙</span></li>
+          <li><span class="name">牛肉高汤 <span class="opt">低钠</span></span><span class="qty">2½ 杯</span></li>
           <li><span class="name">盐 · 黑胡椒</span><span class="qty">适量</span></li>
+          <li><span class="name">冰黄油（切丁）<span class="opt">收尾用</span></span><span class="qty">30 g</span></li>
+          <li><span class="name">新鲜龙蒿（切碎）</span><span class="qty">1 汤匙</span></li>
         </ul>
       </div>
       <div class="ing-block">
-        <div class="ing-head"><span class="ico">🌮</span> 塔可配料</div>
+        <div class="ing-head"><span class="ico">🥔</span> 佐餐</div>
         <ul class="ing-list">
-          <li><span class="name">小玉米饼（加热）</span><span class="qty">适量</span></li>
-          <li><span class="name">牛油果片</span><span class="qty">适量</span></li>
-          <li><span class="name">墨西哥莎莎（Pico de Gallo）</span><span class="qty">适量</span></li>
-          <li><span class="name">擦丝奶酪 · 酸奶油</span><span class="qty">适量</span></li>
-          <li><span class="name">青柠角 · 香菜叶</span><span class="qty">适量</span></li>
+          <li><span class="name">奶油薯泥 <span class="opt">或米饭 / 小意面</span></span><span class="qty">适量</span></li>
         </ul>
       </div>
     </aside>
@@ -292,36 +261,44 @@
 
       <div class="phase">
         <span class="phase-tag">第一步</span>
-        <h2>调香料 & 煎封牛肉</h2>
-        <p class="note">先煎出焦化外壳，锅底的褐色精华就是酱汁的灵魂。</p>
+        <h2>煎香鸡块</h2>
+        <p class="note">金黄脆皮是整道菜风味的地基——别赶时间。带皮鸡下锅油会溅，小心。</p>
         <ol class="step-list">
-          <li>把所有香料粉在碗里<b>混匀</b>。取 <b>4 茶匙</b>撒在牛肉上，按压使其附着（其余留着备用）。</li>
-          <li>大号厚底锅放橄榄油，<b>大火</b>烧热。牛肉分批下锅，<b>各面煎到深褐色</b>，盛出备用。</li>
-          <li>火转中火。如果锅显干，再补点橄榄油。</li>
+          <li>鸡块用厨房纸<b>彻底擦干</b>，两面抹盐和胡椒，再<b>裹一层面粉</b>抖掉多余的（帮上色，也帮稠化酱汁）。</li>
+          <li>大煎锅（约 30 cm，带盖）中大火热油，黄油融化起泡后，鸡腿<b>皮朝下煎 5 分钟</b>至金黄，翻面再煎 1 分钟，盛出。</li>
+          <li>琵琶腿下锅<b>煎三面</b>（每面约 2 分钟）至上色，一起盛出备用。</li>
         </ol>
       </div>
 
       <div class="phase">
         <span class="phase-tag">第二步</span>
-        <h2>炝锅 & 慢炖</h2>
-        <p class="note">酸味果汁炝锅刮起焦香，再小火咕嘟到能撕开。</p>
+        <h2>炒料 & 起酱</h2>
+        <p class="note">白兰地是猎人鸡的灵魂，刮起锅底焦褐物是酱汁浓郁的关键。</p>
         <ol class="step-list">
-          <li>下蒜末和洋葱丁，炒约 <b>3 分钟</b>至软。</li>
-          <li>倒入橙汁和青柠汁，<b>刮起锅底的褐色焦香</b>，让它融入汤汁。</li>
-          <li>加番茄碎、高汤、水和<b>剩下的香料粉</b>，拌匀，把牛肉放回锅里。</li>
-          <li>盖盖煮开，转小火让它<b>轻柔地咕嘟</b>（不要剧烈翻滚）。</li>
-          <li>炖 <b>2 小时</b>，然后揭盖再炖约 <b>30 分钟</b>，直到牛肉软到能撕开。</li>
+          <li>同一口锅转大火，下<b>蘑菇和洋葱炒约 5 分钟</b>至蘑菇出水变软，加蒜末再炒 30 秒出香。</li>
+          <li>倒入<b>白兰地</b>：想要的话可点火 flambé（约 10 秒自然熄灭），或直接让它<b>冒泡 20–30 秒</b>烧掉酒精。</li>
+          <li>加白葡萄酒<b>收汁一半</b>，用木勺<b>刮起锅底焦褐物（fond）</b>。拌入番茄膏炒 1 分钟，再加牛肉高汤、盐、胡椒。</li>
         </ol>
       </div>
 
       <div class="phase">
         <span class="phase-tag">第三步</span>
-        <h2>撕肉 & 收汁</h2>
-        <p class="note">把肉撕成丝，酱汁收浓再拌回去，吸饱味道。</p>
+        <h2>回锅慢炖</h2>
+        <p class="note">先盖盖再开盖，让酱汁慢慢收浓、鸡肉炖到酥软。</p>
         <ol class="step-list">
-          <li>把牛肉从酱汁中捞出，用<b>两把叉子撕成丝</b>。</li>
-          <li>锅里酱汁<b>开盖小火再煮 10–15 分钟</b>收浓到喜欢的稠度，按口味加盐。<span class="opt">想更顺滑可用料理棒打成泥。</span></li>
-          <li>把牛肉丝拌回酱汁里（可留一些酱汁淋在塔可上）。盛入大盘即可。</li>
+          <li>鸡块<b>皮朝上</b>放回锅里，嵌进酱汁。烧到<b>稳定的微滚</b>（不快不慢），转中小火。</li>
+          <li><b>加盖炖 10 分钟</b>，然后揭盖<b>再炖 20 分钟</b>，让酱汁收浓、鸡肉熟透。</li>
+        </ol>
+      </div>
+
+      <div class="phase">
+        <span class="phase-tag">第四步</span>
+        <h2>乳化收尾 & 上桌</h2>
+        <p class="note">最后用冰黄油乳化（monter au beurre），让酱汁油亮顺滑——餐厅级的手法。</p>
+        <ol class="step-list">
+          <li>把鸡块捞出。酱汁转中大火<b>再收 3 分钟</b>。</li>
+          <li><b>关火</b>，分两次撒入<b>冰黄油丁</b>，每次搅到融化——酱汁会变得丝滑油亮、略微浓稠。</li>
+          <li>酱汁重新<b>小火微滚</b>，鸡块放回，撒上<b>新鲜龙蒿</b>，连锅上桌，配奶油薯泥。</li>
         </ol>
       </div>
 
@@ -330,31 +307,31 @@
 
   <section class="tips">
     <h2>厨房备忘</h2>
-    <p class="lead">来自原作者的实用提示</p>
+    <p class="lead">来自 Chef JB 的提示</p>
     <div class="tip-grid">
       <div class="tip">
-        <h3>怎么组装塔可</h3>
-        <p>温热的小玉米饼里放牛肉，配牛油果片、莎莎、擦丝奶酪、酸奶油、青柠角和香菜叶。</p>
+        <h3>带骨带皮最香</h3>
+        <p>带骨带皮鸡块最适合这道菜——皮煎香增味、带骨保持多汁。用去骨鸡腿或鸡胸也行，相应<b>缩短炖煮时间</b>。</p>
       </div>
       <div class="tip">
-        <h3>辣度自己调</h3>
-        <p>微辣：奇波雷粉减到 2 茶匙~1 汤匙，加 1 茶匙香菜籽粉和 1 茶匙孜然。中辣：1.5 汤匙。够劲：2 汤匙。</p>
+        <h3>白兰地别买贵的</h3>
+        <p>用<b>便宜白兰地</b>就好，下锅后辣味烧掉、只留温润香气。不喝酒可省略，但会少一点猎人鸡的灵魂味。</p>
       </div>
       <div class="tip">
-        <h3>其他做法</h3>
-        <p>慢炖锅低温 8 小时；高压锅 / Instant Pot 高压 50 分钟；或烤箱 160°C 加盖烤 3–3.5 小时。</p>
+        <h3>为什么用牛肉高汤</h3>
+        <p>炖鸡却用<b>牛肉高汤</b>——这样酱汁更深沉浓郁、强度更够。有自制高汤更佳。</p>
       </div>
       <div class="tip">
-        <h3>保存与回热</h3>
-        <p>冷冻或冷藏时<b>肉和酱汁分开存</b>，否则肉容易变糊。回热时分别加热，最后再拌一起。</p>
+        <h3>黄油一定要冰的</h3>
+        <p>收尾乳化的黄油<b>必须冰、切小丁</b>，才能慢慢均匀融化、乳化稠化又油亮，而不是化成一摊油。</p>
       </div>
       <div class="tip">
-        <h3>买不到奇波雷粉？</h3>
-        <p>用烟熏红椒粉 + 孜然 + 卡宴辣椒粉，各 ½ 汤匙左右替代。</p>
+        <h3>龙蒿是点睛</h3>
+        <p>龙蒿是让它成为"Chasseur"而非普通炖菜的<b>招牌香草</b>。买不到可用欧芹加一点碾碎的茴香籽替代。</p>
       </div>
       <div class="tip">
-        <h3>这道菜很宽容</h3>
-        <p>多炖 1 小时也没问题，依然好吃。2 小时后每隔 30 分钟检查一次是否能撕开即可。</p>
+        <h3>提前做更入味</h3>
+        <p>隔天更好吃，<b>可冷冻 3 个月</b>。回热时小火慢慢加热，酱汁太稠就加点高汤或水。</p>
       </div>
     </div>
   </section>
@@ -364,39 +341,39 @@
       <div class="lens-top">
         <span class="ico">💪</span>
         <h2>健身视角</h2>
-        <span class="lens-verdict">肉很友好 · 看你怎么配</span>
+        <span class="lens-verdict">蛋白高 · 看部位和收尾</span>
       </div>
-      <p><b>手撕牛肉本身</b>对健身很友好：用牛肩/牛腩慢炖，每份（约 1/8，仅肉）约 <b>54 g 蛋白质、13 g 脂肪、7 g 碳水</b>，热量约 372 大卡。高蛋白、低碳，是很好的<b>日常蛋白来源</b>。</p>
+      <p>蛋白质很足——每份（一整只鸡腿+琵琶腿）约 <b>53 g 蛋白</b>。但这份用的是<b>带骨带皮鸡腿</b>，加上煎用的油、收尾的黄油，脂肪偏高：每份约 <b>854 大卡、57 g 脂肪（含 18 g 饱和脂肪）</b>，钠也接近每日量的 6 成。按原方做，它更接近<b>丰盛的周末家常菜</b>。</p>
       <div class="macro-row">
-        <div class="macro"><div class="mv">372</div><div class="mk">大卡</div></div>
-        <div class="macro"><div class="mv">54 g</div><div class="mk">蛋白质</div></div>
-        <div class="macro"><div class="mv">13 g</div><div class="mk">脂肪</div></div>
-        <div class="macro"><div class="mv">7 g</div><div class="mk">碳水</div></div>
+        <div class="macro"><div class="mv">854</div><div class="mk">大卡</div></div>
+        <div class="macro"><div class="mv">53 g</div><div class="mk">蛋白质</div></div>
+        <div class="macro"><div class="mv">57 g</div><div class="mk">脂肪</div></div>
+        <div class="macro"><div class="mv">18 g</div><div class="mk">碳水</div></div>
       </div>
-      <p>能不能当日常餐，<b>关键在怎么吃</b>：单吃牛肉或配米饭、生菜、莎莎都很清爽；做成<b>塔可/卷饼/芝士薄饼</b>时，玉米饼、奶酪、酸奶油会把碳水脂肪叠上去，更偏"解馋"。日常多用<b>牛肉+蔬菜+少量主食</b>，注意钠（每份约 600 mg）。</p>
-      <p class="micro">数据来自原菜谱营养表（每份按 8 份计，仅牛肉、不含玉米饼和配料）。仅供参考。</p>
+      <p>想<b>做成日常训练餐</b>很容易：换成<b>去皮鸡腿或鸡胸</b>（原菜谱给了做法）能大幅砍掉脂肪和热量，<b>收尾黄油减半或省略</b>，配米饭/蔬菜而非奶油薯泥。鸡胸版尤其精瘦。</p>
+      <p class="micro">数据来自原菜谱营养表（每份按 4 份计，带骨带皮、含黄油，不含薯泥）。仅供参考。</p>
     </section>
 
     <section class="prep">
       <div class="lens-top">
         <span class="ico">🥡</span>
         <h2>备餐友好度</h2>
-        <span class="lens-verdict">非常适合 · 备餐神器</span>
+        <span class="lens-verdict">适合 · 隔天更好吃</span>
       </div>
-      <p>这道几乎是<b>为批量备餐而生</b>——原方一锅就够 20–25 个塔可、8–10 人份。手撕牛肉百搭，能做塔可、卷饼、芝士薄饼、配饭配沙拉，一周不重样。</p>
+      <p>很适合提前做——Chef JB 明确说<b>隔天一样美味</b>，是经典的可提前菜。一锅炖、酱汁浓郁，分批吃也不掉味。</p>
       <ul class="prep-facts">
-        <li><span class="pk">冷藏保存</span><span class="pv">肉酱分开 4 天内</span></li>
-        <li><span class="pk">冷冻保存</span><span class="pv">数月</span></li>
+        <li><span class="pk">冷藏保存</span><span class="pv">3–4 天</span></li>
+        <li><span class="pk">冷冻保存</span><span class="pv">3 个月</span></li>
         <li><span class="pk">风味随时间</span><span class="pv">隔天更入味</span></li>
-        <li><span class="pk">回热</span><span class="pv">微波 / 烤箱</span></li>
+        <li><span class="pk">回热</span><span class="pv">小火 + 加点高汤</span></li>
       </ul>
-      <p>原作者的关键提示：<b>肉和酱汁分开存</b>，否则肉容易泡糊（尤其解冻后）。回热时<b>分别加热再拌一起</b>。想吃一两周就<b>加倍下料炖一大锅</b>，分装单份冷藏/冷冻。吃法随心切换，是合集里最灵活的备餐选择之一。</p>
+      <p>批量做的小提示：<b>乳化收尾的冰黄油可以等回热时再加</b>（JB 说提前做的话冷藏前加冷黄油也行）。回热时<b>小火慢热，酱太稠就加点高汤或水</b>稀释。鸡肉带骨更耐放不柴，很适合分装。配的薯泥/米饭<b>分开存、现做</b>口感最好。</p>
       <p class="micro">保存与回热建议来自原菜谱。</p>
     </section>
   </div>
 
   <footer class="foot">
-    原始食谱 · <a href="https://www.recipetineats.com/mexican-shredded-beef-and-tacos/">RecipeTin Eats — Mexican Shredded Beef</a>
+    原始食谱 · <a href="https://www.recipetineats.com/chicken-chasseur/">RecipeTin Eats — Chicken Chasseur (Chef JB)</a>
   </footer>
 
 </div>
