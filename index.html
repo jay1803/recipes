@@ -84,8 +84,21 @@
     color: var(--ink-soft);
   }
   .count b { color: var(--rust-deep); font-size: 1.4rem; }
-  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .filter-groups { display: flex; flex-direction: column; gap: 10px; padding: 2px 0 26px; }
+  .filter-group { display: flex; align-items: flex-start; gap: 12px; }
+  .filter-group-label {
+    font-size: 0.64rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 700;
+    flex-shrink: 0;
+    width: 30px;
+    padding-top: 6px;
+  }
+  .tags { display: flex; flex: 1 1 0%; min-width: 0; gap: 8px 8px; flex-wrap: wrap; }
   .tag-pill {
+    font-family: inherit;
     font-size: 0.7rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -94,6 +107,36 @@
     padding: 4px 12px;
     border-radius: 20px;
     background: rgba(255,255,255,0.4);
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .tag-pill:hover { border-color: var(--rust); color: var(--rust-deep); }
+  .tag-pill.active {
+    background: var(--rust);
+    border-color: var(--rust-deep);
+    color: #fff;
+  }
+  .reset-filters {
+    font-family: inherit;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 4px 12px;
+    background: none;
+    cursor: pointer;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .reset-filters:hover { border-color: var(--rust); color: var(--rust-deep); }
+  .no-results {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--ink-soft);
+    text-align: center;
+    padding: 34px 24px;
+    border: 1.5px dashed var(--line);
+    border-radius: 4px;
   }
 
   /* ---------- RECIPE LIST ---------- */
@@ -250,38 +293,57 @@
   </header>
 
   <div class="bar">
-    <div class="count"><b>28</b> 道菜谱</div>
-    <div class="tags">
-      <span class="tag-pill">牛肉</span>
-      <span class="tag-pill">猪肉</span>
-      <span class="tag-pill">鸡肉</span>
-      <span class="tag-pill">羊肉</span>
-      <span class="tag-pill">鱼/海鲜</span>
-      <span class="tag-pill">慢烤</span>
-      <span class="tag-pill">炖煮</span>
-      <span class="tag-pill">咖喱</span>
-      <span class="tag-pill">汤</span>
-      <span class="tag-pill">沙拉</span>
-      <span class="tag-pill">一锅出</span>
-      <span class="tag-pill">快手</span>
-      <span class="tag-pill">法式</span>
-      <span class="tag-pill">意式</span>
-      <span class="tag-pill">墨西哥</span>
-      <span class="tag-pill">巴西</span>
-      <span class="tag-pill">菲律宾</span>
-      <span class="tag-pill">泰式</span>
-      <span class="tag-pill">日式</span>
-      <span class="tag-pill">非洲</span>
-      <span class="tag-pill">加勒比</span>
-      <span class="tag-pill">中东</span>
-      <span class="tag-pill">主菜</span>
+    <div class="count"><b id="visible-count">28</b> 道菜谱</div>
+    <button class="reset-filters" id="resetFilters" type="button" hidden>清除筛选 ✕</button>
+  </div>
+
+  <div class="filter-groups" id="filterGroups">
+    <div class="filter-group">
+      <span class="filter-group-label">食材</span>
+      <div class="tags">
+        <button class="tag-pill" type="button" data-tag="牛肉">牛肉</button>
+        <button class="tag-pill" type="button" data-tag="猪肉">猪肉</button>
+        <button class="tag-pill" type="button" data-tag="鸡肉">鸡肉</button>
+        <button class="tag-pill" type="button" data-tag="羊肉">羊肉</button>
+        <button class="tag-pill" type="button" data-tag="鱼/海鲜">鱼/海鲜</button>
+      </div>
+    </div>
+    <div class="filter-group">
+      <span class="filter-group-label">做法</span>
+      <div class="tags">
+        <button class="tag-pill" type="button" data-tag="慢烤">慢烤</button>
+        <button class="tag-pill" type="button" data-tag="炖煮">炖煮</button>
+        <button class="tag-pill" type="button" data-tag="咖喱">咖喱</button>
+        <button class="tag-pill" type="button" data-tag="汤">汤</button>
+        <button class="tag-pill" type="button" data-tag="沙拉">沙拉</button>
+        <button class="tag-pill" type="button" data-tag="一锅出">一锅出</button>
+        <button class="tag-pill" type="button" data-tag="快手">快手</button>
+        <button class="tag-pill" type="button" data-tag="主菜">主菜</button>
+      </div>
+    </div>
+    <div class="filter-group">
+      <span class="filter-group-label">菜系</span>
+      <div class="tags">
+        <button class="tag-pill" type="button" data-tag="法式">法式</button>
+        <button class="tag-pill" type="button" data-tag="意式">意式</button>
+        <button class="tag-pill" type="button" data-tag="墨西哥">墨西哥</button>
+        <button class="tag-pill" type="button" data-tag="巴西">巴西</button>
+        <button class="tag-pill" type="button" data-tag="菲律宾">菲律宾</button>
+        <button class="tag-pill" type="button" data-tag="泰式">泰式</button>
+        <button class="tag-pill" type="button" data-tag="日式">日式</button>
+        <button class="tag-pill" type="button" data-tag="非洲">非洲</button>
+        <button class="tag-pill" type="button" data-tag="加勒比">加勒比</button>
+        <button class="tag-pill" type="button" data-tag="中东">中东</button>
+      </div>
     </div>
   </div>
 
   <p class="legend">每道菜标注 <span class="r-tag fit"><span class="dot"></span>健身友好度</span> 和 <span class="r-tag prep"><span class="dot"></span>备餐友好度</span>，详情见各菜谱底部。</p>
 
+  <p class="no-results" id="noResults" hidden>没有符合条件的菜谱，试试换个标签。</p>
+
   <ul class="recipe-list">
-    <li>
+    <li data-tags="牛肉 主菜 慢烤">
       <a class="recipe-card" href="beef/low-and-slow-eye-of-round.html">
         <span class="r-emoji">🥩</span>
         <div class="r-body">
@@ -300,7 +362,7 @@
         </div>
       </a>
     </li>
-    <li>
+    <li data-tags="牛肉 墨西哥 炖煮">
       <a class="recipe-card" href="beef/mexican-shredded-beef-tacos.html">
         <span class="r-emoji">🌮</span>
         <div class="r-body">
@@ -319,7 +381,7 @@
         </div>
       </a>
     </li>
-    <li>
+    <li data-tags="牛肉 法式 炖煮">
       <a class="recipe-card" href="beef/boeuf-bourguignon-julia-child.html">
         <span class="r-emoji">🍷</span>
         <div class="r-body">
@@ -338,7 +400,7 @@
         </div>
       </a>
     </li>
-    <li>
+    <li data-tags="牛肉 巴西 慢烤">
       <a class="recipe-card" href="beef/rump-cap-roast-picanha.html">
         <span class="r-emoji">🔥</span>
         <div class="r-body">
@@ -357,7 +419,7 @@
         </div>
       </a>
     </li>
-    <li>
+    <li data-tags="鸡肉 法式 炖煮 一锅出">
       <a class="recipe-card" href="chicken/chicken-chasseur.html">
         <span class="r-emoji">🍗</span>
         <div class="r-body">
@@ -376,7 +438,7 @@
         </div>
       </a>
     </li>
-    <li>
+    <li data-tags="猪肉 菲律宾 炖煮">
       <a class="recipe-card" href="pork/filipino-pork-adobo.html">
         <span class="r-emoji">🍚</span>
         <div class="r-body">
@@ -395,7 +457,7 @@
         </div>
       </a>
     </li>
-    <li>
+    <li data-tags="羊肉 泰式 慢烤 咖喱">
       <a class="recipe-card" href="lamb/massaman-lamb-shoulder.html">
         <span class="r-emoji">🐑</span>
         <div class="r-body">
@@ -410,7 +472,7 @@
         <div class="r-meta"><span class="r-time">4h</span><span class="r-time-k">慢烤</span><span class="arrow">→</span></div>
       </a>
     </li>
-    <li>
+    <li data-tags="羊肉 慢烤">
       <a class="recipe-card" href="lamb/12-hour-roast-lamb.html">
         <span class="r-emoji">🍖</span>
         <div class="r-body">
@@ -425,7 +487,7 @@
         <div class="r-meta"><span class="r-time">12h+</span><span class="r-time-k">慢烤</span><span class="arrow">→</span></div>
       </a>
     </li>
-    <li>
+    <li data-tags="牛肉 慢烤 主菜">
       <a class="recipe-card" href="beef/beef-tenderloin-roast.html">
         <span class="r-emoji">🥩</span>
         <div class="r-body">
@@ -440,7 +502,7 @@
         <div class="r-meta"><span class="r-time">1h</span><span class="r-time-k">慢烤</span><span class="arrow">→</span></div>
       </a>
     </li>
-    <li>
+    <li data-tags="牛肉 日式">
       <a class="recipe-card" href="beef/beef-tataki.html">
         <span class="r-emoji">🥢</span>
         <div class="r-body">
@@ -455,7 +517,7 @@
         <div class="r-meta"><span class="r-time">50m</span><span class="r-time-k">含冷藏</span><span class="arrow">→</span></div>
       </a>
     </li>
-    <li>
+    <li data-tags="鸡肉 意式 炖煮">
       <a class="recipe-card" href="chicken/chicken-cacciatore.html">
         <span class="r-emoji">🍲</span>
         <div class="r-body">
@@ -470,7 +532,7 @@
         <div class="r-meta"><span class="r-time">55m</span><span class="r-time-k">炖煮</span><span class="arrow">→</span></div>
       </a>
     </li>
-    <li>
+    <li data-tags="鸡肉 非洲 咖喱">
       <a class="recipe-card" href="chicken/african-chicken-curry-kuku-paka.html">
         <span class="r-emoji">🥥</span>
         <div class="r-body">
@@ -485,7 +547,7 @@
         <div class="r-meta"><span class="r-time">1h</span><span class="r-time-k">咖喱</span><span class="arrow">→</span></div>
       </a>
     </li>
-    <li>
+    <li data-tags="鸡肉 墨西哥 一锅出">
       <a class="recipe-card" href="chicken/one-pot-mexican-chicken-rice.html">
         <span class="r-emoji">🍛</span>
         <div class="r-body">
@@ -500,7 +562,7 @@
         <div class="r-meta"><span class="r-time">55m</span><span class="r-time-k">一锅出</span><span class="arrow">→</span></div>
       </a>
     </li>
-    <li>
+    <li data-tags="猪肉 慢烤">
       <a class="recipe-card" href="pork/pulled-pork.html">
         <span class="r-emoji">🍔</span>
         <div class="r-body">
@@ -515,7 +577,7 @@
         <div class="r-meta"><span class="r-time">36h</span><span class="r-time-k">工程</span><span class="arrow">→</span></div>
       </a>
     </li>
-    <li>
+    <li data-tags="鱼/海鲜 快手">
       <a class="recipe-card" href="seafood/lemon-garlic-salmon-tray-bake.html">
         <span class="r-emoji">🐟</span>
         <div class="r-body">
@@ -530,7 +592,7 @@
         <div class="r-meta"><span class="r-time">11m</span><span class="r-time-k">快手</span><span class="arrow">→</span></div>
       </a>
     </li>
-    <li>
+    <li data-tags="鱼/海鲜 加勒比 快手">
       <a class="recipe-card" href="seafood/jerk-fish.html">
         <span class="r-emoji">🌶️</span>
         <div class="r-body">
@@ -545,7 +607,7 @@
         <div class="r-meta"><span class="r-time">6m</span><span class="r-time-k">快手</span><span class="arrow">→</span></div>
       </a>
     </li>
-    <li>
+    <li data-tags="鱼/海鲜 快手 主菜">
       <a class="recipe-card" href="seafood/crispy-skin-fish.html">
         <span class="r-emoji">🍳</span>
         <div class="r-body">
@@ -560,7 +622,7 @@
         <div class="r-meta"><span class="r-time">15m</span><span class="r-time-k">快手</span><span class="arrow">→</span></div>
       </a>
     </li>
-    <li>
+    <li data-tags="鱼/海鲜 法式">
       <a class="recipe-card" href="seafood/crispy-pan-fried-white-fish.html">
         <span class="r-emoji">🐟</span>
         <div class="r-body">
@@ -575,7 +637,7 @@
         <div class="r-meta"><span class="r-time">50m</span><span class="r-time-k">慢工</span><span class="arrow">→</span></div>
       </a>
     </li>
-    <li>
+    <li data-tags="鸡肉 快手 主菜">
       <a class="recipe-card" href="chicken/oven-baked-chicken-breast.html">
         <span class="r-emoji">🍗</span>
         <div class="r-body">
@@ -590,7 +652,7 @@
         <div class="r-meta"><span class="r-time">23m</span><span class="r-time-k">快手</span><span class="arrow">→</span></div>
       </a>
     </li>
-    <li>
+    <li data-tags="鸡肉 一锅出">
       <a class="recipe-card" href="chicken/chicken-vegetable-rice.html">
         <span class="r-emoji">🍚</span>
         <div class="r-body">
@@ -605,7 +667,7 @@
         <div class="r-meta"><span class="r-time">22m</span><span class="r-time-k">一锅出</span><span class="arrow">→</span></div>
       </a>
     </li>
-    <li>
+    <li data-tags="鸡肉 墨西哥 汤">
       <a class="recipe-card" href="chicken/slow-cooker-mexican-chicken-soup.html">
         <span class="r-emoji">🥣</span>
         <div class="r-body">
@@ -620,7 +682,7 @@
         <div class="r-meta"><span class="r-time">8h</span><span class="r-time-k">慢炖</span><span class="arrow">→</span></div>
       </a>
     </li>
-    <li>
+    <li data-tags="鸡肉 沙拉">
       <a class="recipe-card" href="chicken/chicken-kale-salad.html">
         <span class="r-emoji">🥗</span>
         <div class="r-body">
@@ -635,7 +697,7 @@
         <div class="r-meta"><span class="r-time">50m</span><span class="r-time-k">沙拉</span><span class="arrow">→</span></div>
       </a>
     </li>
-    <li>
+    <li data-tags="牛肉 慢烤">
       <a class="recipe-card" href="beef/marinated-roast-beef.html">
         <span class="r-emoji">🥩</span>
         <div class="r-body">
@@ -650,7 +712,7 @@
         <div class="r-meta"><span class="r-time">2–3d</span><span class="r-time-k">腌烤</span><span class="arrow">→</span></div>
       </a>
     </li>
-    <li>
+    <li data-tags="猪肉 快手 主菜">
       <a class="recipe-card" href="pork/pork-tenderloin-honey-garlic.html">
         <span class="r-emoji">🍯</span>
         <div class="r-body">
@@ -665,7 +727,7 @@
         <div class="r-meta"><span class="r-time">35m</span><span class="r-time-k">煎+烤</span><span class="arrow">→</span></div>
       </a>
     </li>
-    <li>
+    <li data-tags="鸡肉 中东">
       <a class="recipe-card" href="chicken/chicken-shawarma.html">
         <span class="r-emoji">🥙</span>
         <div class="r-body">
@@ -680,7 +742,7 @@
         <div class="r-meta"><span class="r-time">10m</span><span class="r-time-k">腌烤</span><span class="arrow">→</span></div>
       </a>
     </li>
-    <li>
+    <li data-tags="鸡肉 泰式">
       <a class="recipe-card" href="chicken/thai-grilled-chicken-gai-yang.html">
         <span class="r-emoji">🍢</span>
         <div class="r-body">
@@ -695,7 +757,7 @@
         <div class="r-meta"><span class="r-time">12m</span><span class="r-time-k">腌烤</span><span class="arrow">→</span></div>
       </a>
     </li>
-    <li>
+    <li data-tags="鸡肉 墨西哥 炖煮">
       <a class="recipe-card" href="chicken/mexican-shredded-chicken.html">
         <span class="r-emoji">🌯</span>
         <div class="r-body">
@@ -710,7 +772,7 @@
         <div class="r-meta"><span class="r-time">4h</span><span class="r-time-k">慢炖</span><span class="arrow">→</span></div>
       </a>
     </li>
-    <li>
+    <li data-tags="鸡肉 快手">
       <a class="recipe-card" href="chicken/poached-chicken.html">
         <span class="r-emoji">💧</span>
         <div class="r-body">
@@ -737,5 +799,52 @@
   </footer>
 
 </div>
+<script>
+(function () {
+  var activeTags = new Set();
+  var pills = document.querySelectorAll('.tag-pill');
+  var cards = document.querySelectorAll('.recipe-list > li');
+  var countEl = document.getElementById('visible-count');
+  var resetBtn = document.getElementById('resetFilters');
+  var noResults = document.getElementById('noResults');
+  var soon = document.querySelector('.soon');
+
+  function applyFilter() {
+    var visible = 0;
+    cards.forEach(function (li) {
+      var tags = (li.dataset.tags || '').split(' ');
+      var match = activeTags.size === 0 || Array.from(activeTags).every(function (t) {
+        return tags.indexOf(t) !== -1;
+      });
+      li.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+    countEl.textContent = visible;
+    resetBtn.hidden = activeTags.size === 0;
+    noResults.hidden = visible !== 0;
+    if (soon) soon.hidden = activeTags.size !== 0;
+  }
+
+  pills.forEach(function (pill) {
+    pill.addEventListener('click', function () {
+      var tag = pill.dataset.tag;
+      if (activeTags.has(tag)) {
+        activeTags.delete(tag);
+        pill.classList.remove('active');
+      } else {
+        activeTags.add(tag);
+        pill.classList.add('active');
+      }
+      applyFilter();
+    });
+  });
+
+  resetBtn.addEventListener('click', function () {
+    activeTags.clear();
+    pills.forEach(function (p) { p.classList.remove('active'); });
+    applyFilter();
+  });
+})();
+</script>
 </body>
 </html>
