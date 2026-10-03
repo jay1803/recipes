@@ -1,0 +1,16 @@
+{
+  "id": "./",
+  "name": "菜谱合集 · 家庭厨房",
+  "short_name": "菜谱合集",
+  "description": "值得反复做的菜，保存后离线也能读。",
+  "lang": "zh-CN",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4ede0",
+  "theme_color": "#f4ede0",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

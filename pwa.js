@@ -1,0 +1,140 @@
+(function () {
+  'use strict';
+
+  // Resolve from this script, so direct recipe visits and subdirectory hosting work.
+  var root = new URL('./', document.currentScript.src);
+  var panel = document.createElement('section');
+  panel.className = 'app-tools';
+  panel.setAttribute('aria-label', '离线阅读与安装');
+  panel.innerHTML = '<div class="app-tools-row">' +
+    '<p class="app-status" role="status" aria-live="polite">正在准备离线菜谱…</p>' +
+    '<button class="app-button app-retry" type="button" hidden>重试保存</button>' +
+    '<button class="app-button app-install" type="button" hidden>安装菜谱合集</button></div>' +
+    '<details class="app-help"><summary>离线阅读 · 添加到主屏幕</summary>' +
+    '<p>首次联网打开后，会自动保存全部菜谱。看到「已保存」后，即使没有网络，也能打开首页、筛选和阅读每道菜。下次联网打开时会自动检查更新。</p>' +
+    '<p>iPhone / iPad：在 Safari 的分享菜单中选择「添加到主屏幕」，如有「作为网页 App 打开」选项，请开启。Android / 电脑：使用浏览器菜单中的「安装应用」或「添加到主屏幕」。</p>' +
+    '<p>菜谱的原始出处链接需要联网。清除浏览器网站数据会移除离线菜谱，届时需联网重新保存。</p></details>';
+  var back = document.querySelector('.back');
+  var hero = document.querySelector('.hero');
+  (back || hero).insertAdjacentElement('afterend', panel);
+
+  var status = panel.querySelector('.app-status');
+  var retry = panel.querySelector('.app-retry');
+  var install = panel.querySelector('.app-install');
+  var registration;
+  var ready = false;
+  var recipeCount = 0;
+  var failed = false;
+  var checking = false;
+  var installPrompt;
+
+  function render() {
+    panel.dataset.ready = String(ready);
+    retry.hidden = ready || !failed || !navigator.onLine;
+    if (ready) {
+      status.textContent = (navigator.onLine ? '已保存 ' : '当前离线 · 已保存 ') + recipeCount + ' 道菜谱，可离线阅读。';
+    } else if (!navigator.onLine) {
+      status.textContent = '当前离线 · 请联网完成保存后，再离线阅读全部菜谱。';
+    } else if (failed) {
+      status.textContent = '菜谱尚未全部保存，请重试。';
+    } else {
+      status.textContent = '正在保存全部菜谱，请保持页面打开…';
+    }
+  }
+
+  async function checkReady() {
+    var worker = navigator.serviceWorker.controller;
+    if (!worker) return;
+    var channel = new MessageChannel();
+    var result = await new Promise(function (resolve) {
+      var timer = setTimeout(function () { channel.port1.close(); resolve(null); }, 5000);
+      channel.port1.onmessage = function (event) {
+        clearTimeout(timer);
+        channel.port1.close();
+        resolve(event.data);
+      };
+      worker.postMessage({ type: 'OFFLINE_STATUS' }, [channel.port2]);
+    });
+    if (result && result.type === 'OFFLINE_STATUS') {
+      ready = result.ready;
+      recipeCount = result.recipeCount;
+      failed = !ready;
+    } else {
+      ready = false;
+      failed = true;
+    }
+    render();
+  }
+
+  function watchWorker(worker) {
+    if (!worker) return;
+    worker.addEventListener('statechange', function () {
+      if (worker.state === 'redundant') {
+        failed = true;
+        render();
+      }
+      if (worker.state === 'activated') checkReady();
+    });
+  }
+
+  async function prepare() {
+    if (checking) return;
+    checking = true;
+    failed = false;
+    render();
+    try {
+      // Existing offline data remains useful even if registration/update cannot
+      // reach the server (navigator.onLine can still be true without internet).
+      await checkReady();
+      registration = await navigator.serviceWorker.register(new URL('sw.js', root), {
+        scope: root.href,
+        updateViaCache: 'none'
+      });
+      registration.addEventListener('updatefound', function () { watchWorker(registration.installing); });
+      watchWorker(registration.installing);
+      await checkReady();
+      // An installed worker with evicted resources needs to be installed again.
+      // Keep its registration until a fresh worker succeeds, preserving any usable cache.
+      if (failed && navigator.onLine) {
+        await navigator.serviceWorker.register(new URL('sw.js?repair=' + Date.now(), root), {
+          scope: root.href, updateViaCache: 'none'
+        });
+      } else if (navigator.onLine) {
+        await registration.update();
+      }
+    } catch (error) {
+      failed = true;
+      render();
+    } finally {
+      checking = false;
+    }
+  }
+
+  window.addEventListener('beforeinstallprompt', function (event) {
+    event.preventDefault();
+    installPrompt = event;
+    install.hidden = false;
+  });
+  install.addEventListener('click', async function () {
+    if (!installPrompt) return;
+    await installPrompt.prompt();
+    await installPrompt.userChoice;
+    installPrompt = null;
+    install.hidden = true;
+  });
+  window.addEventListener('appinstalled', function () {
+    installPrompt = null;
+    install.hidden = true;
+  });
+
+  if (!('serviceWorker' in navigator) || !window.isSecureContext) {
+    status.textContent = '离线保存需要支持此功能的浏览器，并通过 HTTPS 打开网站（本地预览可用 localhost）。';
+    return;
+  }
+  navigator.serviceWorker.addEventListener('controllerchange', checkReady);
+  window.addEventListener('offline', render);
+  window.addEventListener('online', function () { render(); prepare(); });
+  window.addEventListener('pageshow', checkReady);
+  retry.addEventListener('click', prepare);
+  prepare();
+})();

@@ -80,6 +80,14 @@ index 卡片上的对应小标签用 `.r-tag.fit`（可加 `.mid` 琥珀色）�
 
 ## 维护检查清单
 
+### 离线 Web App
+
+- 所有首页 / 菜谱页 `<head>` 保留相对路径引用：`manifest.webmanifest`、`icons/apple-touch-icon.png`、`pwa.css`、带 `defer` 的 `pwa.js`，以及 `theme-color`。
+- 新增菜谱、修改页面 / CSS / JS / 图标后，运行 `python3 scripts/update-offline.py`，一起提交生成的 `sw.js`。`python3 scripts/update-offline.py --check` 可验证清单和版本没有过期。
+- Service worker 逻辑维护在 `scripts/sw-template.js`，不要直接改生成文件；每版自动保存整个合集，全部成功后才切换，不依赖用户逐页访问。
+- 离线 / 安装 UI 的共用样式放在 `pwa.css`，保留中文提示、打印隐藏和真实缓存完成状态。离线功能测试用 HTTP localhost / HTTPS，`file://` 不支持。
+- 运行 `node --test tests/offline.test.cjs` 验证离线与更新行为。
+
 修改后自查：
 - [ ] 新页面链接的是 `../styles.css`，没有内嵌 `<style>`
 - [ ] 返回链接是 `../index.html`

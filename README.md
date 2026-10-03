@@ -15,6 +15,7 @@
 - **统一的页面结构**：食材清单、分阶段步骤、厨房备忘、出处署名。
 - 索引页带分类标签和健身 / 备餐小标签，一眼挑菜。
 - 适配打印；窄屏自适应。
+- **可安装、可离线阅读**：首次联网打开会自动保存全部菜谱；看到「已保存」后，没网也能筛选、打开和阅读尚未浏览过的菜谱。
 - 菜谱改编自 RecipeTin Eats、Adam Ragusea、Julia Child 等公开来源，也收录家庭做法讨论；每页页脚注明出处，公开来源附链接。
 
 ## 目录结构
@@ -109,6 +110,28 @@ python3 -m http.server 8000
 # 然后访问 http://localhost:8000
 ```
 
+离线保存和安装需要 HTTPS 或 `localhost`，直接打开 `file://` 只能预览页面。
+
+## 离线阅读与安装
+
+1. 联网访问 [recipes.maxoxo.me](https://recipes.maxoxo.me)，保持页面打开，等状态显示「已保存 48 道菜谱，可离线阅读」。从任意菜谱页打开也会保存整个合集。
+2. iPhone / iPad：在 Safari 分享菜单中选择「添加到主屏幕」，如有「作为网页 App 打开」选项，请开启。Android / 电脑：点击出现的「安装菜谱合集」按钮，或使用浏览器菜单中的安装选项。
+3. 无网络时打开主屏幕上的菜谱合集或浏览器中原来的地址，即可筛选和阅读全部已保存的菜谱。不安装也可以离线阅读。
+
+下次联网打开会自动检查新版；完整保存成功后才切换版本，下载失败会保留旧版。原始出处链接仍需网络。清除网站数据或浏览器回收存储空间后，需要联网重新保存。
+
+站点仍是纯静态 HTML / CSS / JS，部署不需要构建步骤。`manifest.webmanifest` 定义安装信息，`pwa.js` 显示离线状态与安装帮助，`sw.js` 保存所有菜谱及本地资源；不使用外部库或 CDN。
+
+更新任何页面、样式、脚本或图标后，请同步离线清单和内容版本，并一起提交 `sw.js`：
+
+```bash
+python3 scripts/update-offline.py
+python3 scripts/update-offline.py --check
+node --test tests/offline.test.cjs
+```
+
+清单由全部 `类别/*.html` 和共用资源自动生成。`scripts/sw-template.js` 是 service worker 的维护源文件；请修改它而非直接修改生成的 `sw.js`。
+
 ## 添加新菜谱
 
 简要流程（完整规范见 [AGENT.md](AGENT.md)）：
@@ -118,6 +141,7 @@ python3 -m http.server 8000
 3. 顶部加返回链接 `<a class="back" href="../index.html">`。
 4. 按既有结构填内容，底部保留健身 + 备餐双视角模块，页脚保留原始出处链接。
 5. 更新 `index.html`：计数加一、必要时加分类标签、新增一张卡片（链接指向 `类别/文件.html`）。
+6. 保留页面 `<head>` 内的 manifest、图标、`pwa.css` 和 `pwa.js` 引用，运行 `python3 scripts/update-offline.py`，把新菜谱纳入离线合集。
 
 ## 设计约定
 

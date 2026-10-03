@@ -1,0 +1,31 @@
+/* Shared offline / installation controls; recipe reading styles stay separate. */
+.app-tools {
+  margin: 22px 0;
+  padding: 14px 18px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: rgba(255,255,255,0.4);
+  color: var(--ink-soft);
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+.app-tools-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+.app-status { flex: 1 1 220px; margin: 0; }
+.app-tools[data-ready="true"] .app-status { color: var(--olive); }
+.app-button {
+  font: inherit;
+  color: var(--rust-deep);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 4px 12px;
+  cursor: pointer;
+}
+.app-button:hover { border-color: var(--rust); }
+.app-button:focus-visible, .app-help summary:focus-visible { outline: 2px solid var(--rust); outline-offset: 4px; }
+.app-tools [hidden] { display: none; }
+.app-help { margin-top: 8px; }
+.app-help summary { cursor: pointer; }
+.app-help p { margin: 8px 0 0; }
+@media print { .app-tools { display: none; } }
