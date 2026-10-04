@@ -2,8 +2,8 @@
 'use strict';
 
 const CACHE_PREFIX = 'recipes-offline-' + new URL(self.registration.scope).pathname + ':';
-const CACHE_NAME = CACHE_PREFIX + '144ad8fe136160a9';
-const RECIPE_COUNT = 49;
+const CACHE_NAME = CACHE_PREFIX + '5b021973abaac2ff';
+const RECIPE_COUNT = 50;
 const FILES = [
   "index.html",
   "styles.css",
@@ -20,6 +20,7 @@ const FILES = [
   "beef/big-mac-protein-bowls.html",
   "beef/boeuf-bourguignon-julia-child.html",
   "beef/broccolini-beef-stir-fry-meal-prep.html",
+  "beef/chaoshan-pickled-mustard-beef-stir-fry.html",
   "beef/dan-dan-inspired-noodles.html",
   "beef/low-and-slow-eye-of-round.html",
   "beef/marinated-roast-beef.html",
