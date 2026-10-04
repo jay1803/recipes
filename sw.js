@@ -2,8 +2,8 @@
 'use strict';
 
 const CACHE_PREFIX = 'recipes-offline-' + new URL(self.registration.scope).pathname + ':';
-const CACHE_NAME = CACHE_PREFIX + '8fd376dcc4762948';
-const RECIPE_COUNT = 48;
+const CACHE_NAME = CACHE_PREFIX + '144ad8fe136160a9';
+const RECIPE_COUNT = 49;
 const FILES = [
   "index.html",
   "styles.css",
@@ -53,6 +53,7 @@ const FILES = [
   "pork/pork-tenderloin-honey-garlic.html",
   "pork/pulled-pork.html",
   "pork/taiwanese-braised-pork-rice.html",
+  "seafood/chaoshan-jinbuhuan-clams.html",
   "seafood/chaoshan-shacha-three-delicacies.html",
   "seafood/crispy-pan-fried-white-fish.html",
   "seafood/crispy-skin-fish.html",
