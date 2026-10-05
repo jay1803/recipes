@@ -60,7 +60,7 @@ def workflow():
             action('comment', 'help', WFCommentActionText=(
                 '从菜谱页面点击「加入 Apple 提醒事项」运行。先在下面第一个'
                 '「添加新提醒事项」动作中选择支持子任务的 iCloud 清单。'
-                '每次导入创建一组新任务；子任务保留食材分组及用量。')),
+                '每次导入创建一组新任务；子任务只写食材 x 数量，数量未知时写适量。')),
             action('detect.dictionary', 'dictionary', WFInput=source),
             action('getvalueforkey', 'title', WFInput=dictionary, WFDictionaryKey='title'),
             action('getvalueforkey', 'url', WFInput=dictionary, WFDictionaryKey='url'),

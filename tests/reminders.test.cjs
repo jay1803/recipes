@@ -19,10 +19,16 @@ function app(groups, clipboard) {
           { nodeType: 1, classList: { contains: () => true }, textContent: '🍗' },
           { nodeType: 3, textContent: group }
         ] }; },
-        querySelectorAll() { return rows.map(([name, quantity]) => ({
+        querySelectorAll() { return rows.map(([name, quantity, note]) => ({
           querySelector(selector) {
             const value = selector === '.name' ? name : quantity;
-            return value == null ? null : { textContent: value };
+            if (value == null) return null;
+            const annotation = selector === '.name' ? note : null;
+            return { textContent: value + (annotation ? ' ' + annotation : ''), cloneNode() {
+              const clone = { textContent: value + (annotation ? ' ' + annotation : '') };
+              clone.querySelectorAll = () => annotation ? [{ remove() { clone.textContent = value; } }] : [];
+              return clone;
+            } };
           }
         })); }
       }));
@@ -40,9 +46,9 @@ function app(groups, clipboard) {
   return { ...controls, panel };
 }
 
-test('handoff preserves Unicode, quantities, optional notes and repeated ingredients under their groups', () => {
+test('handoff sends only ingredient x quantity, removing groups and optional notes', () => {
   const page = app([
-    [' 鸡肉 ', [['鸡腿肉  去骨\n切块', '900 g'], ['盐 + 黑胡椒', '适量']]],
+    [' 鸡肉 ', [['鸡腿肉', '900 g', '去骨\n切块'], ['盐 + 黑胡椒', '适量']]],
     ['酱汁', [['盐 + 黑胡椒', '适量'], ['糖 & 醋', null], ['', 'ignore']]]
   ]);
   const link = new URL(page.add.href);
@@ -53,10 +59,17 @@ test('handoff preserves Unicode, quantities, optional notes and repeated ingredi
   assert.ok(!page.add.href.includes('+'), 'spaces use %20 and literal plus signs use %2B');
   assert.deepEqual(JSON.parse(link.searchParams.get('text')), {
     title: '鸡肉 & 香菇 + 米饭', url: 'https://example.test/recipes/chicken/example.html',
-    ingredients: ['鸡肉：鸡腿肉 去骨 切块 · 900 g', '鸡肉：盐 + 黑胡椒 · 适量', '酱汁：盐 + 黑胡椒 · 适量', '酱汁：糖 & 醋']
+    ingredients: ['鸡腿肉 x 900 g', '盐 + 黑胡椒 x 适量', '盐 + 黑胡椒 x 适量', '糖 & 醋 x 适量']
   });
   assert.equal(page.install.href, 'https://example.test/recipes/shortcuts/recipe-ingredients.shortcut');
   assert.match(page.panel.innerHTML, /download="菜谱食材加入提醒事项.shortcut"/);
+});
+
+test('missing and unknown quantities use 适量, while known amounts retain their units', () => {
+  const quantities = [null, '', '  ', '用量未标', '个数未标', '未标注', '未确认', '未知', '不详', '可选', '按需'];
+  const page = app([['食材', quantities.map(qty => ['葱', qty]).concat([['米', '100 g'], ['油', '少量'], ['盐', '2 茶匙 / 适量']])]]);
+  assert.deepEqual(JSON.parse(new URL(page.add.href).searchParams.get('text')).ingredients,
+    quantities.map(() => '葱 x 适量').concat(['米 x 100 g', '油 x 少量', '盐 x 2 茶匙 / 适量']));
 });
 
 test('handoff reports opening Shortcuts without claiming a reminder write succeeded', () => {
@@ -79,7 +92,7 @@ test('copy fallback contains the recipe, source and every ingredient and reports
   let copied;
   const page = app([['食材', [['米', '100 g']]]], { async writeText(value) { copied = value; } });
   await page.copy.listeners.click();
-  assert.equal(copied, '鸡肉 & 香菇 + 米饭\nhttps://example.test/recipes/chicken/example.html\n\n食材：米 · 100 g');
+  assert.equal(copied, '鸡肉 & 香菇 + 米饭\nhttps://example.test/recipes/chicken/example.html\n\n米 x 100 g');
   assert.equal(page.status.textContent, '已复制食材清单。');
   for (const clipboard of [undefined, { async writeText() { throw new Error('Denied'); } }]) {
     const failure = app([], clipboard);
