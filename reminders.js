@@ -11,17 +11,17 @@
   function collect() {
     var items = [];
     ingredients.querySelectorAll('.ing-block').forEach(function (block) {
-      var heading = block.querySelector('.ing-head');
-      // Keep group labels: the same ingredient can occur in several components.
-      var group = heading ? clean(Array.from(heading.childNodes).filter(function (node) {
-        return !(node.nodeType === 1 && node.classList.contains('ico'));
-      }).map(function (node) { return node.textContent; }).join('')) : '';
       block.querySelectorAll('.ing-list > li').forEach(function (row) {
         var name = row.querySelector('.name');
         var quantity = row.querySelector('.qty');
-        if (!name || !clean(name.textContent)) return;
-        items.push((group ? group + '：' : '') + clean(name.textContent) +
-          (quantity && clean(quantity.textContent) ? ' · ' + clean(quantity.textContent) : ''));
+        if (!name) return;
+        var label = name.cloneNode(true);
+        label.querySelectorAll('.opt').forEach(function (note) { note.remove(); });
+        var ingredientName = clean(label.textContent);
+        if (!ingredientName) return;
+        var amount = quantity ? clean(quantity.textContent) : '';
+        if (!amount || /未知|未标|未确认|不详|不明/.test(amount) || /^(可选|按需)$/.test(amount)) amount = '适量';
+        items.push(ingredientName + ' x ' + amount);
       });
     });
     return { title: clean(document.title), url: window.location.href.split(/[?#]/)[0], ingredients: items };

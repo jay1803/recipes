@@ -2,7 +2,7 @@
 'use strict';
 
 const CACHE_PREFIX = 'recipes-offline-' + new URL(self.registration.scope).pathname + ':';
-const CACHE_NAME = CACHE_PREFIX + '4fe6135edb276f34';
+const CACHE_NAME = CACHE_PREFIX + 'aef8eae3e12eb2c4';
 const RECIPE_COUNT = 50;
 const FILES = [
   "index.html",
