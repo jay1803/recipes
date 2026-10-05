@@ -9,6 +9,8 @@ const root = path.resolve(__dirname, '..');
 const source = fs.readFileSync(path.join(root, 'sw.js'), 'utf8');
 const recipeLinks = [...fs.readFileSync(path.join(root, 'index.html'), 'utf8')
   .matchAll(/class="recipe-card" href="([^"]+)"/g)].map((match) => match[1]);
+const techniquePages = fs.readdirSync(path.join(root, 'techniques'))
+  .filter((file) => file.endsWith('.html')).map((file) => 'techniques/' + file);
 
 function storage() {
   const entries = new Map();
@@ -79,6 +81,13 @@ test('offline inventory/version is current and every reading page includes app m
     if (file !== 'index.html') assert.match(html, /src="\.\.\/reminders.js" defer/);
     assert.ok(source.includes('"' + file + '"'), file + ' must be precached');
   }
+  for (const file of techniquePages) {
+    const html = fs.readFileSync(path.join(root, file), 'utf8');
+    assert.match(html, /rel="manifest"/);
+    assert.match(html, /src="\.\.\/pwa.js" defer/);
+    assert.match(html, /href="\.\.\/pwa.css"/);
+    assert.ok(source.includes('"' + file + '"'), file + ' must be precached');
+  }
 });
 
 test('first installation saves every recipe; offline home aliases, filters assets and unopened pages work', async () => {
@@ -91,10 +100,26 @@ test('first installation saves every recipe; offline home aliases, filters asset
     assert.ok((await app.navigate(file)).ok, file);
   }
   for (const file of recipeLinks) assert.match(await (await app.navigate(file)).text(), /class="ingredients"/, file);
+  for (const file of techniquePages) {
+    const html = await (await app.navigate(file + '#method')).text();
+    assert.match(html, /公共步骤/, file);
+    assert.ok(!html.includes('class="ingredients"'), file);
+  }
   assert.equal(app.state.fetched.length, 0);
   let status;
   await app.dispatch('message', { data: { type: 'OFFLINE_STATUS' }, ports: [{ postMessage(value) { status = value; } }] });
   assert.equal(status.ready, true);
+  assert.equal(status.recipeCount, recipeLinks.length);
+});
+
+test('missing shared technique prevents readiness without increasing the recipe count', async () => {
+  const app = worker();
+  await app.dispatch('install');
+  const cache = [...app.caches.entries.values()][0];
+  cache.delete('https://example.test/recipes/' + techniquePages[0]);
+  let status;
+  await app.dispatch('message', { data: { type: 'OFFLINE_STATUS' }, ports: [{ postMessage(value) { status = value; } }] });
+  assert.equal(status.ready, false);
   assert.equal(status.recipeCount, recipeLinks.length);
 });
 

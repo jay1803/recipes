@@ -2,7 +2,7 @@
 'use strict';
 
 const CACHE_PREFIX = 'recipes-offline-' + new URL(self.registration.scope).pathname + ':';
-const CACHE_NAME = CACHE_PREFIX + 'aef8eae3e12eb2c4';
+const CACHE_NAME = CACHE_PREFIX + 'a4bf2fb264c432a0';
 const RECIPE_COUNT = 50;
 const FILES = [
   "index.html",
@@ -65,7 +65,15 @@ const FILES = [
   "seafood/steamed-squid-scallion-oil.html",
   "seafood/xo-shrimp-fried-rice.html",
   "vegetable/mung-bean-sprouts-two-ways.html",
-  "vegetable/pea-shoots-three-ways.html"
+  "vegetable/pea-shoots-three-ways.html",
+  "techniques/batch-searing.html",
+  "techniques/beef-marination.html",
+  "techniques/index.html",
+  "techniques/pork-preparation.html",
+  "techniques/pot-rice.html",
+  "techniques/shrimp-marination.html",
+  "techniques/squid-preparation.html",
+  "techniques/vegetable-preparation.html"
 ];
 const URLS = FILES.map((file) => new URL(file, self.registration.scope).href);
 const KNOWN_URLS = new Set(URLS);
