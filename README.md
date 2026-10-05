@@ -120,6 +120,8 @@ python3 -m http.server 8000
 
 下次联网打开会自动检查新版；完整保存成功后才切换版本，下载失败会保留旧版。原始出处链接仍需网络。清除网站数据或浏览器回收存储空间后，需要联网重新保存。
 
+页面没有显示最新内容时，可点击「刷新菜谱」，或滚动到页面顶部后下拉约 100 像素并松手。联网时会先检查更新，等新版完整保存并启用后重新载入当前页面；离线时重新载入已保存的内容。刷新失败会提示重试，并保留当前页面和已有离线菜谱。首页和每道菜谱页都支持刷新。
+
 站点仍是纯静态 HTML / CSS / JS，部署不需要构建步骤。`manifest.webmanifest` 定义安装信息，`pwa.js` 显示离线状态与安装帮助，`sw.js` 保存所有菜谱及本地资源；不使用外部库或 CDN。
 
 更新任何页面、样式、脚本或图标后，请同步离线清单和内容版本，并一起提交 `sw.js`：
@@ -127,7 +129,7 @@ python3 -m http.server 8000
 ```bash
 python3 scripts/update-offline.py
 python3 scripts/update-offline.py --check
-node --test tests/offline.test.cjs
+node --test tests/*.test.cjs
 ```
 
 清单由全部 `类别/*.html` 和共用资源自动生成。`scripts/sw-template.js` 是 service worker 的维护源文件；请修改它而非直接修改生成的 `sw.js`。
