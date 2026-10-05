@@ -69,6 +69,15 @@ h1.title .accent { color: var(--rust); font-style: italic; }
 }
 
 aside.ingredients { position: sticky; top: 24px; }
+.reminder-tools { margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid var(--line); font: 0.8rem/1.6 var(--sans); color: var(--ink-soft); }
+.reminder-add { display: inline-block; padding: 8px 14px; border: 1px solid var(--rust); border-radius: 20px; color: var(--rust-deep); text-decoration: none; }
+.reminder-tools p { margin: 8px 0; }
+.reminder-tools summary { cursor: pointer; }
+.reminder-tools a { color: var(--rust-deep); }
+.reminder-copy { margin-top: 8px; padding: 4px 0; border: 0; background: none; color: var(--rust-deep); font: inherit; text-decoration: underline; cursor: pointer; }
+.reminder-tools a:focus-visible, .reminder-tools button:focus-visible, .reminder-tools summary:focus-visible { outline: 2px solid var(--rust); outline-offset: 4px; }
+.reminder-status:empty { display: none; }
+@media print { .reminder-tools { display: none; } }
 .ing-block { margin-bottom: 34px; }
 .ing-head {
   font-family: var(--serif); font-size: 1.35rem; font-weight: 700;

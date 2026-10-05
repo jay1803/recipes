@@ -2,15 +2,17 @@
 'use strict';
 
 const CACHE_PREFIX = 'recipes-offline-' + new URL(self.registration.scope).pathname + ':';
-const CACHE_NAME = CACHE_PREFIX + '16427cffd24a2c77';
+const CACHE_NAME = CACHE_PREFIX + '4fe6135edb276f34';
 const RECIPE_COUNT = 50;
 const FILES = [
   "index.html",
   "styles.css",
   "pwa.css",
   "pwa.js",
+  "reminders.js",
   "manifest.webmanifest",
   "offline.html",
+  "shortcuts/recipe-ingredients.shortcut",
   "icons/apple-touch-icon.png",
   "icons/icon-192.png",
   "icons/icon-512.png",
