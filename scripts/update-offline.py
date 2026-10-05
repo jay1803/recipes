@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+from preparations import sync
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -29,6 +30,10 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true', help='Fail if sw.js needs regeneration')
     args = parser.parse_args()
+    try:
+        sync(check=args.check)
+    except ValueError as error:
+        parser.exit(1, str(error) + '\n')
     output = generate()
     target = ROOT / 'sw.js'
     if args.check:

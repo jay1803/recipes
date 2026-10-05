@@ -24,3 +24,6 @@ Desktop.ini
 # ---------- Logs / temp ----------
 *.log
 *.tmp
+
+# ---------- Python maintenance scripts ----------
+__pycache__/
