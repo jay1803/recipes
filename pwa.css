@@ -23,9 +23,26 @@
   cursor: pointer;
 }
 .app-button:hover { border-color: var(--rust); }
+.app-button:disabled { opacity: 0.6; cursor: wait; }
 .app-button:focus-visible, .app-help summary:focus-visible { outline: 2px solid var(--rust); outline-offset: 4px; }
 .app-tools [hidden] { display: none; }
 .app-help { margin-top: 8px; }
 .app-help summary { cursor: pointer; }
 .app-help p { margin: 8px 0 0; }
-@media print { .app-tools { display: none; } }
+.app-pull {
+  position: fixed;
+  top: max(12px, env(safe-area-inset-top));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  padding: 8px 18px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--paper);
+  color: var(--rust-deep);
+  font: 0.8rem var(--sans);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.app-pull[hidden] { display: none; }
+@media print { .app-tools, .app-pull { display: none; } }
