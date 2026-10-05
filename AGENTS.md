@@ -73,7 +73,6 @@ index 卡片上的对应小标签用 `.r-tag.fit`（可加 `.mid` 琥珀色）�
 
 ## 写作与内容规范
 
-- 食材数量未知时统一写「适量」，详见 [AGENTS.md 的食材数量规则](AGENTS.md#食材数量)。
 - 全中文，专有名词保留英文（如 Picanha、Gai Yang、Shawarma）。
 - 步骤分阶段（`.phase`），每阶段一句 `.note` 点出关键，`ol.step-list` 列步骤，关键动作/温度用 `<b>` 或 `.temp` 高亮。
 - 温度同时给摄氏和华氏。
