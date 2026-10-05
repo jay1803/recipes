@@ -76,6 +76,7 @@ test('offline inventory/version is current and every reading page includes app m
     assert.match(html, /rel="manifest"/);
     assert.match(html, /src="(?:\.\.\/)?pwa.js" defer/);
     assert.match(html, /href="(?:\.\.\/)?pwa.css"/);
+    if (file !== 'index.html') assert.match(html, /src="\.\.\/reminders.js" defer/);
     assert.ok(source.includes('"' + file + '"'), file + ' must be precached');
   }
 });
@@ -86,7 +87,7 @@ test('first installation saves every recipe; offline home aliases, filters asset
   await app.dispatch('activate');
   assert.ok(app.state.skipped && app.state.claimed);
   app.state.offline = true;
-  for (const file of ['', 'index.html?from=home', 'styles.css', 'pwa.js', 'pwa.css']) {
+  for (const file of ['', 'index.html?from=home', 'styles.css', 'pwa.js', 'pwa.css', 'reminders.js', 'shortcuts/recipe-ingredients.shortcut']) {
     assert.ok((await app.navigate(file)).ok, file);
   }
   for (const file of recipeLinks) assert.match(await (await app.navigate(file)).text(), /class="ingredients"/, file);
