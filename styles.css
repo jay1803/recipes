@@ -66,7 +66,12 @@ h1.title .accent { color: var(--rust); font-style: italic; }
 /* Public technique pages use a reading column rather than recipe ingredients. */
 .technique-content { max-width: 720px; margin: 0 auto; padding: 40px 0; }
 .technique-nav { margin-top: 12px; font-size: 0.85rem; }
-.technique-nav a, .technique-content a { color: var(--rust-deep); text-underline-offset: 3px; }
+.technique-nav a, .technique-content a {
+  color: var(--rust); text-decoration: none; border-bottom: 1px solid var(--line);
+}
+.technique-nav a:hover, .technique-content a:hover {
+  color: var(--rust-deep); border-bottom-color: var(--rust);
+}
 .technique-content .phase { scroll-margin-top: 24px; }
 .technique-list { list-style: none; }
 .technique-list li { padding: 20px 0; border-bottom: 1px solid var(--line); }

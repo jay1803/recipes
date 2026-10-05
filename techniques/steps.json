@@ -1,0 +1,64 @@
+{
+  "beef-oil": {
+    "reference": "beef-marination.html#soy-starch-oil",
+    "steps": [
+      "牛肉<b>逆纹切薄片</b>，加入<b>{seasoning}</b>抓匀，{finish}，<b>{rest}</b>。"
+    ]
+  },
+  "beef-soda": {
+    "reference": "beef-marination.html#baking-soda",
+    "steps": [
+      "牛肉切薄片，与<b>生抽、玉米淀粉、小苏打{extra}</b>拌匀，<b>{rest}</b>。{after}"
+    ]
+  },
+  "pork-strips": {
+    "reference": "pork-preparation.html#strips",
+    "steps": [
+      "猪肉切丝，用<b>料酒、生抽、淀粉</b>抓匀，腌制 <b>{rest}</b>。"
+    ]
+  },
+  "pork-mince": {
+    "reference": "pork-preparation.html#mince",
+    "steps": [
+      "把<b>生粉和清水</b>拌匀，与生抽、糖、花雕酒、胡椒粉、蚝油一起加入肉末，<b>抓拌均匀</b>。{after}"
+    ]
+  },
+  "shrimp-light": {
+    "reference": "shrimp-marination.html#light",
+    "steps": [
+      "虾仁去虾线、<b>吸干表面水分</b>，加<b>盐、白胡椒和淀粉</b>轻轻抓匀，让腌料薄薄附着；盐先少放。切配其他食材时冷藏备用，不设固定等待时间。腌料为家庭补充，用量见本页腌料栏。"
+    ]
+  },
+  "vegetable-drain": {
+    "reference": "vegetable-preparation.html#wash-drain",
+    "steps": [
+      "{vegetable}{trim}洗净后<b>充分沥干水分</b>；{after}。"
+    ]
+  },
+  "squid-basic": {
+    "reference": "squid-preparation.html#basic",
+    "steps": [
+      "清理鱿鱼的<b>内脏</b>，抽出身体里的<b>透明软骨</b>，摘掉头部中间的<b>硬牙（鱼嘴）</b>。{after}"
+    ]
+  },
+  "squid-whole": {
+    "reference": "squid-preparation.html#whole",
+    "steps": [
+      "把<b>眼睛</b>清理干净。",
+      "把外层<b>薄膜整张撕下</b>，冲洗、挤干水分。",
+      "清理大触须吸盘上的<b>硬圈</b>，保持整条，随后按本菜改刀。"
+    ]
+  },
+  "pot-rice": {
+    "reference": "pot-rice.html#long-grain",
+    "steps": [
+      "米洗净，加入{liquid}{seasoning}煮沸，<b>加盖转小火焖 {rest}</b>{during}。离火加盖再焖 <b>5 分钟</b>，{after}。"
+    ]
+  },
+  "batch-beef": {
+    "reference": "batch-searing.html#beef-stir-fry",
+    "steps": [
+      "{heat}，{oil}，牛肉<b>{method}</b>，{done}盛出。{after}"
+    ]
+  }
+}

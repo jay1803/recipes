@@ -2,6 +2,7 @@ const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const methods = JSON.parse(fs.readFileSync(path.join(__dirname, '../techniques/steps.json'), 'utf8'));
 
 const root = path.resolve(__dirname, '..');
 const htmlFiles = ['index.html', ...fs.readdirSync(root, { withFileTypes: true })
@@ -40,7 +41,21 @@ test('every technique is reachable from the shared index and refers back to its 
     assert.ok(sources.length > 0, file + ' requires source recipes');
     for (const source of new Set(sources)) {
       const recipe = fs.readFileSync(path.join(root, source), 'utf8');
-      assert.ok(recipe.includes('href="../' + file + '#'), source + ' must use its shared method');
+      const used = [...recipe.matchAll(/<!-- preparation: ([^\n]+) -->/g)]
+        .map((m) => methods[JSON.parse(m[1]).method].reference.split('#')[0]);
+      assert.ok(used.includes(path.basename(file)), source + ' must use its shared method');
+    }
+  }
+});
+
+test('recipes contain complete static steps without linking readers to another method page', () => {
+  const recipes = htmlFiles.filter((file) => file !== 'index.html' && !file.startsWith('techniques/'));
+  for (const file of recipes) {
+    const html = fs.readFileSync(path.join(root, file), 'utf8');
+    assert.doesNotMatch(html, /href="[^\"]*techniques\//, file);
+    for (const [, generated] of html.matchAll(/<!-- preparation: [^\n]+ -->\n([\s\S]*?)<!-- \/preparation -->/g)) {
+      assert.match(generated, /<li>[^<]|<li><b>/, file);
+      assert.doesNotMatch(generated, /<a\s|\{\w+\}/, file);
     }
   }
 });
