@@ -9,11 +9,13 @@ ROOT = Path(__file__).resolve().parent.parent
 
 
 def generate():
-    recipes = sorted(path.relative_to(ROOT).as_posix() for path in ROOT.glob('*/*.html'))
+    recipes = sorted(path.relative_to(ROOT).as_posix() for path in ROOT.glob('*/*.html')
+                     if path.parent.name != 'techniques')
+    techniques = sorted(path.relative_to(ROOT).as_posix() for path in (ROOT / 'techniques').glob('*.html'))
     files = ['index.html', 'styles.css', 'pwa.css', 'pwa.js', 'reminders.js', 'manifest.webmanifest', 'offline.html']
     files += ['shortcuts/recipe-ingredients.shortcut']
     files += sorted(path.relative_to(ROOT).as_posix() for path in (ROOT / 'icons').glob('*.png'))
-    files += recipes
+    files += recipes + techniques
     template = (ROOT / 'scripts/sw-template.js').read_text()
     digest = hashlib.sha256(template.encode())
     for name in files:
