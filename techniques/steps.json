@@ -11,6 +11,13 @@
       "牛肉切薄片，与<b>生抽、玉米淀粉、小苏打{extra}</b>拌匀，<b>{rest}</b>。{after}"
     ]
   },
+  "beef-general": {
+    "reference": "beef-marination.html#general-tender",
+    "steps": [
+      "选用{part}等嫩牛肉部位，<b>逆纹切薄片，厚度控制在 2 毫米以内</b>{extra_prep}。",
+      "加入<b>糖、蚝油、生抽、胡椒粉和适量清水</b>，快速抓拌让牛肉吸收水分，再加<b>生粉抓匀</b>形成滑嫩口感，最后用<b>花生油封面</b>防止腌制时水分蒸发，{rest}。{after}"
+    ]
+  },
   "pork-strips": {
     "reference": "pork-preparation.html#strips",
     "steps": [

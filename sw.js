@@ -2,8 +2,8 @@
 'use strict';
 
 const CACHE_PREFIX = 'recipes-offline-' + new URL(self.registration.scope).pathname + ':';
-const CACHE_NAME = CACHE_PREFIX + '8c57ff50efee5f1f';
-const RECIPE_COUNT = 50;
+const CACHE_NAME = CACHE_PREFIX + '9da4905ac32a9a2c';
+const RECIPE_COUNT = 55;
 const FILES = [
   "index.html",
   "styles.css",
@@ -20,14 +20,19 @@ const FILES = [
   "beef/beef-tataki.html",
   "beef/beef-tenderloin-roast.html",
   "beef/big-mac-protein-bowls.html",
+  "beef/bitter-melon-beef-stir-fry.html",
   "beef/boeuf-bourguignon-julia-child.html",
   "beef/broccolini-beef-stir-fry-meal-prep.html",
   "beef/chaoshan-pickled-mustard-beef-stir-fry.html",
   "beef/dan-dan-inspired-noodles.html",
+  "beef/double-scallion-beef-brisket-fat.html",
+  "beef/ginger-scallion-beef.html",
   "beef/low-and-slow-eye-of-round.html",
   "beef/marinated-roast-beef.html",
   "beef/mexican-shredded-beef-tacos.html",
   "beef/pepper-beef-pasta-meal-prep.html",
+  "beef/pickled-mustard-green-steamed-beef.html",
+  "beef/pineapple-beef-salad.html",
   "beef/rump-cap-roast-picanha.html",
   "beef/sticky-hoisin-beef-bowls.html",
   "chicken/african-chicken-curry-kuku-paka.html",
